@@ -108,7 +108,9 @@ pub const XAE_DEFAULT_OPTIONS: usize = 	(
         XAE_FCS_STRIP_OPTION |		
         XAE_LENTYPE_ERR_OPTION |	
         XAE_TRANSMITTER_ENABLE_OPTION | 
-        XAE_RECEIVER_ENABLE_OPTION);
+        XAE_RECEIVER_ENABLE_OPTION
+        
+);
 
 
 /// Default MDIO clock divisor
@@ -129,9 +131,9 @@ pub const XAE_HDR_SIZE: usize =			14;
 pub const XAE_HDR_VLAN_SIZE: usize =		18;	
 /// Size of an Ethernet trailer (FCS)
 pub const XAE_TRL_SIZE: usize =			4;	
-pub const XAE_MAX_FRAME_SIZE: usize =	 (XAE_MTU + XAE_HDR_SIZE + XAE_TRL_SIZE);
-pub const XAE_MAX_VLAN_FRAME_SIZE: usize =  (XAE_MTU + XAE_HDR_VLAN_SIZE + XAE_TRL_SIZE);
-pub const XAE_MAX_JUMBO_FRAME_SIZE: usize = (XAE_JUMBO_MTU + XAE_HDR_SIZE + XAE_TRL_SIZE);
+pub const XAE_MAX_FRAME_SIZE: usize =	 XAE_MTU + XAE_HDR_SIZE + XAE_TRL_SIZE;
+pub const XAE_MAX_VLAN_FRAME_SIZE: usize =  XAE_MTU + XAE_HDR_VLAN_SIZE + XAE_TRL_SIZE;
+pub const XAE_MAX_JUMBO_FRAME_SIZE: usize = XAE_JUMBO_MTU + XAE_HDR_SIZE + XAE_TRL_SIZE;
 
 // Constant values returned by XAxiEthernet_GetPhysicalInterface(). 
 // Note that these values match design parameters from the Axi Ethernet spec.
@@ -275,3 +277,87 @@ pub const XAE_MDIO_MC_MDIOEN_MASK: usize = 0x00000040;
 /** Maximum MDIO divisor */
 pub const XAE_MDIO_MC_CLOCK_DIVIDE_MAX: usize =	0x3F;	   
 
+/// Ethernet link status
+#[derive(Debug)]
+pub enum LinkStatus {
+    EthLinkUndefined,
+    EthLinkUp,
+    EthLinkDown,
+    EthLinkNegotiating,
+}
+
+
+/** Interrupt Status/Enable/Mask Registers bit definitions
+  The bit definition of these three interrupt registers are the same.
+  These bits are associated with the XAE_IS_OFFSET, XAE_IP_OFFSET, and
+  XAE_IE_OFFSET registers. 
+ */
+/** Hard register access complete */
+pub const XAE_INT_HARDACSCMPLT_MASK: usize  = 0x00000001; 
+/** Auto negotiation complete  */
+pub const XAE_INT_AUTONEG_MASK: usize       = 0x00000002; 
+/** Rx complete */
+pub const XAE_INT_RXCMPIT_MASK: usize       = 0x00000004; 
+/** Rx frame rejected */
+pub const XAE_INT_RXRJECT_MASK: usize       = 0x00000008; 
+/** Rx fifo overrun */
+pub const XAE_INT_RXFIFOOVR_MASK: usize     = 0x00000010; 
+/** Tx complete */
+pub const XAE_INT_TXCMPIT_MASK: usize       = 0x00000020; 
+/** Rx Dcm Lock */
+pub const XAE_INT_RXDCMLOCK_MASK: usize     = 0x00000040; 
+/** MGT clock Lock */
+pub const XAE_INT_MGTRDY_MASK: usize        = 0x00000080; 
+ /** Phy Reset complete */
+ pub const XAE_INT_PHYRSTCMPLT_MASK: usize   = 0x00000100;
+/** All the ints */
+pub const XAE_INT_ALL_MASK: usize           = 0x0000003F; 
+/** indicate receive errors */
+pub const XAE_INT_RECV_ERROR_MASK: usize	= XAE_INT_RXRJECT_MASK | XAE_INT_RXFIFOOVR_MASK; 
+
+/* IEEE PHY Specific definitions */
+pub const PHY_R0_CTRL_REG: usize        = 0;
+pub const PHY_R3_PHY_IDENT_REG: usize   = 3;
+pub const PHY_R0_RESET: usize           = 0x8000;
+pub const PHY_R0_LOOPBACK: usize        = 0x4000;
+pub const PHY_R0_ANEG_ENABLE: usize     = 0x1000;
+pub const PHY_R0_DFT_SPD_MASK: usize    = 0x2040;
+pub const PHY_R0_DFT_SPD_10: usize      = 0x0000;
+pub const PHY_R0_DFT_SPD_100: usize     = 0x2000;
+pub const PHY_R0_DFT_SPD_1000: usize    = 0x0040;
+pub const PHY_R0_DFT_SPD_2500: usize    = 0x0040;
+pub const PHY_R0_ISOLATE: usize         = 0x0400;
+pub const PHY_MODEL_NUM_MASK: usize     = 0x3F0;
+pub const PHY_R20_EXTND_CTRL_REG: usize = 20;
+pub const PHY_R27_EXTND_STS_REG: usize  = 27;
+pub const PHY_R20_DFT_SPD_10: usize     = 0x20;
+pub const PHY_R20_DFT_SPD_100: usize    = 0x50;
+pub const PHY_R20_DFT_SPD_1000: usize   = 0x60;
+pub const PHY_R20_RX_DLY: usize         = 0x80;
+pub const PHY_R27_MAC_CONFIG_GMII: usize = 0x000F;
+pub const PHY_R27_MAC_CONFIG_MII: usize  = 0x000F;
+pub const PHY_R27_MAC_CONFIG_RGMII: usize  = 0x000B;
+pub const PHY_R27_MAC_CONFIG_SGMII: usize  = 0x0004;
+
+/* Marvel PHY 88E1116R Specific definitions */
+pub const PHY_R22_PAGE_ADDR_REG: usize  = 22;
+pub const PHY_PG2_R21_CTRL_REG: usize  = 21;
+
+pub const PHY_REG21_10: usize  = 0x0030;
+pub const PHY_REG21_100: usize  = 0x2030;
+pub const PHY_REG21_1000: usize  = 0x0070;
+pub const MARVEL_PHY_88E1111_MODEL: usize = 0xC0;
+pub const MARVEL_PHY_88E1116R_MODEL: usize = 0x240;
+pub const AXIETHERNET_PHY_DELAY_SEC: usize = 4;
+pub const TI_PHY_IDENTIFIER: usize = 0x2000;
+pub const TI_PHY_MODEL: usize = 0x230;
+pub const TI_PHY_CR: usize = 0xD;
+pub const TI_PHY_PHYCTRL: usize = 0x10;
+pub const TI_PHY_CR_SGMII_EN: usize = 0x0800;
+pub const TI_PHY_ADDDR: usize = 0xE;
+pub const TI_PHY_CFGR2: usize = 0x14;
+pub const TI_PHY_SGMIITYPE: usize = 0xD3;
+pub const TI_PHY_CFGR2_SGMII_AUTONEG_EN: usize = 0x0080;
+pub const TI_PHY_SGMIICLK_EN: usize = 0x4000;
+pub const TI_PHY_CR_DEVAD_EN: usize = 0x001F;
+pub const TI_PHY_CR_DEVAD_DATAEN: usize = 0x4000;
