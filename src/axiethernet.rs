@@ -258,6 +258,22 @@ impl AxiEthernet {
         self.hardware().is.write(|w| unsafe { w.bits((mask & 0x3f) as u32) });
     }
 
+    pub fn clear_tx_cmplt(&self) {
+        self.hardware().is.write(|w| w.tx_cmplt().clear_bit());
+    }
+
+    pub fn clear_rx_memovr(&self) {
+        self.hardware().is.write(|w| w.rx_fifoovr().clear_bit());
+    }
+
+    pub fn clear_rx_rject(&self) {
+        self.hardware().is.write(|w| w.rx_rject().clear_bit());
+    }
+
+    pub fn clear_rx_cmplt(&self) {
+        self.hardware().is.write(|w| w.rx_cmplt().clear_bit());
+    }
+
     pub fn is_ext_func_cap(&self) -> bool {
         self.hardware().raf.read().new_fnc_enbl().bit()
     }
