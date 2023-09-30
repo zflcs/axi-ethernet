@@ -216,6 +216,38 @@ impl AxiEthernet {
         self.hardware().ie.write(|w| unsafe { w.bits(intrs) });
     }
 
+    pub fn enable_tx_cmplt(&self) {
+        self.hardware().ie.write(|w| w.tx_cmplt().set_bit());
+    }
+
+    pub fn enable_rx_memovr(&self) {
+        self.hardware().ie.write(|w| w.rx_fifoovr().set_bit());
+    }
+
+    pub fn enable_rx_rject(&self) {
+        self.hardware().ie.write(|w| w.rx_rject().set_bit());
+    }
+
+    pub fn enable_rx_cmplt(&self) {
+        self.hardware().ie.write(|w| w.rx_cmplt().set_bit());
+    }
+
+    pub fn disable_tx_cmplt(&self) {
+        self.hardware().ie.write(|w| w.tx_cmplt().clear_bit());
+    }
+
+    pub fn disable_rx_memovr(&self) {
+        self.hardware().ie.write(|w| w.rx_fifoovr().clear_bit());
+    }
+
+    pub fn disable_rx_rject(&self) {
+        self.hardware().ie.write(|w| w.rx_rject().clear_bit());
+    }
+
+    pub fn disable_rx_cmplt(&self) {
+        self.hardware().ie.write(|w| w.rx_cmplt().clear_bit());
+    }
+
     pub fn disable_intr(&self, mask: usize) {
         let mut intrs = self.hardware().ie.read().bits();
         intrs = intrs & !(mask & 0x3f) as u32;
