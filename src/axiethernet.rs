@@ -259,19 +259,19 @@ impl AxiEthernet {
     }
 
     pub fn clear_tx_cmplt(&self) {
-        self.hardware().is.write(|w| w.tx_cmplt().clear_bit());
+        self.hardware().is.write(|w| w.tx_cmplt().set_bit());
     }
 
     pub fn clear_rx_memovr(&self) {
-        self.hardware().is.write(|w| w.rx_fifoovr().clear_bit());
+        self.hardware().is.write(|w| w.rx_fifoovr().set_bit());
     }
 
     pub fn clear_rx_rject(&self) {
-        self.hardware().is.write(|w| w.rx_rject().clear_bit());
+        self.hardware().is.write(|w| w.rx_rject().set_bit());
     }
 
     pub fn clear_rx_cmplt(&self) {
-        self.hardware().is.write(|w| w.rx_cmplt().clear_bit());
+        self.hardware().is.write(|w| w.rx_cmplt().set_bit());
     }
 
     pub fn is_ext_func_cap(&self) -> bool {
