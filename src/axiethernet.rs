@@ -210,6 +210,22 @@ impl AxiEthernet {
         self.hardware().ip.read().bits() as _
     }
 
+    pub fn is_tx_cmplt(&self) -> bool {
+        self.hardware().ip.read().tx_cmplt().bit()
+    }
+
+    pub fn is_rx_memovr(&self) -> bool {
+        self.hardware().ip.read().rx_fifoovr().bit()
+    }
+
+    pub fn is_rx_rject(&self) -> bool {
+        self.hardware().ip.read().rx_rject().bit()
+    }
+
+    pub fn is_rx_cmplt(&self) -> bool {
+        self.hardware().ip.read().rx_cmplt().bit()
+    }
+
     pub fn enable_intr(&self, mask: usize) {
         let mut intrs = self.hardware().ie.read().bits();
         intrs = intrs | (mask & 0x3f) as u32;
