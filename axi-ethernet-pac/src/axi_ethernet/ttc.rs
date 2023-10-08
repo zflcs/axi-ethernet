@@ -1,39 +1,7 @@
 #[doc = "Register `ttc` reader"]
-pub struct R(crate::R<TTC_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<TTC_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<TTC_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<TTC_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<TTC_SPEC>;
 #[doc = "Register `ttc` writer"]
-pub struct W(crate::W<TTC_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<TTC_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<TTC_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<TTC_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<TTC_SPEC>;
 #[doc = "Field `ICFE` reader - "]
 pub type ICFE_R = crate::BitReader<ICFE_A>;
 #[doc = "\n\nValue on reset: 0"]
@@ -59,28 +27,31 @@ impl ICFE_R {
             true => ICFE_A::ENABLE,
         }
     }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_disable(&self) -> bool {
         *self == ICFE_A::DISABLE
     }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
+    #[doc = "`1`"]
     #[inline(always)]
     pub fn is_enable(&self) -> bool {
         *self == ICFE_A::ENABLE
     }
 }
 #[doc = "Field `ICFE` writer - "]
-pub type ICFE_W<'a, const O: u8> = crate::BitWriter<'a, TTC_SPEC, O, ICFE_A>;
-impl<'a, const O: u8> ICFE_W<'a, O> {
+pub type ICFE_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O, ICFE_A>;
+impl<'a, REG, const O: u8> ICFE_W<'a, REG, O>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
     #[doc = "`0`"]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
+    pub fn disable(self) -> &'a mut crate::W<REG> {
         self.variant(ICFE_A::DISABLE)
     }
     #[doc = "`1`"]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
+    pub fn enable(self) -> &'a mut crate::W<REG> {
         self.variant(ICFE_A::ENABLE)
     }
 }
@@ -109,28 +80,31 @@ impl IFG_R {
             true => IFG_A::ENABLE,
         }
     }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_disable(&self) -> bool {
         *self == IFG_A::DISABLE
     }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
+    #[doc = "`1`"]
     #[inline(always)]
     pub fn is_enable(&self) -> bool {
         *self == IFG_A::ENABLE
     }
 }
 #[doc = "Field `IFG` writer - "]
-pub type IFG_W<'a, const O: u8> = crate::BitWriter<'a, TTC_SPEC, O, IFG_A>;
-impl<'a, const O: u8> IFG_W<'a, O> {
+pub type IFG_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O, IFG_A>;
+impl<'a, REG, const O: u8> IFG_W<'a, REG, O>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
     #[doc = "`0`"]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
+    pub fn disable(self) -> &'a mut crate::W<REG> {
         self.variant(IFG_A::DISABLE)
     }
     #[doc = "`1`"]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
+    pub fn enable(self) -> &'a mut crate::W<REG> {
         self.variant(IFG_A::ENABLE)
     }
 }
@@ -159,28 +133,31 @@ impl HD_R {
             true => HD_A::HALF_DUPLEX,
         }
     }
-    #[doc = "Checks if the value of the field is `FULL_DUPLEX`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_full_duplex(&self) -> bool {
         *self == HD_A::FULL_DUPLEX
     }
-    #[doc = "Checks if the value of the field is `HALF_DUPLEX`"]
+    #[doc = "`1`"]
     #[inline(always)]
     pub fn is_half_duplex(&self) -> bool {
         *self == HD_A::HALF_DUPLEX
     }
 }
 #[doc = "Field `HD` writer - "]
-pub type HD_W<'a, const O: u8> = crate::BitWriter<'a, TTC_SPEC, O, HD_A>;
-impl<'a, const O: u8> HD_W<'a, O> {
+pub type HD_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O, HD_A>;
+impl<'a, REG, const O: u8> HD_W<'a, REG, O>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
     #[doc = "`0`"]
     #[inline(always)]
-    pub fn full_duplex(self) -> &'a mut W {
+    pub fn full_duplex(self) -> &'a mut crate::W<REG> {
         self.variant(HD_A::FULL_DUPLEX)
     }
     #[doc = "`1`"]
     #[inline(always)]
-    pub fn half_duplex(self) -> &'a mut W {
+    pub fn half_duplex(self) -> &'a mut crate::W<REG> {
         self.variant(HD_A::HALF_DUPLEX)
     }
 }
@@ -209,28 +186,31 @@ impl VLAN_R {
             true => VLAN_A::ENABLE,
         }
     }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_disable(&self) -> bool {
         *self == VLAN_A::DISABLE
     }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
+    #[doc = "`1`"]
     #[inline(always)]
     pub fn is_enable(&self) -> bool {
         *self == VLAN_A::ENABLE
     }
 }
 #[doc = "Field `VLAN` writer - "]
-pub type VLAN_W<'a, const O: u8> = crate::BitWriter<'a, TTC_SPEC, O, VLAN_A>;
-impl<'a, const O: u8> VLAN_W<'a, O> {
+pub type VLAN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O, VLAN_A>;
+impl<'a, REG, const O: u8> VLAN_W<'a, REG, O>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
     #[doc = "`0`"]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
+    pub fn disable(self) -> &'a mut crate::W<REG> {
         self.variant(VLAN_A::DISABLE)
     }
     #[doc = "`1`"]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
+    pub fn enable(self) -> &'a mut crate::W<REG> {
         self.variant(VLAN_A::ENABLE)
     }
 }
@@ -259,28 +239,31 @@ impl TX_R {
             true => TX_A::ENABLE,
         }
     }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_disable(&self) -> bool {
         *self == TX_A::DISABLE
     }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
+    #[doc = "`1`"]
     #[inline(always)]
     pub fn is_enable(&self) -> bool {
         *self == TX_A::ENABLE
     }
 }
 #[doc = "Field `TX` writer - "]
-pub type TX_W<'a, const O: u8> = crate::BitWriter<'a, TTC_SPEC, O, TX_A>;
-impl<'a, const O: u8> TX_W<'a, O> {
+pub type TX_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O, TX_A>;
+impl<'a, REG, const O: u8> TX_W<'a, REG, O>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
     #[doc = "`0`"]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
+    pub fn disable(self) -> &'a mut crate::W<REG> {
         self.variant(TX_A::DISABLE)
     }
     #[doc = "`1`"]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
+    pub fn enable(self) -> &'a mut crate::W<REG> {
         self.variant(TX_A::ENABLE)
     }
 }
@@ -309,28 +292,31 @@ impl FCS_R {
             true => FCS_A::ENABLE,
         }
     }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_disable(&self) -> bool {
         *self == FCS_A::DISABLE
     }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
+    #[doc = "`1`"]
     #[inline(always)]
     pub fn is_enable(&self) -> bool {
         *self == FCS_A::ENABLE
     }
 }
 #[doc = "Field `FCS` writer - "]
-pub type FCS_W<'a, const O: u8> = crate::BitWriter<'a, TTC_SPEC, O, FCS_A>;
-impl<'a, const O: u8> FCS_W<'a, O> {
+pub type FCS_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O, FCS_A>;
+impl<'a, REG, const O: u8> FCS_W<'a, REG, O>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
     #[doc = "`0`"]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
+    pub fn disable(self) -> &'a mut crate::W<REG> {
         self.variant(FCS_A::DISABLE)
     }
     #[doc = "`1`"]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
+    pub fn enable(self) -> &'a mut crate::W<REG> {
         self.variant(FCS_A::ENABLE)
     }
 }
@@ -359,28 +345,31 @@ impl JUM_R {
             true => JUM_A::ENABLE,
         }
     }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_disable(&self) -> bool {
         *self == JUM_A::DISABLE
     }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
+    #[doc = "`1`"]
     #[inline(always)]
     pub fn is_enable(&self) -> bool {
         *self == JUM_A::ENABLE
     }
 }
 #[doc = "Field `JUM` writer - "]
-pub type JUM_W<'a, const O: u8> = crate::BitWriter<'a, TTC_SPEC, O, JUM_A>;
-impl<'a, const O: u8> JUM_W<'a, O> {
+pub type JUM_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O, JUM_A>;
+impl<'a, REG, const O: u8> JUM_W<'a, REG, O>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
     #[doc = "`0`"]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
+    pub fn disable(self) -> &'a mut crate::W<REG> {
         self.variant(JUM_A::DISABLE)
     }
     #[doc = "`1`"]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
+    pub fn enable(self) -> &'a mut crate::W<REG> {
         self.variant(JUM_A::ENABLE)
     }
 }
@@ -409,28 +398,31 @@ impl RST_R {
             true => RST_A::INIT_RESET,
         }
     }
-    #[doc = "Checks if the value of the field is `NO_RESET`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_no_reset(&self) -> bool {
         *self == RST_A::NO_RESET
     }
-    #[doc = "Checks if the value of the field is `INIT_RESET`"]
+    #[doc = "`1`"]
     #[inline(always)]
     pub fn is_init_reset(&self) -> bool {
         *self == RST_A::INIT_RESET
     }
 }
 #[doc = "Field `RST` writer - "]
-pub type RST_W<'a, const O: u8> = crate::BitWriter<'a, TTC_SPEC, O, RST_A>;
-impl<'a, const O: u8> RST_W<'a, O> {
+pub type RST_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O, RST_A>;
+impl<'a, REG, const O: u8> RST_W<'a, REG, O>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
     #[doc = "`0`"]
     #[inline(always)]
-    pub fn no_reset(self) -> &'a mut W {
+    pub fn no_reset(self) -> &'a mut crate::W<REG> {
         self.variant(RST_A::NO_RESET)
     }
     #[doc = "`1`"]
     #[inline(always)]
-    pub fn init_reset(self) -> &'a mut W {
+    pub fn init_reset(self) -> &'a mut crate::W<REG> {
         self.variant(RST_A::INIT_RESET)
     }
 }
@@ -480,70 +472,67 @@ impl W {
     #[doc = "Bit 22"]
     #[inline(always)]
     #[must_use]
-    pub fn icfe(&mut self) -> ICFE_W<22> {
+    pub fn icfe(&mut self) -> ICFE_W<TTC_SPEC, 22> {
         ICFE_W::new(self)
     }
     #[doc = "Bit 25"]
     #[inline(always)]
     #[must_use]
-    pub fn ifg(&mut self) -> IFG_W<25> {
+    pub fn ifg(&mut self) -> IFG_W<TTC_SPEC, 25> {
         IFG_W::new(self)
     }
     #[doc = "Bit 26"]
     #[inline(always)]
     #[must_use]
-    pub fn hd(&mut self) -> HD_W<26> {
+    pub fn hd(&mut self) -> HD_W<TTC_SPEC, 26> {
         HD_W::new(self)
     }
     #[doc = "Bit 27"]
     #[inline(always)]
     #[must_use]
-    pub fn vlan(&mut self) -> VLAN_W<27> {
+    pub fn vlan(&mut self) -> VLAN_W<TTC_SPEC, 27> {
         VLAN_W::new(self)
     }
     #[doc = "Bit 28"]
     #[inline(always)]
     #[must_use]
-    pub fn tx(&mut self) -> TX_W<28> {
+    pub fn tx(&mut self) -> TX_W<TTC_SPEC, 28> {
         TX_W::new(self)
     }
     #[doc = "Bit 29"]
     #[inline(always)]
     #[must_use]
-    pub fn fcs(&mut self) -> FCS_W<29> {
+    pub fn fcs(&mut self) -> FCS_W<TTC_SPEC, 29> {
         FCS_W::new(self)
     }
     #[doc = "Bit 30"]
     #[inline(always)]
     #[must_use]
-    pub fn jum(&mut self) -> JUM_W<30> {
+    pub fn jum(&mut self) -> JUM_W<TTC_SPEC, 30> {
         JUM_W::new(self)
     }
     #[doc = "Bit 31"]
     #[inline(always)]
     #[must_use]
-    pub fn rst(&mut self) -> RST_W<31> {
+    pub fn rst(&mut self) -> RST_W<TTC_SPEC, 31> {
         RST_W::new(self)
     }
     #[doc = "Writes raw bits to the register."]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
+        self.bits = bits;
         self
     }
 }
-#[doc = "TEMAC Transmitter Configuration\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [ttc](index.html) module"]
+#[doc = "TEMAC Transmitter Configuration\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`ttc::R`](R).  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`ttc::W`](W). You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
 pub struct TTC_SPEC;
 impl crate::RegisterSpec for TTC_SPEC {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [ttc::R](R) reader structure"]
-impl crate::Readable for TTC_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [ttc::W](W) writer structure"]
+#[doc = "`read()` method returns [`ttc::R`](R) reader structure"]
+impl crate::Readable for TTC_SPEC {}
+#[doc = "`write(|w| ..)` method takes [`ttc::W`](W) writer structure"]
 impl crate::Writable for TTC_SPEC {
-    type Writer = W;
     const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
     const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
 }

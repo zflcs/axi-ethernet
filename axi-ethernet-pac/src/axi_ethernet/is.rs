@@ -1,39 +1,7 @@
 #[doc = "Register `is` reader"]
-pub struct R(crate::R<IS_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<IS_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<IS_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<IS_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<IS_SPEC>;
 #[doc = "Register `is` writer"]
-pub struct W(crate::W<IS_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<IS_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<IS_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<IS_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<IS_SPEC>;
 #[doc = "Field `HardAcsCmplt` reader - "]
 pub type HARD_ACS_CMPLT_R = crate::BitReader<HARD_ACS_CMPLT_A>;
 #[doc = "\n\nValue on reset: 0"]
@@ -59,35 +27,38 @@ impl HARD_ACS_CMPLT_R {
             true => HARD_ACS_CMPLT_A::COMPLETE,
         }
     }
-    #[doc = "Checks if the value of the field is `NOT_COMPLETE`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_not_complete(&self) -> bool {
         *self == HARD_ACS_CMPLT_A::NOT_COMPLETE
     }
-    #[doc = "Checks if the value of the field is `COMPLETE`"]
+    #[doc = "`1`"]
     #[inline(always)]
     pub fn is_complete(&self) -> bool {
         *self == HARD_ACS_CMPLT_A::COMPLETE
     }
 }
 #[doc = "Field `HardAcsCmplt` writer - "]
-pub type HARD_ACS_CMPLT_W<'a, const O: u8> = crate::BitWriter<'a, IS_SPEC, O, HARD_ACS_CMPLT_A>;
-impl<'a, const O: u8> HARD_ACS_CMPLT_W<'a, O> {
+pub type HARD_ACS_CMPLT_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O, HARD_ACS_CMPLT_A>;
+impl<'a, REG, const O: u8> HARD_ACS_CMPLT_W<'a, REG, O>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
     #[doc = "`0`"]
     #[inline(always)]
-    pub fn not_complete(self) -> &'a mut W {
+    pub fn not_complete(self) -> &'a mut crate::W<REG> {
         self.variant(HARD_ACS_CMPLT_A::NOT_COMPLETE)
     }
     #[doc = "`1`"]
     #[inline(always)]
-    pub fn complete(self) -> &'a mut W {
+    pub fn complete(self) -> &'a mut crate::W<REG> {
         self.variant(HARD_ACS_CMPLT_A::COMPLETE)
     }
 }
 #[doc = "Field `All` reader - "]
 pub type ALL_R = crate::FieldReader;
 #[doc = "Field `All` writer - "]
-pub type ALL_W<'a, const O: u8> = crate::FieldWriter<'a, IS_SPEC, 6, O>;
+pub type ALL_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 6, O>;
 #[doc = "Field `AutoNeg` reader - "]
 pub type AUTO_NEG_R = crate::BitReader<AUTO_NEG_A>;
 #[doc = "\n\nValue on reset: 0"]
@@ -113,28 +84,31 @@ impl AUTO_NEG_R {
             true => AUTO_NEG_A::COMPLETE,
         }
     }
-    #[doc = "Checks if the value of the field is `NOT_COMPLETE`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_not_complete(&self) -> bool {
         *self == AUTO_NEG_A::NOT_COMPLETE
     }
-    #[doc = "Checks if the value of the field is `COMPLETE`"]
+    #[doc = "`1`"]
     #[inline(always)]
     pub fn is_complete(&self) -> bool {
         *self == AUTO_NEG_A::COMPLETE
     }
 }
 #[doc = "Field `AutoNeg` writer - "]
-pub type AUTO_NEG_W<'a, const O: u8> = crate::BitWriter<'a, IS_SPEC, O, AUTO_NEG_A>;
-impl<'a, const O: u8> AUTO_NEG_W<'a, O> {
+pub type AUTO_NEG_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O, AUTO_NEG_A>;
+impl<'a, REG, const O: u8> AUTO_NEG_W<'a, REG, O>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
     #[doc = "`0`"]
     #[inline(always)]
-    pub fn not_complete(self) -> &'a mut W {
+    pub fn not_complete(self) -> &'a mut crate::W<REG> {
         self.variant(AUTO_NEG_A::NOT_COMPLETE)
     }
     #[doc = "`1`"]
     #[inline(always)]
-    pub fn complete(self) -> &'a mut W {
+    pub fn complete(self) -> &'a mut crate::W<REG> {
         self.variant(AUTO_NEG_A::COMPLETE)
     }
 }
@@ -163,28 +137,31 @@ impl RX_CMPLT_R {
             true => RX_CMPLT_A::HAS_FRAME,
         }
     }
-    #[doc = "Checks if the value of the field is `NO_FRAME`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_no_frame(&self) -> bool {
         *self == RX_CMPLT_A::NO_FRAME
     }
-    #[doc = "Checks if the value of the field is `HAS_FRAME`"]
+    #[doc = "`1`"]
     #[inline(always)]
     pub fn is_has_frame(&self) -> bool {
         *self == RX_CMPLT_A::HAS_FRAME
     }
 }
 #[doc = "Field `RxCmplt` writer - "]
-pub type RX_CMPLT_W<'a, const O: u8> = crate::BitWriter<'a, IS_SPEC, O, RX_CMPLT_A>;
-impl<'a, const O: u8> RX_CMPLT_W<'a, O> {
+pub type RX_CMPLT_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O, RX_CMPLT_A>;
+impl<'a, REG, const O: u8> RX_CMPLT_W<'a, REG, O>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
     #[doc = "`0`"]
     #[inline(always)]
-    pub fn no_frame(self) -> &'a mut W {
+    pub fn no_frame(self) -> &'a mut crate::W<REG> {
         self.variant(RX_CMPLT_A::NO_FRAME)
     }
     #[doc = "`1`"]
     #[inline(always)]
-    pub fn has_frame(self) -> &'a mut W {
+    pub fn has_frame(self) -> &'a mut crate::W<REG> {
         self.variant(RX_CMPLT_A::HAS_FRAME)
     }
 }
@@ -213,28 +190,31 @@ impl RX_RJECT_R {
             true => RX_RJECT_A::HAS_REJECT,
         }
     }
-    #[doc = "Checks if the value of the field is `NO_REJECT`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_no_reject(&self) -> bool {
         *self == RX_RJECT_A::NO_REJECT
     }
-    #[doc = "Checks if the value of the field is `HAS_REJECT`"]
+    #[doc = "`1`"]
     #[inline(always)]
     pub fn is_has_reject(&self) -> bool {
         *self == RX_RJECT_A::HAS_REJECT
     }
 }
 #[doc = "Field `RxRject` writer - "]
-pub type RX_RJECT_W<'a, const O: u8> = crate::BitWriter<'a, IS_SPEC, O, RX_RJECT_A>;
-impl<'a, const O: u8> RX_RJECT_W<'a, O> {
+pub type RX_RJECT_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O, RX_RJECT_A>;
+impl<'a, REG, const O: u8> RX_RJECT_W<'a, REG, O>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
     #[doc = "`0`"]
     #[inline(always)]
-    pub fn no_reject(self) -> &'a mut W {
+    pub fn no_reject(self) -> &'a mut crate::W<REG> {
         self.variant(RX_RJECT_A::NO_REJECT)
     }
     #[doc = "`1`"]
     #[inline(always)]
-    pub fn has_reject(self) -> &'a mut W {
+    pub fn has_reject(self) -> &'a mut crate::W<REG> {
         self.variant(RX_RJECT_A::HAS_REJECT)
     }
 }
@@ -263,28 +243,31 @@ impl RX_FIFOOVR_R {
             true => RX_FIFOOVR_A::OVERFLOW,
         }
     }
-    #[doc = "Checks if the value of the field is `NORMAL`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_normal(&self) -> bool {
         *self == RX_FIFOOVR_A::NORMAL
     }
-    #[doc = "Checks if the value of the field is `OVERFLOW`"]
+    #[doc = "`1`"]
     #[inline(always)]
     pub fn is_overflow(&self) -> bool {
         *self == RX_FIFOOVR_A::OVERFLOW
     }
 }
 #[doc = "Field `RxFIFOOvr` writer - "]
-pub type RX_FIFOOVR_W<'a, const O: u8> = crate::BitWriter<'a, IS_SPEC, O, RX_FIFOOVR_A>;
-impl<'a, const O: u8> RX_FIFOOVR_W<'a, O> {
+pub type RX_FIFOOVR_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O, RX_FIFOOVR_A>;
+impl<'a, REG, const O: u8> RX_FIFOOVR_W<'a, REG, O>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
     #[doc = "`0`"]
     #[inline(always)]
-    pub fn normal(self) -> &'a mut W {
+    pub fn normal(self) -> &'a mut crate::W<REG> {
         self.variant(RX_FIFOOVR_A::NORMAL)
     }
     #[doc = "`1`"]
     #[inline(always)]
-    pub fn overflow(self) -> &'a mut W {
+    pub fn overflow(self) -> &'a mut crate::W<REG> {
         self.variant(RX_FIFOOVR_A::OVERFLOW)
     }
 }
@@ -313,28 +296,31 @@ impl TX_CMPLT_R {
             true => TX_CMPLT_A::HAS_FRAME,
         }
     }
-    #[doc = "Checks if the value of the field is `NO_FRAME`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_no_frame(&self) -> bool {
         *self == TX_CMPLT_A::NO_FRAME
     }
-    #[doc = "Checks if the value of the field is `HAS_FRAME`"]
+    #[doc = "`1`"]
     #[inline(always)]
     pub fn is_has_frame(&self) -> bool {
         *self == TX_CMPLT_A::HAS_FRAME
     }
 }
 #[doc = "Field `TxCmplt` writer - "]
-pub type TX_CMPLT_W<'a, const O: u8> = crate::BitWriter<'a, IS_SPEC, O, TX_CMPLT_A>;
-impl<'a, const O: u8> TX_CMPLT_W<'a, O> {
+pub type TX_CMPLT_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O, TX_CMPLT_A>;
+impl<'a, REG, const O: u8> TX_CMPLT_W<'a, REG, O>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
     #[doc = "`0`"]
     #[inline(always)]
-    pub fn no_frame(self) -> &'a mut W {
+    pub fn no_frame(self) -> &'a mut crate::W<REG> {
         self.variant(TX_CMPLT_A::NO_FRAME)
     }
     #[doc = "`1`"]
     #[inline(always)]
-    pub fn has_frame(self) -> &'a mut W {
+    pub fn has_frame(self) -> &'a mut crate::W<REG> {
         self.variant(TX_CMPLT_A::HAS_FRAME)
     }
 }
@@ -363,28 +349,31 @@ impl RX_DCM_LOCK_R {
             true => RX_DCM_LOCK_A::LOCKED,
         }
     }
-    #[doc = "Checks if the value of the field is `NOT_LOCKED`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_not_locked(&self) -> bool {
         *self == RX_DCM_LOCK_A::NOT_LOCKED
     }
-    #[doc = "Checks if the value of the field is `LOCKED`"]
+    #[doc = "`1`"]
     #[inline(always)]
     pub fn is_locked(&self) -> bool {
         *self == RX_DCM_LOCK_A::LOCKED
     }
 }
 #[doc = "Field `RxDcmLock` writer - "]
-pub type RX_DCM_LOCK_W<'a, const O: u8> = crate::BitWriter<'a, IS_SPEC, O, RX_DCM_LOCK_A>;
-impl<'a, const O: u8> RX_DCM_LOCK_W<'a, O> {
+pub type RX_DCM_LOCK_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O, RX_DCM_LOCK_A>;
+impl<'a, REG, const O: u8> RX_DCM_LOCK_W<'a, REG, O>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
     #[doc = "`0`"]
     #[inline(always)]
-    pub fn not_locked(self) -> &'a mut W {
+    pub fn not_locked(self) -> &'a mut crate::W<REG> {
         self.variant(RX_DCM_LOCK_A::NOT_LOCKED)
     }
     #[doc = "`1`"]
     #[inline(always)]
-    pub fn locked(self) -> &'a mut W {
+    pub fn locked(self) -> &'a mut crate::W<REG> {
         self.variant(RX_DCM_LOCK_A::LOCKED)
     }
 }
@@ -413,28 +402,31 @@ impl MGT_RDY_R {
             true => MGT_RDY_A::READY,
         }
     }
-    #[doc = "Checks if the value of the field is `NOT_READY`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_not_ready(&self) -> bool {
         *self == MGT_RDY_A::NOT_READY
     }
-    #[doc = "Checks if the value of the field is `READY`"]
+    #[doc = "`1`"]
     #[inline(always)]
     pub fn is_ready(&self) -> bool {
         *self == MGT_RDY_A::READY
     }
 }
 #[doc = "Field `MgtRdy` writer - "]
-pub type MGT_RDY_W<'a, const O: u8> = crate::BitWriter<'a, IS_SPEC, O, MGT_RDY_A>;
-impl<'a, const O: u8> MGT_RDY_W<'a, O> {
+pub type MGT_RDY_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O, MGT_RDY_A>;
+impl<'a, REG, const O: u8> MGT_RDY_W<'a, REG, O>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
     #[doc = "`0`"]
     #[inline(always)]
-    pub fn not_ready(self) -> &'a mut W {
+    pub fn not_ready(self) -> &'a mut crate::W<REG> {
         self.variant(MGT_RDY_A::NOT_READY)
     }
     #[doc = "`1`"]
     #[inline(always)]
-    pub fn ready(self) -> &'a mut W {
+    pub fn ready(self) -> &'a mut crate::W<REG> {
         self.variant(MGT_RDY_A::READY)
     }
 }
@@ -463,28 +455,31 @@ impl PHY_RST_CMPLT_R {
             true => PHY_RST_CMPLT_A::READY,
         }
     }
-    #[doc = "Checks if the value of the field is `NOT_READY`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_not_ready(&self) -> bool {
         *self == PHY_RST_CMPLT_A::NOT_READY
     }
-    #[doc = "Checks if the value of the field is `READY`"]
+    #[doc = "`1`"]
     #[inline(always)]
     pub fn is_ready(&self) -> bool {
         *self == PHY_RST_CMPLT_A::READY
     }
 }
 #[doc = "Field `PhyRstCmplt` writer - "]
-pub type PHY_RST_CMPLT_W<'a, const O: u8> = crate::BitWriter<'a, IS_SPEC, O, PHY_RST_CMPLT_A>;
-impl<'a, const O: u8> PHY_RST_CMPLT_W<'a, O> {
+pub type PHY_RST_CMPLT_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O, PHY_RST_CMPLT_A>;
+impl<'a, REG, const O: u8> PHY_RST_CMPLT_W<'a, REG, O>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
     #[doc = "`0`"]
     #[inline(always)]
-    pub fn not_ready(self) -> &'a mut W {
+    pub fn not_ready(self) -> &'a mut crate::W<REG> {
         self.variant(PHY_RST_CMPLT_A::NOT_READY)
     }
     #[doc = "`1`"]
     #[inline(always)]
-    pub fn ready(self) -> &'a mut W {
+    pub fn ready(self) -> &'a mut crate::W<REG> {
         self.variant(PHY_RST_CMPLT_A::READY)
     }
 }
@@ -544,82 +539,79 @@ impl W {
     #[doc = "Bit 0"]
     #[inline(always)]
     #[must_use]
-    pub fn hard_acs_cmplt(&mut self) -> HARD_ACS_CMPLT_W<0> {
+    pub fn hard_acs_cmplt(&mut self) -> HARD_ACS_CMPLT_W<IS_SPEC, 0> {
         HARD_ACS_CMPLT_W::new(self)
     }
     #[doc = "Bits 0:5"]
     #[inline(always)]
     #[must_use]
-    pub fn all(&mut self) -> ALL_W<0> {
+    pub fn all(&mut self) -> ALL_W<IS_SPEC, 0> {
         ALL_W::new(self)
     }
     #[doc = "Bit 1"]
     #[inline(always)]
     #[must_use]
-    pub fn auto_neg(&mut self) -> AUTO_NEG_W<1> {
+    pub fn auto_neg(&mut self) -> AUTO_NEG_W<IS_SPEC, 1> {
         AUTO_NEG_W::new(self)
     }
     #[doc = "Bit 2"]
     #[inline(always)]
     #[must_use]
-    pub fn rx_cmplt(&mut self) -> RX_CMPLT_W<2> {
+    pub fn rx_cmplt(&mut self) -> RX_CMPLT_W<IS_SPEC, 2> {
         RX_CMPLT_W::new(self)
     }
     #[doc = "Bit 3"]
     #[inline(always)]
     #[must_use]
-    pub fn rx_rject(&mut self) -> RX_RJECT_W<3> {
+    pub fn rx_rject(&mut self) -> RX_RJECT_W<IS_SPEC, 3> {
         RX_RJECT_W::new(self)
     }
     #[doc = "Bit 4"]
     #[inline(always)]
     #[must_use]
-    pub fn rx_fifoovr(&mut self) -> RX_FIFOOVR_W<4> {
+    pub fn rx_fifoovr(&mut self) -> RX_FIFOOVR_W<IS_SPEC, 4> {
         RX_FIFOOVR_W::new(self)
     }
     #[doc = "Bit 5"]
     #[inline(always)]
     #[must_use]
-    pub fn tx_cmplt(&mut self) -> TX_CMPLT_W<5> {
+    pub fn tx_cmplt(&mut self) -> TX_CMPLT_W<IS_SPEC, 5> {
         TX_CMPLT_W::new(self)
     }
     #[doc = "Bit 6"]
     #[inline(always)]
     #[must_use]
-    pub fn rx_dcm_lock(&mut self) -> RX_DCM_LOCK_W<6> {
+    pub fn rx_dcm_lock(&mut self) -> RX_DCM_LOCK_W<IS_SPEC, 6> {
         RX_DCM_LOCK_W::new(self)
     }
     #[doc = "Bit 7"]
     #[inline(always)]
     #[must_use]
-    pub fn mgt_rdy(&mut self) -> MGT_RDY_W<7> {
+    pub fn mgt_rdy(&mut self) -> MGT_RDY_W<IS_SPEC, 7> {
         MGT_RDY_W::new(self)
     }
     #[doc = "Bit 8"]
     #[inline(always)]
     #[must_use]
-    pub fn phy_rst_cmplt(&mut self) -> PHY_RST_CMPLT_W<8> {
+    pub fn phy_rst_cmplt(&mut self) -> PHY_RST_CMPLT_W<IS_SPEC, 8> {
         PHY_RST_CMPLT_W::new(self)
     }
     #[doc = "Writes raw bits to the register."]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
+        self.bits = bits;
         self
     }
 }
-#[doc = "Interrupt Status\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [is](index.html) module"]
+#[doc = "Interrupt Status\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`is::R`](R).  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`is::W`](W). You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
 pub struct IS_SPEC;
 impl crate::RegisterSpec for IS_SPEC {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [is::R](R) reader structure"]
-impl crate::Readable for IS_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [is::W](W) writer structure"]
+#[doc = "`read()` method returns [`is::R`](R) reader structure"]
+impl crate::Readable for IS_SPEC {}
+#[doc = "`write(|w| ..)` method takes [`is::W`](W) writer structure"]
 impl crate::Writable for IS_SPEC {
-    type Writer = W;
     const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
     const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
 }

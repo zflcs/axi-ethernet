@@ -1,39 +1,7 @@
 #[doc = "Register `uawl` reader"]
-pub struct R(crate::R<UAWL_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<UAWL_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<UAWL_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<UAWL_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<UAWL_SPEC>;
 #[doc = "Register `uawl` writer"]
-pub struct W(crate::W<UAWL_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<UAWL_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<UAWL_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<UAWL_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<UAWL_SPEC>;
 #[doc = "Field `UnicastAddr` reader - "]
 pub type UNICAST_ADDR_R = crate::FieldReader<UNICAST_ADDR_A>;
 #[doc = "\n\nValue on reset: 0"]
@@ -61,18 +29,22 @@ impl UNICAST_ADDR_R {
             _ => None,
         }
     }
-    #[doc = "Checks if the value of the field is `RESET`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_reset(&self) -> bool {
         *self == UNICAST_ADDR_A::RESET
     }
 }
 #[doc = "Field `UnicastAddr` writer - "]
-pub type UNICAST_ADDR_W<'a, const O: u8> = crate::FieldWriter<'a, UAWL_SPEC, 32, O, UNICAST_ADDR_A>;
-impl<'a, const O: u8> UNICAST_ADDR_W<'a, O> {
+pub type UNICAST_ADDR_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 32, O, UNICAST_ADDR_A>;
+impl<'a, REG, const O: u8> UNICAST_ADDR_W<'a, REG, O>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u32>,
+{
     #[doc = "`0`"]
     #[inline(always)]
-    pub fn reset(self) -> &'a mut W {
+    pub fn reset(self) -> &'a mut crate::W<REG> {
         self.variant(UNICAST_ADDR_A::RESET)
     }
 }
@@ -87,28 +59,25 @@ impl W {
     #[doc = "Bits 0:31"]
     #[inline(always)]
     #[must_use]
-    pub fn unicast_addr(&mut self) -> UNICAST_ADDR_W<0> {
+    pub fn unicast_addr(&mut self) -> UNICAST_ADDR_W<UAWL_SPEC, 0> {
         UNICAST_ADDR_W::new(self)
     }
     #[doc = "Writes raw bits to the register."]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
+        self.bits = bits;
         self
     }
 }
-#[doc = "Unicast Address Word Lower TEMAC\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [uawl](index.html) module"]
+#[doc = "Unicast Address Word Lower TEMAC\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`uawl::R`](R).  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`uawl::W`](W). You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
 pub struct UAWL_SPEC;
 impl crate::RegisterSpec for UAWL_SPEC {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [uawl::R](R) reader structure"]
-impl crate::Readable for UAWL_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [uawl::W](W) writer structure"]
+#[doc = "`read()` method returns [`uawl::R`](R) reader structure"]
+impl crate::Readable for UAWL_SPEC {}
+#[doc = "`write(|w| ..)` method takes [`uawl::W`](W) writer structure"]
 impl crate::Writable for UAWL_SPEC {
-    type Writer = W;
     const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
     const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
 }

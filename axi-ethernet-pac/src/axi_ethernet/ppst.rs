@@ -1,18 +1,5 @@
 #[doc = "Register `ppst` reader"]
-pub struct R(crate::R<PPST_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<PPST_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<PPST_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<PPST_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<PPST_SPEC>;
 #[doc = "Field `LinkStatus` reader - "]
 pub type LINK_STATUS_R = crate::BitReader<LINK_STATUS_A>;
 #[doc = "\n\nValue on reset: 0"]
@@ -36,7 +23,7 @@ impl LINK_STATUS_R {
             _ => None,
         }
     }
-    #[doc = "Checks if the value of the field is `RESET`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_reset(&self) -> bool {
         *self == LINK_STATUS_A::RESET
@@ -65,7 +52,7 @@ impl LINK_SYNC_R {
             _ => None,
         }
     }
-    #[doc = "Checks if the value of the field is `RESET`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_reset(&self) -> bool {
         *self == LINK_SYNC_A::RESET
@@ -94,7 +81,7 @@ impl RUDI_C_R {
             _ => None,
         }
     }
-    #[doc = "Checks if the value of the field is `RESET`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_reset(&self) -> bool {
         *self == RUDI_C_A::RESET
@@ -123,7 +110,7 @@ impl RUDI_I_R {
             _ => None,
         }
     }
-    #[doc = "Checks if the value of the field is `RESET`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_reset(&self) -> bool {
         *self == RUDI_I_A::RESET
@@ -152,7 +139,7 @@ impl RUDI_INVLD_R {
             _ => None,
         }
     }
-    #[doc = "Checks if the value of the field is `RESET`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_reset(&self) -> bool {
         *self == RUDI_INVLD_A::RESET
@@ -181,7 +168,7 @@ impl RXDISPERR_R {
             _ => None,
         }
     }
-    #[doc = "Checks if the value of the field is `RESET`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_reset(&self) -> bool {
         *self == RXDISPERR_A::RESET
@@ -210,7 +197,7 @@ impl RXNOTINTABLE_R {
             _ => None,
         }
     }
-    #[doc = "Checks if the value of the field is `RESET`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_reset(&self) -> bool {
         *self == RXNOTINTABLE_A::RESET
@@ -239,7 +226,7 @@ impl PHY_LINK_STATUS_R {
             _ => None,
         }
     }
-    #[doc = "Checks if the value of the field is `RESET`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_reset(&self) -> bool {
         *self == PHY_LINK_STATUS_A::RESET
@@ -272,7 +259,7 @@ impl RMT_FLT_ENC_R {
             _ => None,
         }
     }
-    #[doc = "Checks if the value of the field is `RESET`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_reset(&self) -> bool {
         *self == RMT_FLT_ENC_A::RESET
@@ -311,17 +298,17 @@ impl SPEED_R {
             _ => None,
         }
     }
-    #[doc = "Checks if the value of the field is `_1000M`"]
+    #[doc = "`10`"]
     #[inline(always)]
     pub fn is_1000m(&self) -> bool {
         *self == SPEED_A::_1000M
     }
-    #[doc = "Checks if the value of the field is `_100M`"]
+    #[doc = "`1`"]
     #[inline(always)]
     pub fn is_100m(&self) -> bool {
         *self == SPEED_A::_100M
     }
-    #[doc = "Checks if the value of the field is `_10M`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_10m(&self) -> bool {
         *self == SPEED_A::_10M
@@ -352,12 +339,12 @@ impl DUPLEX_R {
             true => DUPLEX_A::FULL_DUPLEX,
         }
     }
-    #[doc = "Checks if the value of the field is `HALF_DUPLEX`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_half_duplex(&self) -> bool {
         *self == DUPLEX_A::HALF_DUPLEX
     }
-    #[doc = "Checks if the value of the field is `FULL_DUPLEX`"]
+    #[doc = "`1`"]
     #[inline(always)]
     pub fn is_full_duplex(&self) -> bool {
         *self == DUPLEX_A::FULL_DUPLEX
@@ -386,7 +373,7 @@ impl RMT_FLT_R {
             _ => None,
         }
     }
-    #[doc = "Checks if the value of the field is `RESET`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_reset(&self) -> bool {
         *self == RMT_FLT_A::RESET
@@ -454,15 +441,13 @@ impl R {
         RMT_FLT_R::new(((self.bits >> 13) & 1) != 0)
     }
 }
-#[doc = "PCS PMA TEMAC Status\n\nThis register you can [`read`](crate::generic::Reg::read). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [ppst](index.html) module"]
+#[doc = "PCS PMA TEMAC Status\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`ppst::R`](R).  See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
 pub struct PPST_SPEC;
 impl crate::RegisterSpec for PPST_SPEC {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [ppst::R](R) reader structure"]
-impl crate::Readable for PPST_SPEC {
-    type Reader = R;
-}
+#[doc = "`read()` method returns [`ppst::R`](R) reader structure"]
+impl crate::Readable for PPST_SPEC {}
 #[doc = "`reset()` method sets ppst to value 0"]
 impl crate::Resettable for PPST_SPEC {
     const RESET_VALUE: Self::Ux = 0;

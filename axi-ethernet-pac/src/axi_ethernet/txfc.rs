@@ -1,43 +1,11 @@
 #[doc = "Register `txfc` reader"]
-pub struct R(crate::R<TXFC_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<TXFC_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<TXFC_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<TXFC_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<TXFC_SPEC>;
 #[doc = "Register `txfc` writer"]
-pub struct W(crate::W<TXFC_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<TXFC_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<TXFC_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<TXFC_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<TXFC_SPEC>;
 #[doc = "Field `TMFL` reader - "]
 pub type TMFL_R = crate::FieldReader<u16>;
 #[doc = "Field `TMFL` writer - "]
-pub type TMFL_W<'a, const O: u8> = crate::FieldWriter<'a, TXFC_SPEC, 15, O, u16>;
+pub type TMFL_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 15, O, u16>;
 #[doc = "Field `TMFE` reader - "]
 pub type TMFE_R = crate::BitReader<TMFE_A>;
 #[doc = "\n\nValue on reset: 0"]
@@ -63,28 +31,31 @@ impl TMFE_R {
             true => TMFE_A::ENABLE,
         }
     }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_disable(&self) -> bool {
         *self == TMFE_A::DISABLE
     }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
+    #[doc = "`1`"]
     #[inline(always)]
     pub fn is_enable(&self) -> bool {
         *self == TMFE_A::ENABLE
     }
 }
 #[doc = "Field `TMFE` writer - "]
-pub type TMFE_W<'a, const O: u8> = crate::BitWriter<'a, TXFC_SPEC, O, TMFE_A>;
-impl<'a, const O: u8> TMFE_W<'a, O> {
+pub type TMFE_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O, TMFE_A>;
+impl<'a, REG, const O: u8> TMFE_W<'a, REG, O>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
     #[doc = "`0`"]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
+    pub fn disable(self) -> &'a mut crate::W<REG> {
         self.variant(TMFE_A::DISABLE)
     }
     #[doc = "`1`"]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
+    pub fn enable(self) -> &'a mut crate::W<REG> {
         self.variant(TMFE_A::ENABLE)
     }
 }
@@ -104,34 +75,31 @@ impl W {
     #[doc = "Bits 0:14"]
     #[inline(always)]
     #[must_use]
-    pub fn tmfl(&mut self) -> TMFL_W<0> {
+    pub fn tmfl(&mut self) -> TMFL_W<TXFC_SPEC, 0> {
         TMFL_W::new(self)
     }
     #[doc = "Bit 16"]
     #[inline(always)]
     #[must_use]
-    pub fn tmfe(&mut self) -> TMFE_W<16> {
+    pub fn tmfe(&mut self) -> TMFE_W<TXFC_SPEC, 16> {
         TMFE_W::new(self)
     }
     #[doc = "Writes raw bits to the register."]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
+        self.bits = bits;
         self
     }
 }
-#[doc = "TX Max Frame Configuration\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [txfc](index.html) module"]
+#[doc = "TX Max Frame Configuration\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`txfc::R`](R).  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`txfc::W`](W). You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
 pub struct TXFC_SPEC;
 impl crate::RegisterSpec for TXFC_SPEC {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [txfc::R](R) reader structure"]
-impl crate::Readable for TXFC_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [txfc::W](W) writer structure"]
+#[doc = "`read()` method returns [`txfc::R`](R) reader structure"]
+impl crate::Readable for TXFC_SPEC {}
+#[doc = "`write(|w| ..)` method takes [`txfc::W`](W) writer structure"]
 impl crate::Writable for TXFC_SPEC {
-    type Writer = W;
     const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
     const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
 }

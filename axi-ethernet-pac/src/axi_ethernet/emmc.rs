@@ -1,39 +1,7 @@
 #[doc = "Register `emmc` reader"]
-pub struct R(crate::R<EMMC_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<EMMC_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<EMMC_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<EMMC_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<EMMC_SPEC>;
 #[doc = "Register `emmc` writer"]
-pub struct W(crate::W<EMMC_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<EMMC_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<EMMC_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<EMMC_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<EMMC_SPEC>;
 #[doc = "Field `rx16bit` reader - "]
 pub type RX16BIT_R = crate::BitReader<RX16BIT_A>;
 #[doc = "\n\nValue on reset: 0"]
@@ -59,28 +27,31 @@ impl RX16BIT_R {
             true => RX16BIT_A::ENABLE,
         }
     }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_disable(&self) -> bool {
         *self == RX16BIT_A::DISABLE
     }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
+    #[doc = "`1`"]
     #[inline(always)]
     pub fn is_enable(&self) -> bool {
         *self == RX16BIT_A::ENABLE
     }
 }
 #[doc = "Field `rx16bit` writer - "]
-pub type RX16BIT_W<'a, const O: u8> = crate::BitWriter<'a, EMMC_SPEC, O, RX16BIT_A>;
-impl<'a, const O: u8> RX16BIT_W<'a, O> {
+pub type RX16BIT_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O, RX16BIT_A>;
+impl<'a, REG, const O: u8> RX16BIT_W<'a, REG, O>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
     #[doc = "`0`"]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
+    pub fn disable(self) -> &'a mut crate::W<REG> {
         self.variant(RX16BIT_A::DISABLE)
     }
     #[doc = "`1`"]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
+    pub fn enable(self) -> &'a mut crate::W<REG> {
         self.variant(RX16BIT_A::ENABLE)
     }
 }
@@ -109,28 +80,31 @@ impl TX16BIT_R {
             true => TX16BIT_A::ENABLE,
         }
     }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_disable(&self) -> bool {
         *self == TX16BIT_A::DISABLE
     }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
+    #[doc = "`1`"]
     #[inline(always)]
     pub fn is_enable(&self) -> bool {
         *self == TX16BIT_A::ENABLE
     }
 }
 #[doc = "Field `tx16bit` writer - "]
-pub type TX16BIT_W<'a, const O: u8> = crate::BitWriter<'a, EMMC_SPEC, O, TX16BIT_A>;
-impl<'a, const O: u8> TX16BIT_W<'a, O> {
+pub type TX16BIT_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O, TX16BIT_A>;
+impl<'a, REG, const O: u8> TX16BIT_W<'a, REG, O>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
     #[doc = "`0`"]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
+    pub fn disable(self) -> &'a mut crate::W<REG> {
         self.variant(TX16BIT_A::DISABLE)
     }
     #[doc = "`1`"]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
+    pub fn enable(self) -> &'a mut crate::W<REG> {
         self.variant(TX16BIT_A::ENABLE)
     }
 }
@@ -159,28 +133,31 @@ impl HOST_R {
             true => HOST_A::ENABLE,
         }
     }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_disable(&self) -> bool {
         *self == HOST_A::DISABLE
     }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
+    #[doc = "`1`"]
     #[inline(always)]
     pub fn is_enable(&self) -> bool {
         *self == HOST_A::ENABLE
     }
 }
 #[doc = "Field `host` writer - "]
-pub type HOST_W<'a, const O: u8> = crate::BitWriter<'a, EMMC_SPEC, O, HOST_A>;
-impl<'a, const O: u8> HOST_W<'a, O> {
+pub type HOST_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O, HOST_A>;
+impl<'a, REG, const O: u8> HOST_W<'a, REG, O>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
     #[doc = "`0`"]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
+    pub fn disable(self) -> &'a mut crate::W<REG> {
         self.variant(HOST_A::DISABLE)
     }
     #[doc = "`1`"]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
+    pub fn enable(self) -> &'a mut crate::W<REG> {
         self.variant(HOST_A::ENABLE)
     }
 }
@@ -209,28 +186,31 @@ impl GPCS_R {
             true => GPCS_A::ENABLE,
         }
     }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_disable(&self) -> bool {
         *self == GPCS_A::DISABLE
     }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
+    #[doc = "`1`"]
     #[inline(always)]
     pub fn is_enable(&self) -> bool {
         *self == GPCS_A::ENABLE
     }
 }
 #[doc = "Field `gpcs` writer - "]
-pub type GPCS_W<'a, const O: u8> = crate::BitWriter<'a, EMMC_SPEC, O, GPCS_A>;
-impl<'a, const O: u8> GPCS_W<'a, O> {
+pub type GPCS_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O, GPCS_A>;
+impl<'a, REG, const O: u8> GPCS_W<'a, REG, O>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
     #[doc = "`0`"]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
+    pub fn disable(self) -> &'a mut crate::W<REG> {
         self.variant(GPCS_A::DISABLE)
     }
     #[doc = "`1`"]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
+    pub fn enable(self) -> &'a mut crate::W<REG> {
         self.variant(GPCS_A::ENABLE)
     }
 }
@@ -259,28 +239,31 @@ impl SGMII_R {
             true => SGMII_A::ENABLE,
         }
     }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_disable(&self) -> bool {
         *self == SGMII_A::DISABLE
     }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
+    #[doc = "`1`"]
     #[inline(always)]
     pub fn is_enable(&self) -> bool {
         *self == SGMII_A::ENABLE
     }
 }
 #[doc = "Field `sgmii` writer - "]
-pub type SGMII_W<'a, const O: u8> = crate::BitWriter<'a, EMMC_SPEC, O, SGMII_A>;
-impl<'a, const O: u8> SGMII_W<'a, O> {
+pub type SGMII_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O, SGMII_A>;
+impl<'a, REG, const O: u8> SGMII_W<'a, REG, O>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
     #[doc = "`0`"]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
+    pub fn disable(self) -> &'a mut crate::W<REG> {
         self.variant(SGMII_A::DISABLE)
     }
     #[doc = "`1`"]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
+    pub fn enable(self) -> &'a mut crate::W<REG> {
         self.variant(SGMII_A::ENABLE)
     }
 }
@@ -309,28 +292,31 @@ impl RGMII_R {
             true => RGMII_A::ENABLE,
         }
     }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_disable(&self) -> bool {
         *self == RGMII_A::DISABLE
     }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
+    #[doc = "`1`"]
     #[inline(always)]
     pub fn is_enable(&self) -> bool {
         *self == RGMII_A::ENABLE
     }
 }
 #[doc = "Field `rgmii` writer - "]
-pub type RGMII_W<'a, const O: u8> = crate::BitWriter<'a, EMMC_SPEC, O, RGMII_A>;
-impl<'a, const O: u8> RGMII_W<'a, O> {
+pub type RGMII_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O, RGMII_A>;
+impl<'a, REG, const O: u8> RGMII_W<'a, REG, O>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
     #[doc = "`0`"]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
+    pub fn disable(self) -> &'a mut crate::W<REG> {
         self.variant(RGMII_A::DISABLE)
     }
     #[doc = "`1`"]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
+    pub fn enable(self) -> &'a mut crate::W<REG> {
         self.variant(RGMII_A::ENABLE)
     }
 }
@@ -367,38 +353,42 @@ impl MSC_R {
             _ => None,
         }
     }
-    #[doc = "Checks if the value of the field is `_10M`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_10m(&self) -> bool {
         *self == MSC_A::_10M
     }
-    #[doc = "Checks if the value of the field is `_100M`"]
+    #[doc = "`1`"]
     #[inline(always)]
     pub fn is_100m(&self) -> bool {
         *self == MSC_A::_100M
     }
-    #[doc = "Checks if the value of the field is `_1000M`"]
+    #[doc = "`10`"]
     #[inline(always)]
     pub fn is_1000m(&self) -> bool {
         *self == MSC_A::_1000M
     }
 }
 #[doc = "Field `MSC` writer - "]
-pub type MSC_W<'a, const O: u8> = crate::FieldWriter<'a, EMMC_SPEC, 2, O, MSC_A>;
-impl<'a, const O: u8> MSC_W<'a, O> {
+pub type MSC_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 2, O, MSC_A>;
+impl<'a, REG, const O: u8> MSC_W<'a, REG, O>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u8>,
+{
     #[doc = "`0`"]
     #[inline(always)]
-    pub fn _10m(self) -> &'a mut W {
+    pub fn _10m(self) -> &'a mut crate::W<REG> {
         self.variant(MSC_A::_10M)
     }
     #[doc = "`1`"]
     #[inline(always)]
-    pub fn _100m(self) -> &'a mut W {
+    pub fn _100m(self) -> &'a mut crate::W<REG> {
         self.variant(MSC_A::_100M)
     }
     #[doc = "`10`"]
     #[inline(always)]
-    pub fn _1000m(self) -> &'a mut W {
+    pub fn _1000m(self) -> &'a mut crate::W<REG> {
         self.variant(MSC_A::_1000M)
     }
 }
@@ -443,64 +433,61 @@ impl W {
     #[doc = "Bit 24"]
     #[inline(always)]
     #[must_use]
-    pub fn rx16bit(&mut self) -> RX16BIT_W<24> {
+    pub fn rx16bit(&mut self) -> RX16BIT_W<EMMC_SPEC, 24> {
         RX16BIT_W::new(self)
     }
     #[doc = "Bit 25"]
     #[inline(always)]
     #[must_use]
-    pub fn tx16bit(&mut self) -> TX16BIT_W<25> {
+    pub fn tx16bit(&mut self) -> TX16BIT_W<EMMC_SPEC, 25> {
         TX16BIT_W::new(self)
     }
     #[doc = "Bit 26"]
     #[inline(always)]
     #[must_use]
-    pub fn host(&mut self) -> HOST_W<26> {
+    pub fn host(&mut self) -> HOST_W<EMMC_SPEC, 26> {
         HOST_W::new(self)
     }
     #[doc = "Bit 27"]
     #[inline(always)]
     #[must_use]
-    pub fn gpcs(&mut self) -> GPCS_W<27> {
+    pub fn gpcs(&mut self) -> GPCS_W<EMMC_SPEC, 27> {
         GPCS_W::new(self)
     }
     #[doc = "Bit 28"]
     #[inline(always)]
     #[must_use]
-    pub fn sgmii(&mut self) -> SGMII_W<28> {
+    pub fn sgmii(&mut self) -> SGMII_W<EMMC_SPEC, 28> {
         SGMII_W::new(self)
     }
     #[doc = "Bit 29"]
     #[inline(always)]
     #[must_use]
-    pub fn rgmii(&mut self) -> RGMII_W<29> {
+    pub fn rgmii(&mut self) -> RGMII_W<EMMC_SPEC, 29> {
         RGMII_W::new(self)
     }
     #[doc = "Bits 30:31"]
     #[inline(always)]
     #[must_use]
-    pub fn msc(&mut self) -> MSC_W<30> {
+    pub fn msc(&mut self) -> MSC_W<EMMC_SPEC, 30> {
         MSC_W::new(self)
     }
     #[doc = "Writes raw bits to the register."]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
+        self.bits = bits;
         self
     }
 }
-#[doc = "EMAC mode configuration\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [emmc](index.html) module"]
+#[doc = "EMAC mode configuration\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`emmc::R`](R).  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`emmc::W`](W). You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
 pub struct EMMC_SPEC;
 impl crate::RegisterSpec for EMMC_SPEC {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [emmc::R](R) reader structure"]
-impl crate::Readable for EMMC_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [emmc::W](W) writer structure"]
+#[doc = "`read()` method returns [`emmc::R`](R) reader structure"]
+impl crate::Readable for EMMC_SPEC {}
+#[doc = "`write(|w| ..)` method takes [`emmc::W`](W) writer structure"]
 impl crate::Writable for EMMC_SPEC {
-    type Writer = W;
     const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
     const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
 }

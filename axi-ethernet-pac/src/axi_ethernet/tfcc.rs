@@ -1,39 +1,7 @@
 #[doc = "Register `tfcc` reader"]
-pub struct R(crate::R<TFCC_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<TFCC_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<TFCC_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<TFCC_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<TFCC_SPEC>;
 #[doc = "Register `tfcc` writer"]
-pub struct W(crate::W<TFCC_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<TFCC_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<TFCC_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<TFCC_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<TFCC_SPEC>;
 #[doc = "Field `RXP0PE` reader - "]
 pub type RXP0PE_R = crate::BitReader<RXP0PE_A>;
 #[doc = "\n\nValue on reset: 0"]
@@ -59,28 +27,31 @@ impl RXP0PE_R {
             true => RXP0PE_A::ENABLE,
         }
     }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_disable(&self) -> bool {
         *self == RXP0PE_A::DISABLE
     }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
+    #[doc = "`1`"]
     #[inline(always)]
     pub fn is_enable(&self) -> bool {
         *self == RXP0PE_A::ENABLE
     }
 }
 #[doc = "Field `RXP0PE` writer - "]
-pub type RXP0PE_W<'a, const O: u8> = crate::BitWriter<'a, TFCC_SPEC, O, RXP0PE_A>;
-impl<'a, const O: u8> RXP0PE_W<'a, O> {
+pub type RXP0PE_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O, RXP0PE_A>;
+impl<'a, REG, const O: u8> RXP0PE_W<'a, REG, O>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
     #[doc = "`0`"]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
+    pub fn disable(self) -> &'a mut crate::W<REG> {
         self.variant(RXP0PE_A::DISABLE)
     }
     #[doc = "`1`"]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
+    pub fn enable(self) -> &'a mut crate::W<REG> {
         self.variant(RXP0PE_A::ENABLE)
     }
 }
@@ -109,28 +80,31 @@ impl RXP1PE_R {
             true => RXP1PE_A::ENABLE,
         }
     }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_disable(&self) -> bool {
         *self == RXP1PE_A::DISABLE
     }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
+    #[doc = "`1`"]
     #[inline(always)]
     pub fn is_enable(&self) -> bool {
         *self == RXP1PE_A::ENABLE
     }
 }
 #[doc = "Field `RXP1PE` writer - "]
-pub type RXP1PE_W<'a, const O: u8> = crate::BitWriter<'a, TFCC_SPEC, O, RXP1PE_A>;
-impl<'a, const O: u8> RXP1PE_W<'a, O> {
+pub type RXP1PE_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O, RXP1PE_A>;
+impl<'a, REG, const O: u8> RXP1PE_W<'a, REG, O>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
     #[doc = "`0`"]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
+    pub fn disable(self) -> &'a mut crate::W<REG> {
         self.variant(RXP1PE_A::DISABLE)
     }
     #[doc = "`1`"]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
+    pub fn enable(self) -> &'a mut crate::W<REG> {
         self.variant(RXP1PE_A::ENABLE)
     }
 }
@@ -159,28 +133,31 @@ impl RXP2PE_R {
             true => RXP2PE_A::ENABLE,
         }
     }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_disable(&self) -> bool {
         *self == RXP2PE_A::DISABLE
     }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
+    #[doc = "`1`"]
     #[inline(always)]
     pub fn is_enable(&self) -> bool {
         *self == RXP2PE_A::ENABLE
     }
 }
 #[doc = "Field `RXP2PE` writer - "]
-pub type RXP2PE_W<'a, const O: u8> = crate::BitWriter<'a, TFCC_SPEC, O, RXP2PE_A>;
-impl<'a, const O: u8> RXP2PE_W<'a, O> {
+pub type RXP2PE_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O, RXP2PE_A>;
+impl<'a, REG, const O: u8> RXP2PE_W<'a, REG, O>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
     #[doc = "`0`"]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
+    pub fn disable(self) -> &'a mut crate::W<REG> {
         self.variant(RXP2PE_A::DISABLE)
     }
     #[doc = "`1`"]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
+    pub fn enable(self) -> &'a mut crate::W<REG> {
         self.variant(RXP2PE_A::ENABLE)
     }
 }
@@ -209,28 +186,31 @@ impl RXP3PE_R {
             true => RXP3PE_A::ENABLE,
         }
     }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_disable(&self) -> bool {
         *self == RXP3PE_A::DISABLE
     }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
+    #[doc = "`1`"]
     #[inline(always)]
     pub fn is_enable(&self) -> bool {
         *self == RXP3PE_A::ENABLE
     }
 }
 #[doc = "Field `RXP3PE` writer - "]
-pub type RXP3PE_W<'a, const O: u8> = crate::BitWriter<'a, TFCC_SPEC, O, RXP3PE_A>;
-impl<'a, const O: u8> RXP3PE_W<'a, O> {
+pub type RXP3PE_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O, RXP3PE_A>;
+impl<'a, REG, const O: u8> RXP3PE_W<'a, REG, O>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
     #[doc = "`0`"]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
+    pub fn disable(self) -> &'a mut crate::W<REG> {
         self.variant(RXP3PE_A::DISABLE)
     }
     #[doc = "`1`"]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
+    pub fn enable(self) -> &'a mut crate::W<REG> {
         self.variant(RXP3PE_A::ENABLE)
     }
 }
@@ -259,28 +239,31 @@ impl RXP4PE_R {
             true => RXP4PE_A::ENABLE,
         }
     }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_disable(&self) -> bool {
         *self == RXP4PE_A::DISABLE
     }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
+    #[doc = "`1`"]
     #[inline(always)]
     pub fn is_enable(&self) -> bool {
         *self == RXP4PE_A::ENABLE
     }
 }
 #[doc = "Field `RXP4PE` writer - "]
-pub type RXP4PE_W<'a, const O: u8> = crate::BitWriter<'a, TFCC_SPEC, O, RXP4PE_A>;
-impl<'a, const O: u8> RXP4PE_W<'a, O> {
+pub type RXP4PE_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O, RXP4PE_A>;
+impl<'a, REG, const O: u8> RXP4PE_W<'a, REG, O>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
     #[doc = "`0`"]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
+    pub fn disable(self) -> &'a mut crate::W<REG> {
         self.variant(RXP4PE_A::DISABLE)
     }
     #[doc = "`1`"]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
+    pub fn enable(self) -> &'a mut crate::W<REG> {
         self.variant(RXP4PE_A::ENABLE)
     }
 }
@@ -309,28 +292,31 @@ impl RXP5PE_R {
             true => RXP5PE_A::ENABLE,
         }
     }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_disable(&self) -> bool {
         *self == RXP5PE_A::DISABLE
     }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
+    #[doc = "`1`"]
     #[inline(always)]
     pub fn is_enable(&self) -> bool {
         *self == RXP5PE_A::ENABLE
     }
 }
 #[doc = "Field `RXP5PE` writer - "]
-pub type RXP5PE_W<'a, const O: u8> = crate::BitWriter<'a, TFCC_SPEC, O, RXP5PE_A>;
-impl<'a, const O: u8> RXP5PE_W<'a, O> {
+pub type RXP5PE_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O, RXP5PE_A>;
+impl<'a, REG, const O: u8> RXP5PE_W<'a, REG, O>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
     #[doc = "`0`"]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
+    pub fn disable(self) -> &'a mut crate::W<REG> {
         self.variant(RXP5PE_A::DISABLE)
     }
     #[doc = "`1`"]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
+    pub fn enable(self) -> &'a mut crate::W<REG> {
         self.variant(RXP5PE_A::ENABLE)
     }
 }
@@ -359,28 +345,31 @@ impl RXP6PE_R {
             true => RXP6PE_A::ENABLE,
         }
     }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_disable(&self) -> bool {
         *self == RXP6PE_A::DISABLE
     }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
+    #[doc = "`1`"]
     #[inline(always)]
     pub fn is_enable(&self) -> bool {
         *self == RXP6PE_A::ENABLE
     }
 }
 #[doc = "Field `RXP6PE` writer - "]
-pub type RXP6PE_W<'a, const O: u8> = crate::BitWriter<'a, TFCC_SPEC, O, RXP6PE_A>;
-impl<'a, const O: u8> RXP6PE_W<'a, O> {
+pub type RXP6PE_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O, RXP6PE_A>;
+impl<'a, REG, const O: u8> RXP6PE_W<'a, REG, O>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
     #[doc = "`0`"]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
+    pub fn disable(self) -> &'a mut crate::W<REG> {
         self.variant(RXP6PE_A::DISABLE)
     }
     #[doc = "`1`"]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
+    pub fn enable(self) -> &'a mut crate::W<REG> {
         self.variant(RXP6PE_A::ENABLE)
     }
 }
@@ -409,28 +398,31 @@ impl RXP7PE_R {
             true => RXP7PE_A::ENABLE,
         }
     }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_disable(&self) -> bool {
         *self == RXP7PE_A::DISABLE
     }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
+    #[doc = "`1`"]
     #[inline(always)]
     pub fn is_enable(&self) -> bool {
         *self == RXP7PE_A::ENABLE
     }
 }
 #[doc = "Field `RXP7PE` writer - "]
-pub type RXP7PE_W<'a, const O: u8> = crate::BitWriter<'a, TFCC_SPEC, O, RXP7PE_A>;
-impl<'a, const O: u8> RXP7PE_W<'a, O> {
+pub type RXP7PE_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O, RXP7PE_A>;
+impl<'a, REG, const O: u8> RXP7PE_W<'a, REG, O>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
     #[doc = "`0`"]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
+    pub fn disable(self) -> &'a mut crate::W<REG> {
         self.variant(RXP7PE_A::DISABLE)
     }
     #[doc = "`1`"]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
+    pub fn enable(self) -> &'a mut crate::W<REG> {
         self.variant(RXP7PE_A::ENABLE)
     }
 }
@@ -459,28 +451,31 @@ impl TXP0PE_R {
             true => TXP0PE_A::ENABLE,
         }
     }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_disable(&self) -> bool {
         *self == TXP0PE_A::DISABLE
     }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
+    #[doc = "`1`"]
     #[inline(always)]
     pub fn is_enable(&self) -> bool {
         *self == TXP0PE_A::ENABLE
     }
 }
 #[doc = "Field `TXP0PE` writer - "]
-pub type TXP0PE_W<'a, const O: u8> = crate::BitWriter<'a, TFCC_SPEC, O, TXP0PE_A>;
-impl<'a, const O: u8> TXP0PE_W<'a, O> {
+pub type TXP0PE_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O, TXP0PE_A>;
+impl<'a, REG, const O: u8> TXP0PE_W<'a, REG, O>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
     #[doc = "`0`"]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
+    pub fn disable(self) -> &'a mut crate::W<REG> {
         self.variant(TXP0PE_A::DISABLE)
     }
     #[doc = "`1`"]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
+    pub fn enable(self) -> &'a mut crate::W<REG> {
         self.variant(TXP0PE_A::ENABLE)
     }
 }
@@ -509,28 +504,31 @@ impl TXP1PE_R {
             true => TXP1PE_A::ENABLE,
         }
     }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_disable(&self) -> bool {
         *self == TXP1PE_A::DISABLE
     }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
+    #[doc = "`1`"]
     #[inline(always)]
     pub fn is_enable(&self) -> bool {
         *self == TXP1PE_A::ENABLE
     }
 }
 #[doc = "Field `TXP1PE` writer - "]
-pub type TXP1PE_W<'a, const O: u8> = crate::BitWriter<'a, TFCC_SPEC, O, TXP1PE_A>;
-impl<'a, const O: u8> TXP1PE_W<'a, O> {
+pub type TXP1PE_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O, TXP1PE_A>;
+impl<'a, REG, const O: u8> TXP1PE_W<'a, REG, O>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
     #[doc = "`0`"]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
+    pub fn disable(self) -> &'a mut crate::W<REG> {
         self.variant(TXP1PE_A::DISABLE)
     }
     #[doc = "`1`"]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
+    pub fn enable(self) -> &'a mut crate::W<REG> {
         self.variant(TXP1PE_A::ENABLE)
     }
 }
@@ -559,28 +557,31 @@ impl TXP2PE_R {
             true => TXP2PE_A::ENABLE,
         }
     }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_disable(&self) -> bool {
         *self == TXP2PE_A::DISABLE
     }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
+    #[doc = "`1`"]
     #[inline(always)]
     pub fn is_enable(&self) -> bool {
         *self == TXP2PE_A::ENABLE
     }
 }
 #[doc = "Field `TXP2PE` writer - "]
-pub type TXP2PE_W<'a, const O: u8> = crate::BitWriter<'a, TFCC_SPEC, O, TXP2PE_A>;
-impl<'a, const O: u8> TXP2PE_W<'a, O> {
+pub type TXP2PE_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O, TXP2PE_A>;
+impl<'a, REG, const O: u8> TXP2PE_W<'a, REG, O>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
     #[doc = "`0`"]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
+    pub fn disable(self) -> &'a mut crate::W<REG> {
         self.variant(TXP2PE_A::DISABLE)
     }
     #[doc = "`1`"]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
+    pub fn enable(self) -> &'a mut crate::W<REG> {
         self.variant(TXP2PE_A::ENABLE)
     }
 }
@@ -609,28 +610,31 @@ impl TXP3PE_R {
             true => TXP3PE_A::ENABLE,
         }
     }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_disable(&self) -> bool {
         *self == TXP3PE_A::DISABLE
     }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
+    #[doc = "`1`"]
     #[inline(always)]
     pub fn is_enable(&self) -> bool {
         *self == TXP3PE_A::ENABLE
     }
 }
 #[doc = "Field `TXP3PE` writer - "]
-pub type TXP3PE_W<'a, const O: u8> = crate::BitWriter<'a, TFCC_SPEC, O, TXP3PE_A>;
-impl<'a, const O: u8> TXP3PE_W<'a, O> {
+pub type TXP3PE_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O, TXP3PE_A>;
+impl<'a, REG, const O: u8> TXP3PE_W<'a, REG, O>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
     #[doc = "`0`"]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
+    pub fn disable(self) -> &'a mut crate::W<REG> {
         self.variant(TXP3PE_A::DISABLE)
     }
     #[doc = "`1`"]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
+    pub fn enable(self) -> &'a mut crate::W<REG> {
         self.variant(TXP3PE_A::ENABLE)
     }
 }
@@ -659,28 +663,31 @@ impl TXP4PE_R {
             true => TXP4PE_A::ENABLE,
         }
     }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_disable(&self) -> bool {
         *self == TXP4PE_A::DISABLE
     }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
+    #[doc = "`1`"]
     #[inline(always)]
     pub fn is_enable(&self) -> bool {
         *self == TXP4PE_A::ENABLE
     }
 }
 #[doc = "Field `TXP4PE` writer - "]
-pub type TXP4PE_W<'a, const O: u8> = crate::BitWriter<'a, TFCC_SPEC, O, TXP4PE_A>;
-impl<'a, const O: u8> TXP4PE_W<'a, O> {
+pub type TXP4PE_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O, TXP4PE_A>;
+impl<'a, REG, const O: u8> TXP4PE_W<'a, REG, O>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
     #[doc = "`0`"]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
+    pub fn disable(self) -> &'a mut crate::W<REG> {
         self.variant(TXP4PE_A::DISABLE)
     }
     #[doc = "`1`"]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
+    pub fn enable(self) -> &'a mut crate::W<REG> {
         self.variant(TXP4PE_A::ENABLE)
     }
 }
@@ -709,28 +716,31 @@ impl TXP5PE_R {
             true => TXP5PE_A::ENABLE,
         }
     }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_disable(&self) -> bool {
         *self == TXP5PE_A::DISABLE
     }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
+    #[doc = "`1`"]
     #[inline(always)]
     pub fn is_enable(&self) -> bool {
         *self == TXP5PE_A::ENABLE
     }
 }
 #[doc = "Field `TXP5PE` writer - "]
-pub type TXP5PE_W<'a, const O: u8> = crate::BitWriter<'a, TFCC_SPEC, O, TXP5PE_A>;
-impl<'a, const O: u8> TXP5PE_W<'a, O> {
+pub type TXP5PE_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O, TXP5PE_A>;
+impl<'a, REG, const O: u8> TXP5PE_W<'a, REG, O>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
     #[doc = "`0`"]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
+    pub fn disable(self) -> &'a mut crate::W<REG> {
         self.variant(TXP5PE_A::DISABLE)
     }
     #[doc = "`1`"]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
+    pub fn enable(self) -> &'a mut crate::W<REG> {
         self.variant(TXP5PE_A::ENABLE)
     }
 }
@@ -759,28 +769,31 @@ impl TXP6PE_R {
             true => TXP6PE_A::ENABLE,
         }
     }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_disable(&self) -> bool {
         *self == TXP6PE_A::DISABLE
     }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
+    #[doc = "`1`"]
     #[inline(always)]
     pub fn is_enable(&self) -> bool {
         *self == TXP6PE_A::ENABLE
     }
 }
 #[doc = "Field `TXP6PE` writer - "]
-pub type TXP6PE_W<'a, const O: u8> = crate::BitWriter<'a, TFCC_SPEC, O, TXP6PE_A>;
-impl<'a, const O: u8> TXP6PE_W<'a, O> {
+pub type TXP6PE_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O, TXP6PE_A>;
+impl<'a, REG, const O: u8> TXP6PE_W<'a, REG, O>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
     #[doc = "`0`"]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
+    pub fn disable(self) -> &'a mut crate::W<REG> {
         self.variant(TXP6PE_A::DISABLE)
     }
     #[doc = "`1`"]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
+    pub fn enable(self) -> &'a mut crate::W<REG> {
         self.variant(TXP6PE_A::ENABLE)
     }
 }
@@ -809,28 +822,31 @@ impl TXP7PE_R {
             true => TXP7PE_A::ENABLE,
         }
     }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_disable(&self) -> bool {
         *self == TXP7PE_A::DISABLE
     }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
+    #[doc = "`1`"]
     #[inline(always)]
     pub fn is_enable(&self) -> bool {
         *self == TXP7PE_A::ENABLE
     }
 }
 #[doc = "Field `TXP7PE` writer - "]
-pub type TXP7PE_W<'a, const O: u8> = crate::BitWriter<'a, TFCC_SPEC, O, TXP7PE_A>;
-impl<'a, const O: u8> TXP7PE_W<'a, O> {
+pub type TXP7PE_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O, TXP7PE_A>;
+impl<'a, REG, const O: u8> TXP7PE_W<'a, REG, O>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
     #[doc = "`0`"]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
+    pub fn disable(self) -> &'a mut crate::W<REG> {
         self.variant(TXP7PE_A::DISABLE)
     }
     #[doc = "`1`"]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
+    pub fn enable(self) -> &'a mut crate::W<REG> {
         self.variant(TXP7PE_A::ENABLE)
     }
 }
@@ -859,28 +875,31 @@ impl TXAXON_R {
             true => TXAXON_A::ENABLE,
         }
     }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_disable(&self) -> bool {
         *self == TXAXON_A::DISABLE
     }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
+    #[doc = "`1`"]
     #[inline(always)]
     pub fn is_enable(&self) -> bool {
         *self == TXAXON_A::ENABLE
     }
 }
 #[doc = "Field `TXAXON` writer - "]
-pub type TXAXON_W<'a, const O: u8> = crate::BitWriter<'a, TFCC_SPEC, O, TXAXON_A>;
-impl<'a, const O: u8> TXAXON_W<'a, O> {
+pub type TXAXON_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O, TXAXON_A>;
+impl<'a, REG, const O: u8> TXAXON_W<'a, REG, O>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
     #[doc = "`0`"]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
+    pub fn disable(self) -> &'a mut crate::W<REG> {
         self.variant(TXAXON_A::DISABLE)
     }
     #[doc = "`1`"]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
+    pub fn enable(self) -> &'a mut crate::W<REG> {
         self.variant(TXAXON_A::ENABLE)
     }
 }
@@ -909,28 +928,31 @@ impl RXPPFCE_R {
             true => RXPPFCE_A::ENABLE,
         }
     }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_disable(&self) -> bool {
         *self == RXPPFCE_A::DISABLE
     }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
+    #[doc = "`1`"]
     #[inline(always)]
     pub fn is_enable(&self) -> bool {
         *self == RXPPFCE_A::ENABLE
     }
 }
 #[doc = "Field `RXPPFCE` writer - "]
-pub type RXPPFCE_W<'a, const O: u8> = crate::BitWriter<'a, TFCC_SPEC, O, RXPPFCE_A>;
-impl<'a, const O: u8> RXPPFCE_W<'a, O> {
+pub type RXPPFCE_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O, RXPPFCE_A>;
+impl<'a, REG, const O: u8> RXPPFCE_W<'a, REG, O>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
     #[doc = "`0`"]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
+    pub fn disable(self) -> &'a mut crate::W<REG> {
         self.variant(RXPPFCE_A::DISABLE)
     }
     #[doc = "`1`"]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
+    pub fn enable(self) -> &'a mut crate::W<REG> {
         self.variant(RXPPFCE_A::ENABLE)
     }
 }
@@ -959,28 +981,31 @@ impl TXPPFCE_R {
             true => TXPPFCE_A::ENABLE,
         }
     }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_disable(&self) -> bool {
         *self == TXPPFCE_A::DISABLE
     }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
+    #[doc = "`1`"]
     #[inline(always)]
     pub fn is_enable(&self) -> bool {
         *self == TXPPFCE_A::ENABLE
     }
 }
 #[doc = "Field `TXPPFCE` writer - "]
-pub type TXPPFCE_W<'a, const O: u8> = crate::BitWriter<'a, TFCC_SPEC, O, TXPPFCE_A>;
-impl<'a, const O: u8> TXPPFCE_W<'a, O> {
+pub type TXPPFCE_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O, TXPPFCE_A>;
+impl<'a, REG, const O: u8> TXPPFCE_W<'a, REG, O>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
     #[doc = "`0`"]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
+    pub fn disable(self) -> &'a mut crate::W<REG> {
         self.variant(TXPPFCE_A::DISABLE)
     }
     #[doc = "`1`"]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
+    pub fn enable(self) -> &'a mut crate::W<REG> {
         self.variant(TXPPFCE_A::ENABLE)
     }
 }
@@ -1009,28 +1034,31 @@ impl RXFCE_R {
             true => RXFCE_A::ENABLE,
         }
     }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_disable(&self) -> bool {
         *self == RXFCE_A::DISABLE
     }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
+    #[doc = "`1`"]
     #[inline(always)]
     pub fn is_enable(&self) -> bool {
         *self == RXFCE_A::ENABLE
     }
 }
 #[doc = "Field `RXFCE` writer - "]
-pub type RXFCE_W<'a, const O: u8> = crate::BitWriter<'a, TFCC_SPEC, O, RXFCE_A>;
-impl<'a, const O: u8> RXFCE_W<'a, O> {
+pub type RXFCE_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O, RXFCE_A>;
+impl<'a, REG, const O: u8> RXFCE_W<'a, REG, O>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
     #[doc = "`0`"]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
+    pub fn disable(self) -> &'a mut crate::W<REG> {
         self.variant(RXFCE_A::DISABLE)
     }
     #[doc = "`1`"]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
+    pub fn enable(self) -> &'a mut crate::W<REG> {
         self.variant(RXFCE_A::ENABLE)
     }
 }
@@ -1059,28 +1087,31 @@ impl TXFCE_R {
             true => TXFCE_A::ENABLE,
         }
     }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_disable(&self) -> bool {
         *self == TXFCE_A::DISABLE
     }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
+    #[doc = "`1`"]
     #[inline(always)]
     pub fn is_enable(&self) -> bool {
         *self == TXFCE_A::ENABLE
     }
 }
 #[doc = "Field `TXFCE` writer - "]
-pub type TXFCE_W<'a, const O: u8> = crate::BitWriter<'a, TFCC_SPEC, O, TXFCE_A>;
-impl<'a, const O: u8> TXFCE_W<'a, O> {
+pub type TXFCE_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O, TXFCE_A>;
+impl<'a, REG, const O: u8> TXFCE_W<'a, REG, O>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
     #[doc = "`0`"]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
+    pub fn disable(self) -> &'a mut crate::W<REG> {
         self.variant(TXFCE_A::DISABLE)
     }
     #[doc = "`1`"]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
+    pub fn enable(self) -> &'a mut crate::W<REG> {
         self.variant(TXFCE_A::ENABLE)
     }
 }
@@ -1195,148 +1226,145 @@ impl W {
     #[doc = "Bit 0"]
     #[inline(always)]
     #[must_use]
-    pub fn rxp0pe(&mut self) -> RXP0PE_W<0> {
+    pub fn rxp0pe(&mut self) -> RXP0PE_W<TFCC_SPEC, 0> {
         RXP0PE_W::new(self)
     }
     #[doc = "Bit 1"]
     #[inline(always)]
     #[must_use]
-    pub fn rxp1pe(&mut self) -> RXP1PE_W<1> {
+    pub fn rxp1pe(&mut self) -> RXP1PE_W<TFCC_SPEC, 1> {
         RXP1PE_W::new(self)
     }
     #[doc = "Bit 2"]
     #[inline(always)]
     #[must_use]
-    pub fn rxp2pe(&mut self) -> RXP2PE_W<2> {
+    pub fn rxp2pe(&mut self) -> RXP2PE_W<TFCC_SPEC, 2> {
         RXP2PE_W::new(self)
     }
     #[doc = "Bit 3"]
     #[inline(always)]
     #[must_use]
-    pub fn rxp3pe(&mut self) -> RXP3PE_W<3> {
+    pub fn rxp3pe(&mut self) -> RXP3PE_W<TFCC_SPEC, 3> {
         RXP3PE_W::new(self)
     }
     #[doc = "Bit 4"]
     #[inline(always)]
     #[must_use]
-    pub fn rxp4pe(&mut self) -> RXP4PE_W<4> {
+    pub fn rxp4pe(&mut self) -> RXP4PE_W<TFCC_SPEC, 4> {
         RXP4PE_W::new(self)
     }
     #[doc = "Bit 5"]
     #[inline(always)]
     #[must_use]
-    pub fn rxp5pe(&mut self) -> RXP5PE_W<5> {
+    pub fn rxp5pe(&mut self) -> RXP5PE_W<TFCC_SPEC, 5> {
         RXP5PE_W::new(self)
     }
     #[doc = "Bit 6"]
     #[inline(always)]
     #[must_use]
-    pub fn rxp6pe(&mut self) -> RXP6PE_W<6> {
+    pub fn rxp6pe(&mut self) -> RXP6PE_W<TFCC_SPEC, 6> {
         RXP6PE_W::new(self)
     }
     #[doc = "Bit 7"]
     #[inline(always)]
     #[must_use]
-    pub fn rxp7pe(&mut self) -> RXP7PE_W<7> {
+    pub fn rxp7pe(&mut self) -> RXP7PE_W<TFCC_SPEC, 7> {
         RXP7PE_W::new(self)
     }
     #[doc = "Bit 8"]
     #[inline(always)]
     #[must_use]
-    pub fn txp0pe(&mut self) -> TXP0PE_W<8> {
+    pub fn txp0pe(&mut self) -> TXP0PE_W<TFCC_SPEC, 8> {
         TXP0PE_W::new(self)
     }
     #[doc = "Bit 9"]
     #[inline(always)]
     #[must_use]
-    pub fn txp1pe(&mut self) -> TXP1PE_W<9> {
+    pub fn txp1pe(&mut self) -> TXP1PE_W<TFCC_SPEC, 9> {
         TXP1PE_W::new(self)
     }
     #[doc = "Bit 10"]
     #[inline(always)]
     #[must_use]
-    pub fn txp2pe(&mut self) -> TXP2PE_W<10> {
+    pub fn txp2pe(&mut self) -> TXP2PE_W<TFCC_SPEC, 10> {
         TXP2PE_W::new(self)
     }
     #[doc = "Bit 11"]
     #[inline(always)]
     #[must_use]
-    pub fn txp3pe(&mut self) -> TXP3PE_W<11> {
+    pub fn txp3pe(&mut self) -> TXP3PE_W<TFCC_SPEC, 11> {
         TXP3PE_W::new(self)
     }
     #[doc = "Bit 12"]
     #[inline(always)]
     #[must_use]
-    pub fn txp4pe(&mut self) -> TXP4PE_W<12> {
+    pub fn txp4pe(&mut self) -> TXP4PE_W<TFCC_SPEC, 12> {
         TXP4PE_W::new(self)
     }
     #[doc = "Bit 13"]
     #[inline(always)]
     #[must_use]
-    pub fn txp5pe(&mut self) -> TXP5PE_W<13> {
+    pub fn txp5pe(&mut self) -> TXP5PE_W<TFCC_SPEC, 13> {
         TXP5PE_W::new(self)
     }
     #[doc = "Bit 14"]
     #[inline(always)]
     #[must_use]
-    pub fn txp6pe(&mut self) -> TXP6PE_W<14> {
+    pub fn txp6pe(&mut self) -> TXP6PE_W<TFCC_SPEC, 14> {
         TXP6PE_W::new(self)
     }
     #[doc = "Bit 15"]
     #[inline(always)]
     #[must_use]
-    pub fn txp7pe(&mut self) -> TXP7PE_W<15> {
+    pub fn txp7pe(&mut self) -> TXP7PE_W<TFCC_SPEC, 15> {
         TXP7PE_W::new(self)
     }
     #[doc = "Bit 20"]
     #[inline(always)]
     #[must_use]
-    pub fn txaxon(&mut self) -> TXAXON_W<20> {
+    pub fn txaxon(&mut self) -> TXAXON_W<TFCC_SPEC, 20> {
         TXAXON_W::new(self)
     }
     #[doc = "Bit 25"]
     #[inline(always)]
     #[must_use]
-    pub fn rxppfce(&mut self) -> RXPPFCE_W<25> {
+    pub fn rxppfce(&mut self) -> RXPPFCE_W<TFCC_SPEC, 25> {
         RXPPFCE_W::new(self)
     }
     #[doc = "Bit 26"]
     #[inline(always)]
     #[must_use]
-    pub fn txppfce(&mut self) -> TXPPFCE_W<26> {
+    pub fn txppfce(&mut self) -> TXPPFCE_W<TFCC_SPEC, 26> {
         TXPPFCE_W::new(self)
     }
     #[doc = "Bit 29"]
     #[inline(always)]
     #[must_use]
-    pub fn rxfce(&mut self) -> RXFCE_W<29> {
+    pub fn rxfce(&mut self) -> RXFCE_W<TFCC_SPEC, 29> {
         RXFCE_W::new(self)
     }
     #[doc = "Bit 30"]
     #[inline(always)]
     #[must_use]
-    pub fn txfce(&mut self) -> TXFCE_W<30> {
+    pub fn txfce(&mut self) -> TXFCE_W<TFCC_SPEC, 30> {
         TXFCE_W::new(self)
     }
     #[doc = "Writes raw bits to the register."]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
+        self.bits = bits;
         self
     }
 }
-#[doc = "TEMAC Flow Control Configuration\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [tfcc](index.html) module"]
+#[doc = "TEMAC Flow Control Configuration\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`tfcc::R`](R).  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`tfcc::W`](W). You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
 pub struct TFCC_SPEC;
 impl crate::RegisterSpec for TFCC_SPEC {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [tfcc::R](R) reader structure"]
-impl crate::Readable for TFCC_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [tfcc::W](W) writer structure"]
+#[doc = "`read()` method returns [`tfcc::R`](R) reader structure"]
+impl crate::Readable for TFCC_SPEC {}
+#[doc = "`write(|w| ..)` method takes [`tfcc::W`](W) writer structure"]
 impl crate::Writable for TFCC_SPEC {
-    type Writer = W;
     const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
     const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
 }

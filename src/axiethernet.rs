@@ -137,6 +137,8 @@ pub struct AxiEthernet {
     /// phy_addr
     pub phy_addr: u32,
     pub link_status: LinkStatus,
+    rx_count: usize,
+    tx_count: usize,
 }
 
 /// basic field access
@@ -151,6 +153,8 @@ impl AxiEthernet {
             flags: 0, 
             phy_addr: 0,
             link_status: LinkStatus::EthLinkDown,
+            rx_count: 0,
+            tx_count: 0,
         }
     }
 
@@ -341,6 +345,28 @@ impl AxiEthernet {
     pub fn is_statics_configured(&self) -> bool {
         self.config.statics
     }
+
+    pub fn rx_frame_count(&self) -> usize {
+        let lsm = self.hardware().rxfl.read().bits() as usize;
+        let msm = self.hardware().rxfu.read().bits() as usize;
+        msm << 32 | lsm
+    }
+
+    pub fn tx_frame_count(&self) -> usize {
+        let lsm = self.hardware().txfl.read().bits() as usize;
+        let msm = self.hardware().txfu.read().bits() as usize;
+        msm << 32 | lsm
+    }
+
+    // check the buffer has frame or not, if the buffer has frame, software can receive from eth
+    pub fn can_receive(&mut self) -> bool {
+        let res = self.rx_count < self.rx_frame_count();
+        if res {
+            log::debug!("rx_count {}", self.rx_count);
+            self.rx_count += 1;
+        }
+        res
+    } 
 
 }
 

@@ -1,18 +1,5 @@
 #[doc = "Register `ar` reader"]
-pub struct R(crate::R<AR_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<AR_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<AR_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<AR_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<AR_SPEC>;
 #[doc = "Field `10MA` reader - "]
 pub type _10MA_R = crate::BitReader<_10MA_A>;
 #[doc = "\n\nValue on reset: 0"]
@@ -38,12 +25,12 @@ impl _10MA_R {
             true => _10MA_A::ENABLE,
         }
     }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_disable(&self) -> bool {
         *self == _10MA_A::DISABLE
     }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
+    #[doc = "`1`"]
     #[inline(always)]
     pub fn is_enable(&self) -> bool {
         *self == _10MA_A::ENABLE
@@ -74,12 +61,12 @@ impl _100MA_R {
             true => _100MA_A::ENABLE,
         }
     }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_disable(&self) -> bool {
         *self == _100MA_A::DISABLE
     }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
+    #[doc = "`1`"]
     #[inline(always)]
     pub fn is_enable(&self) -> bool {
         *self == _100MA_A::ENABLE
@@ -110,12 +97,12 @@ impl _1000MA_R {
             true => _1000MA_A::ENABLE,
         }
     }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_disable(&self) -> bool {
         *self == _1000MA_A::DISABLE
     }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
+    #[doc = "`1`"]
     #[inline(always)]
     pub fn is_enable(&self) -> bool {
         *self == _1000MA_A::ENABLE
@@ -146,12 +133,12 @@ impl _2P5A_R {
             true => _2P5A_A::ENABLE,
         }
     }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_disable(&self) -> bool {
         *self == _2P5A_A::DISABLE
     }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
+    #[doc = "`1`"]
     #[inline(always)]
     pub fn is_enable(&self) -> bool {
         *self == _2P5A_A::ENABLE
@@ -182,12 +169,12 @@ impl SCA_R {
             true => SCA_A::ENABLE,
         }
     }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_disable(&self) -> bool {
         *self == SCA_A::DISABLE
     }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
+    #[doc = "`1`"]
     #[inline(always)]
     pub fn is_enable(&self) -> bool {
         *self == SCA_A::ENABLE
@@ -218,12 +205,12 @@ impl HDC_R {
             true => HDC_A::ENABLE,
         }
     }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_disable(&self) -> bool {
         *self == HDC_A::DISABLE
     }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
+    #[doc = "`1`"]
     #[inline(always)]
     pub fn is_enable(&self) -> bool {
         *self == HDC_A::ENABLE
@@ -254,12 +241,12 @@ impl FFA_R {
             true => FFA_A::ENABLE,
         }
     }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_disable(&self) -> bool {
         *self == FFA_A::DISABLE
     }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
+    #[doc = "`1`"]
     #[inline(always)]
     pub fn is_enable(&self) -> bool {
         *self == FFA_A::ENABLE
@@ -290,12 +277,12 @@ impl PFCS_R {
             true => PFCS_A::ENABLE,
         }
     }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_disable(&self) -> bool {
         *self == PFCS_A::DISABLE
     }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
+    #[doc = "`1`"]
     #[inline(always)]
     pub fn is_enable(&self) -> bool {
         *self == PFCS_A::ENABLE
@@ -343,15 +330,13 @@ impl R {
         PFCS_R::new(((self.bits >> 16) & 1) != 0)
     }
 }
-#[doc = "Ability Register\n\nThis register you can [`read`](crate::generic::Reg::read). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [ar](index.html) module"]
+#[doc = "Ability Register\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`ar::R`](R).  See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
 pub struct AR_SPEC;
 impl crate::RegisterSpec for AR_SPEC {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [ar::R](R) reader structure"]
-impl crate::Readable for AR_SPEC {
-    type Reader = R;
-}
+#[doc = "`read()` method returns [`ar::R`](R) reader structure"]
+impl crate::Readable for AR_SPEC {}
 #[doc = "`reset()` method sets ar to value 0"]
 impl crate::Resettable for AR_SPEC {
     const RESET_VALUE: Self::Ux = 0;

@@ -1,18 +1,5 @@
 #[doc = "Register `phyc` reader"]
-pub struct R(crate::R<PHYC_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<PHYC_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<PHYC_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<PHYC_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<PHYC_SPEC>;
 #[doc = "Field `rgmiilinkmask` reader - "]
 pub type RGMIILINKMASK_R = crate::BitReader;
 #[doc = "Field `PL` reader - "]
@@ -52,17 +39,17 @@ impl RGMIILINKSPEED_R {
             _ => None,
         }
     }
-    #[doc = "Checks if the value of the field is `_10M`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_10m(&self) -> bool {
         *self == RGMIILINKSPEED_A::_10M
     }
-    #[doc = "Checks if the value of the field is `_100M`"]
+    #[doc = "`1`"]
     #[inline(always)]
     pub fn is_100m(&self) -> bool {
         *self == RGMIILINKSPEED_A::_100M
     }
-    #[doc = "Checks if the value of the field is `_1000M`"]
+    #[doc = "`10`"]
     #[inline(always)]
     pub fn is_1000m(&self) -> bool {
         *self == RGMIILINKSPEED_A::_1000M
@@ -103,17 +90,17 @@ impl SGMIILINKSPEED_R {
             _ => None,
         }
     }
-    #[doc = "Checks if the value of the field is `_10M`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_10m(&self) -> bool {
         *self == SGMIILINKSPEED_A::_10M
     }
-    #[doc = "Checks if the value of the field is `_100M`"]
+    #[doc = "`1`"]
     #[inline(always)]
     pub fn is_100m(&self) -> bool {
         *self == SGMIILINKSPEED_A::_100M
     }
-    #[doc = "Checks if the value of the field is `_1000M`"]
+    #[doc = "`10`"]
     #[inline(always)]
     pub fn is_1000m(&self) -> bool {
         *self == SGMIILINKSPEED_A::_1000M
@@ -151,15 +138,13 @@ impl R {
         SGMIILINKSPEED_R::new(((self.bits >> 30) & 3) as u8)
     }
 }
-#[doc = "RGMII/SGMII configuration\n\nThis register you can [`read`](crate::generic::Reg::read). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [phyc](index.html) module"]
+#[doc = "RGMII/SGMII configuration\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`phyc::R`](R).  See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
 pub struct PHYC_SPEC;
 impl crate::RegisterSpec for PHYC_SPEC {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [phyc::R](R) reader structure"]
-impl crate::Readable for PHYC_SPEC {
-    type Reader = R;
-}
+#[doc = "`read()` method returns [`phyc::R`](R) reader structure"]
+impl crate::Readable for PHYC_SPEC {}
 #[doc = "`reset()` method sets phyc to value 0"]
 impl crate::Resettable for PHYC_SPEC {
     const RESET_VALUE: Self::Ux = 0;

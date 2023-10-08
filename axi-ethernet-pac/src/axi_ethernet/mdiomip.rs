@@ -1,18 +1,5 @@
 #[doc = "Register `mdiomip` reader"]
-pub struct R(crate::R<MDIOMIP_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<MDIOMIP_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<MDIOMIP_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<MDIOMIP_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<MDIOMIP_SPEC>;
 #[doc = "Field `MDIO_COMPLETE` reader - "]
 pub type MDIO_COMPLETE_R = crate::BitReader<MDIO_COMPLETE_A>;
 #[doc = "\n\nValue on reset: 0"]
@@ -38,12 +25,12 @@ impl MDIO_COMPLETE_R {
             true => MDIO_COMPLETE_A::HAS_INTR,
         }
     }
-    #[doc = "Checks if the value of the field is `NO_INTR`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_no_intr(&self) -> bool {
         *self == MDIO_COMPLETE_A::NO_INTR
     }
-    #[doc = "Checks if the value of the field is `HAS_INTR`"]
+    #[doc = "`1`"]
     #[inline(always)]
     pub fn is_has_intr(&self) -> bool {
         *self == MDIO_COMPLETE_A::HAS_INTR
@@ -74,12 +61,12 @@ impl PTP_TX_R {
             true => PTP_TX_A::HAS_INTR,
         }
     }
-    #[doc = "Checks if the value of the field is `NO_INTR`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_no_intr(&self) -> bool {
         *self == PTP_TX_A::NO_INTR
     }
-    #[doc = "Checks if the value of the field is `HAS_INTR`"]
+    #[doc = "`1`"]
     #[inline(always)]
     pub fn is_has_intr(&self) -> bool {
         *self == PTP_TX_A::HAS_INTR
@@ -110,12 +97,12 @@ impl PTP_RX_R {
             true => PTP_RX_A::HAS_INTR,
         }
     }
-    #[doc = "Checks if the value of the field is `NO_INTR`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_no_intr(&self) -> bool {
         *self == PTP_RX_A::NO_INTR
     }
-    #[doc = "Checks if the value of the field is `HAS_INTR`"]
+    #[doc = "`1`"]
     #[inline(always)]
     pub fn is_has_intr(&self) -> bool {
         *self == PTP_RX_A::HAS_INTR
@@ -146,12 +133,12 @@ impl PTP_TIMER_R {
             true => PTP_TIMER_A::HAS_INTR,
         }
     }
-    #[doc = "Checks if the value of the field is `NO_INTR`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_no_intr(&self) -> bool {
         *self == PTP_TIMER_A::NO_INTR
     }
-    #[doc = "Checks if the value of the field is `HAS_INTR`"]
+    #[doc = "`1`"]
     #[inline(always)]
     pub fn is_has_intr(&self) -> bool {
         *self == PTP_TIMER_A::HAS_INTR
@@ -179,15 +166,13 @@ impl R {
         PTP_TIMER_R::new(((self.bits >> 3) & 1) != 0)
     }
 }
-#[doc = "MII Management Interrupt Pending\n\nThis register you can [`read`](crate::generic::Reg::read). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [mdiomip](index.html) module"]
+#[doc = "MII Management Interrupt Pending\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`mdiomip::R`](R).  See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
 pub struct MDIOMIP_SPEC;
 impl crate::RegisterSpec for MDIOMIP_SPEC {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [mdiomip::R](R) reader structure"]
-impl crate::Readable for MDIOMIP_SPEC {
-    type Reader = R;
-}
+#[doc = "`read()` method returns [`mdiomip::R`](R) reader structure"]
+impl crate::Readable for MDIOMIP_SPEC {}
 #[doc = "`reset()` method sets mdiomip to value 0"]
 impl crate::Resettable for MDIOMIP_SPEC {
     const RESET_VALUE: Self::Ux = 0;

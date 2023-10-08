@@ -1,18 +1,5 @@
 #[doc = "Register `rxctrfl` reader"]
-pub struct R(crate::R<RXCTRFL_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<RXCTRFL_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<RXCTRFL_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<RXCTRFL_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<RXCTRFL_SPEC>;
 impl core::fmt::Debug for R {
     fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
         write!(f, "{}", self.bits())
@@ -23,15 +10,13 @@ impl core::fmt::Debug for crate::generic::Reg<RXCTRFL_SPEC> {
         self.read().fmt(f)
     }
 }
-#[doc = "Count of control frames received, LSM\n\nThis register you can [`read`](crate::generic::Reg::read). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [rxctrfl](index.html) module"]
+#[doc = "Count of control frames received, LSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`rxctrfl::R`](R).  See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
 pub struct RXCTRFL_SPEC;
 impl crate::RegisterSpec for RXCTRFL_SPEC {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [rxctrfl::R](R) reader structure"]
-impl crate::Readable for RXCTRFL_SPEC {
-    type Reader = R;
-}
+#[doc = "`read()` method returns [`rxctrfl::R`](R) reader structure"]
+impl crate::Readable for RXCTRFL_SPEC {}
 #[doc = "`reset()` method sets rxctrfl to value 0"]
 impl crate::Resettable for RXCTRFL_SPEC {
     const RESET_VALUE: Self::Ux = 0;

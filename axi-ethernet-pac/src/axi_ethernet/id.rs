@@ -1,18 +1,5 @@
 #[doc = "Register `id` reader"]
-pub struct R(crate::R<ID_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<ID_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<ID_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<ID_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<ID_SPEC>;
 #[doc = "Field `PL` reader - "]
 pub type PL_R = crate::FieldReader;
 #[doc = "Field `MIR` reader - "]
@@ -36,15 +23,13 @@ impl R {
         MAR_R::new(((self.bits >> 24) & 0xff) as u8)
     }
 }
-#[doc = "Identification\n\nThis register you can [`read`](crate::generic::Reg::read). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [id](index.html) module"]
+#[doc = "Identification\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`id::R`](R).  See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
 pub struct ID_SPEC;
 impl crate::RegisterSpec for ID_SPEC {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [id::R](R) reader structure"]
-impl crate::Readable for ID_SPEC {
-    type Reader = R;
-}
+#[doc = "`read()` method returns [`id::R`](R) reader structure"]
+impl crate::Readable for ID_SPEC {}
 #[doc = "`reset()` method sets id to value 0"]
 impl crate::Resettable for ID_SPEC {
     const RESET_VALUE: Self::Ux = 0;

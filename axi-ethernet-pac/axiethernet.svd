@@ -1205,7 +1205,7 @@
         </register>
         <register>
           <name>rxfu</name>
-          <description>Count of frames transmitted OK, MSM</description>
+          <description>Count of frames received OK, MSM</description>
           <addressOffset>0x294</addressOffset>
           <access>read-only</access>
         </register>

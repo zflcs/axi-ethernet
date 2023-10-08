@@ -1,43 +1,11 @@
 #[doc = "Register `mdiomwd` reader"]
-pub struct R(crate::R<MDIOMWD_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<MDIOMWD_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<MDIOMWD_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<MDIOMWD_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<MDIOMWD_SPEC>;
 #[doc = "Register `mdiomwd` writer"]
-pub struct W(crate::W<MDIOMWD_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<MDIOMWD_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<MDIOMWD_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<MDIOMWD_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<MDIOMWD_SPEC>;
 #[doc = "Field `DATA` reader - "]
 pub type DATA_R = crate::FieldReader<u16>;
 #[doc = "Field `DATA` writer - "]
-pub type DATA_W<'a, const O: u8> = crate::FieldWriter<'a, MDIOMWD_SPEC, 16, O, u16>;
+pub type DATA_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 16, O, u16>;
 impl R {
     #[doc = "Bits 0:15"]
     #[inline(always)]
@@ -49,28 +17,25 @@ impl W {
     #[doc = "Bits 0:15"]
     #[inline(always)]
     #[must_use]
-    pub fn data(&mut self) -> DATA_W<0> {
+    pub fn data(&mut self) -> DATA_W<MDIOMWD_SPEC, 0> {
         DATA_W::new(self)
     }
     #[doc = "Writes raw bits to the register."]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
+        self.bits = bits;
         self
     }
 }
-#[doc = "MDIO Write Data\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [mdiomwd](index.html) module"]
+#[doc = "MDIO Write Data\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`mdiomwd::R`](R).  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`mdiomwd::W`](W). You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
 pub struct MDIOMWD_SPEC;
 impl crate::RegisterSpec for MDIOMWD_SPEC {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [mdiomwd::R](R) reader structure"]
-impl crate::Readable for MDIOMWD_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [mdiomwd::W](W) writer structure"]
+#[doc = "`read()` method returns [`mdiomwd::R`](R) reader structure"]
+impl crate::Readable for MDIOMWD_SPEC {}
+#[doc = "`write(|w| ..)` method takes [`mdiomwd::W`](W) writer structure"]
 impl crate::Writable for MDIOMWD_SPEC {
-    type Writer = W;
     const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
     const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
 }

@@ -1,39 +1,7 @@
 #[doc = "Register `raf` reader"]
-pub struct R(crate::R<RAF_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<RAF_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<RAF_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<RAF_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<RAF_SPEC>;
 #[doc = "Register `raf` writer"]
-pub struct W(crate::W<RAF_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<RAF_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<RAF_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<RAF_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<RAF_SPEC>;
 #[doc = "Field `McstRej` reader - "]
 pub type MCST_REJ_R = crate::BitReader<MCST_REJ_A>;
 #[doc = "\n\nValue on reset: 0"]
@@ -59,28 +27,31 @@ impl MCST_REJ_R {
             true => MCST_REJ_A::REJECT,
         }
     }
-    #[doc = "Checks if the value of the field is `ACCEPT`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_accept(&self) -> bool {
         *self == MCST_REJ_A::ACCEPT
     }
-    #[doc = "Checks if the value of the field is `REJECT`"]
+    #[doc = "`1`"]
     #[inline(always)]
     pub fn is_reject(&self) -> bool {
         *self == MCST_REJ_A::REJECT
     }
 }
 #[doc = "Field `McstRej` writer - "]
-pub type MCST_REJ_W<'a, const O: u8> = crate::BitWriter<'a, RAF_SPEC, O, MCST_REJ_A>;
-impl<'a, const O: u8> MCST_REJ_W<'a, O> {
+pub type MCST_REJ_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O, MCST_REJ_A>;
+impl<'a, REG, const O: u8> MCST_REJ_W<'a, REG, O>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
     #[doc = "`0`"]
     #[inline(always)]
-    pub fn accept(self) -> &'a mut W {
+    pub fn accept(self) -> &'a mut crate::W<REG> {
         self.variant(MCST_REJ_A::ACCEPT)
     }
     #[doc = "`1`"]
     #[inline(always)]
-    pub fn reject(self) -> &'a mut W {
+    pub fn reject(self) -> &'a mut crate::W<REG> {
         self.variant(MCST_REJ_A::REJECT)
     }
 }
@@ -109,28 +80,31 @@ impl BCST_REJ_R {
             true => BCST_REJ_A::REJECT,
         }
     }
-    #[doc = "Checks if the value of the field is `ACCEPT`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_accept(&self) -> bool {
         *self == BCST_REJ_A::ACCEPT
     }
-    #[doc = "Checks if the value of the field is `REJECT`"]
+    #[doc = "`1`"]
     #[inline(always)]
     pub fn is_reject(&self) -> bool {
         *self == BCST_REJ_A::REJECT
     }
 }
 #[doc = "Field `BcstRej` writer - "]
-pub type BCST_REJ_W<'a, const O: u8> = crate::BitWriter<'a, RAF_SPEC, O, BCST_REJ_A>;
-impl<'a, const O: u8> BCST_REJ_W<'a, O> {
+pub type BCST_REJ_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O, BCST_REJ_A>;
+impl<'a, REG, const O: u8> BCST_REJ_W<'a, REG, O>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
     #[doc = "`0`"]
     #[inline(always)]
-    pub fn accept(self) -> &'a mut W {
+    pub fn accept(self) -> &'a mut crate::W<REG> {
         self.variant(BCST_REJ_A::ACCEPT)
     }
     #[doc = "`1`"]
     #[inline(always)]
-    pub fn reject(self) -> &'a mut W {
+    pub fn reject(self) -> &'a mut crate::W<REG> {
         self.variant(BCST_REJ_A::REJECT)
     }
 }
@@ -170,49 +144,53 @@ impl TX_VTAG_MODE_R {
             _ => unreachable!(),
         }
     }
-    #[doc = "Checks if the value of the field is `NO_VLAN`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_no_vlan(&self) -> bool {
         *self == TX_VTAG_MODE_A::NO_VLAN
     }
-    #[doc = "Checks if the value of the field is `ONE_VLAN_FROM_ALL`"]
+    #[doc = "`1`"]
     #[inline(always)]
     pub fn is_one_vlan_from_all(&self) -> bool {
         *self == TX_VTAG_MODE_A::ONE_VLAN_FROM_ALL
     }
-    #[doc = "Checks if the value of the field is `ONE_VLAN_FROM_ALL_HAVE`"]
+    #[doc = "`10`"]
     #[inline(always)]
     pub fn is_one_vlan_from_all_have(&self) -> bool {
         *self == TX_VTAG_MODE_A::ONE_VLAN_FROM_ALL_HAVE
     }
-    #[doc = "Checks if the value of the field is `ONE_VLAN_FROM_SELECT`"]
+    #[doc = "`11`"]
     #[inline(always)]
     pub fn is_one_vlan_from_select(&self) -> bool {
         *self == TX_VTAG_MODE_A::ONE_VLAN_FROM_SELECT
     }
 }
 #[doc = "Field `TxVTagMode` writer - "]
-pub type TX_VTAG_MODE_W<'a, const O: u8> =
-    crate::FieldWriterSafe<'a, RAF_SPEC, 2, O, TX_VTAG_MODE_A>;
-impl<'a, const O: u8> TX_VTAG_MODE_W<'a, O> {
+pub type TX_VTAG_MODE_W<'a, REG, const O: u8> =
+    crate::FieldWriterSafe<'a, REG, 2, O, TX_VTAG_MODE_A>;
+impl<'a, REG, const O: u8> TX_VTAG_MODE_W<'a, REG, O>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u8>,
+{
     #[doc = "`0`"]
     #[inline(always)]
-    pub fn no_vlan(self) -> &'a mut W {
+    pub fn no_vlan(self) -> &'a mut crate::W<REG> {
         self.variant(TX_VTAG_MODE_A::NO_VLAN)
     }
     #[doc = "`1`"]
     #[inline(always)]
-    pub fn one_vlan_from_all(self) -> &'a mut W {
+    pub fn one_vlan_from_all(self) -> &'a mut crate::W<REG> {
         self.variant(TX_VTAG_MODE_A::ONE_VLAN_FROM_ALL)
     }
     #[doc = "`10`"]
     #[inline(always)]
-    pub fn one_vlan_from_all_have(self) -> &'a mut W {
+    pub fn one_vlan_from_all_have(self) -> &'a mut crate::W<REG> {
         self.variant(TX_VTAG_MODE_A::ONE_VLAN_FROM_ALL_HAVE)
     }
     #[doc = "`11`"]
     #[inline(always)]
-    pub fn one_vlan_from_select(self) -> &'a mut W {
+    pub fn one_vlan_from_select(self) -> &'a mut crate::W<REG> {
         self.variant(TX_VTAG_MODE_A::ONE_VLAN_FROM_SELECT)
     }
 }
@@ -252,49 +230,53 @@ impl RX_VTAG_MODE_R {
             _ => unreachable!(),
         }
     }
-    #[doc = "Checks if the value of the field is `NO_VLAN`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_no_vlan(&self) -> bool {
         *self == RX_VTAG_MODE_A::NO_VLAN
     }
-    #[doc = "Checks if the value of the field is `ONE_VLAN_FROM_ALL`"]
+    #[doc = "`1`"]
     #[inline(always)]
     pub fn is_one_vlan_from_all(&self) -> bool {
         *self == RX_VTAG_MODE_A::ONE_VLAN_FROM_ALL
     }
-    #[doc = "Checks if the value of the field is `ONE_VLAN_FROM_ALL_HAVE`"]
+    #[doc = "`10`"]
     #[inline(always)]
     pub fn is_one_vlan_from_all_have(&self) -> bool {
         *self == RX_VTAG_MODE_A::ONE_VLAN_FROM_ALL_HAVE
     }
-    #[doc = "Checks if the value of the field is `ONE_VLAN_FROM_SELECT`"]
+    #[doc = "`11`"]
     #[inline(always)]
     pub fn is_one_vlan_from_select(&self) -> bool {
         *self == RX_VTAG_MODE_A::ONE_VLAN_FROM_SELECT
     }
 }
 #[doc = "Field `RxVTagMode` writer - "]
-pub type RX_VTAG_MODE_W<'a, const O: u8> =
-    crate::FieldWriterSafe<'a, RAF_SPEC, 2, O, RX_VTAG_MODE_A>;
-impl<'a, const O: u8> RX_VTAG_MODE_W<'a, O> {
+pub type RX_VTAG_MODE_W<'a, REG, const O: u8> =
+    crate::FieldWriterSafe<'a, REG, 2, O, RX_VTAG_MODE_A>;
+impl<'a, REG, const O: u8> RX_VTAG_MODE_W<'a, REG, O>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u8>,
+{
     #[doc = "`0`"]
     #[inline(always)]
-    pub fn no_vlan(self) -> &'a mut W {
+    pub fn no_vlan(self) -> &'a mut crate::W<REG> {
         self.variant(RX_VTAG_MODE_A::NO_VLAN)
     }
     #[doc = "`1`"]
     #[inline(always)]
-    pub fn one_vlan_from_all(self) -> &'a mut W {
+    pub fn one_vlan_from_all(self) -> &'a mut crate::W<REG> {
         self.variant(RX_VTAG_MODE_A::ONE_VLAN_FROM_ALL)
     }
     #[doc = "`10`"]
     #[inline(always)]
-    pub fn one_vlan_from_all_have(self) -> &'a mut W {
+    pub fn one_vlan_from_all_have(self) -> &'a mut crate::W<REG> {
         self.variant(RX_VTAG_MODE_A::ONE_VLAN_FROM_ALL_HAVE)
     }
     #[doc = "`11`"]
     #[inline(always)]
-    pub fn one_vlan_from_select(self) -> &'a mut W {
+    pub fn one_vlan_from_select(self) -> &'a mut crate::W<REG> {
         self.variant(RX_VTAG_MODE_A::ONE_VLAN_FROM_SELECT)
     }
 }
@@ -331,38 +313,42 @@ impl TX_VSTRP_MODE_R {
             _ => None,
         }
     }
-    #[doc = "Checks if the value of the field is `NO_VLAN`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_no_vlan(&self) -> bool {
         *self == TX_VSTRP_MODE_A::NO_VLAN
     }
-    #[doc = "Checks if the value of the field is `ONE_VLAN_FROM_ALL`"]
+    #[doc = "`1`"]
     #[inline(always)]
     pub fn is_one_vlan_from_all(&self) -> bool {
         *self == TX_VSTRP_MODE_A::ONE_VLAN_FROM_ALL
     }
-    #[doc = "Checks if the value of the field is `ONE_VLAN_FROM_SELECT`"]
+    #[doc = "`11`"]
     #[inline(always)]
     pub fn is_one_vlan_from_select(&self) -> bool {
         *self == TX_VSTRP_MODE_A::ONE_VLAN_FROM_SELECT
     }
 }
 #[doc = "Field `TxVStrpMode` writer - "]
-pub type TX_VSTRP_MODE_W<'a, const O: u8> = crate::FieldWriter<'a, RAF_SPEC, 2, O, TX_VSTRP_MODE_A>;
-impl<'a, const O: u8> TX_VSTRP_MODE_W<'a, O> {
+pub type TX_VSTRP_MODE_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 2, O, TX_VSTRP_MODE_A>;
+impl<'a, REG, const O: u8> TX_VSTRP_MODE_W<'a, REG, O>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u8>,
+{
     #[doc = "`0`"]
     #[inline(always)]
-    pub fn no_vlan(self) -> &'a mut W {
+    pub fn no_vlan(self) -> &'a mut crate::W<REG> {
         self.variant(TX_VSTRP_MODE_A::NO_VLAN)
     }
     #[doc = "`1`"]
     #[inline(always)]
-    pub fn one_vlan_from_all(self) -> &'a mut W {
+    pub fn one_vlan_from_all(self) -> &'a mut crate::W<REG> {
         self.variant(TX_VSTRP_MODE_A::ONE_VLAN_FROM_ALL)
     }
     #[doc = "`11`"]
     #[inline(always)]
-    pub fn one_vlan_from_select(self) -> &'a mut W {
+    pub fn one_vlan_from_select(self) -> &'a mut crate::W<REG> {
         self.variant(TX_VSTRP_MODE_A::ONE_VLAN_FROM_SELECT)
     }
 }
@@ -399,38 +385,42 @@ impl RX_VSTRP_MODE_R {
             _ => None,
         }
     }
-    #[doc = "Checks if the value of the field is `NO_VLAN`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_no_vlan(&self) -> bool {
         *self == RX_VSTRP_MODE_A::NO_VLAN
     }
-    #[doc = "Checks if the value of the field is `ONE_VLAN_FROM_ALL`"]
+    #[doc = "`1`"]
     #[inline(always)]
     pub fn is_one_vlan_from_all(&self) -> bool {
         *self == RX_VSTRP_MODE_A::ONE_VLAN_FROM_ALL
     }
-    #[doc = "Checks if the value of the field is `ONE_VLAN_FROM_SELECT`"]
+    #[doc = "`11`"]
     #[inline(always)]
     pub fn is_one_vlan_from_select(&self) -> bool {
         *self == RX_VSTRP_MODE_A::ONE_VLAN_FROM_SELECT
     }
 }
 #[doc = "Field `RxVStrpMode` writer - "]
-pub type RX_VSTRP_MODE_W<'a, const O: u8> = crate::FieldWriter<'a, RAF_SPEC, 2, O, RX_VSTRP_MODE_A>;
-impl<'a, const O: u8> RX_VSTRP_MODE_W<'a, O> {
+pub type RX_VSTRP_MODE_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 2, O, RX_VSTRP_MODE_A>;
+impl<'a, REG, const O: u8> RX_VSTRP_MODE_W<'a, REG, O>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u8>,
+{
     #[doc = "`0`"]
     #[inline(always)]
-    pub fn no_vlan(self) -> &'a mut W {
+    pub fn no_vlan(self) -> &'a mut crate::W<REG> {
         self.variant(RX_VSTRP_MODE_A::NO_VLAN)
     }
     #[doc = "`1`"]
     #[inline(always)]
-    pub fn one_vlan_from_all(self) -> &'a mut W {
+    pub fn one_vlan_from_all(self) -> &'a mut crate::W<REG> {
         self.variant(RX_VSTRP_MODE_A::ONE_VLAN_FROM_ALL)
     }
     #[doc = "`11`"]
     #[inline(always)]
-    pub fn one_vlan_from_select(self) -> &'a mut W {
+    pub fn one_vlan_from_select(self) -> &'a mut crate::W<REG> {
         self.variant(RX_VSTRP_MODE_A::ONE_VLAN_FROM_SELECT)
     }
 }
@@ -459,28 +449,31 @@ impl NEW_FNC_ENBL_R {
             true => NEW_FNC_ENBL_A::ENABLE,
         }
     }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_disable(&self) -> bool {
         *self == NEW_FNC_ENBL_A::DISABLE
     }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
+    #[doc = "`1`"]
     #[inline(always)]
     pub fn is_enable(&self) -> bool {
         *self == NEW_FNC_ENBL_A::ENABLE
     }
 }
 #[doc = "Field `NewFncEnbl` writer - "]
-pub type NEW_FNC_ENBL_W<'a, const O: u8> = crate::BitWriter<'a, RAF_SPEC, O, NEW_FNC_ENBL_A>;
-impl<'a, const O: u8> NEW_FNC_ENBL_W<'a, O> {
+pub type NEW_FNC_ENBL_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O, NEW_FNC_ENBL_A>;
+impl<'a, REG, const O: u8> NEW_FNC_ENBL_W<'a, REG, O>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
     #[doc = "`0`"]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
+    pub fn disable(self) -> &'a mut crate::W<REG> {
         self.variant(NEW_FNC_ENBL_A::DISABLE)
     }
     #[doc = "`1`"]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
+    pub fn enable(self) -> &'a mut crate::W<REG> {
         self.variant(NEW_FNC_ENBL_A::ENABLE)
     }
 }
@@ -509,29 +502,32 @@ impl EMULTI_FLTR_ENBL_R {
             true => EMULTI_FLTR_ENBL_A::ENABLE,
         }
     }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_disable(&self) -> bool {
         *self == EMULTI_FLTR_ENBL_A::DISABLE
     }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
+    #[doc = "`1`"]
     #[inline(always)]
     pub fn is_enable(&self) -> bool {
         *self == EMULTI_FLTR_ENBL_A::ENABLE
     }
 }
 #[doc = "Field `EMultiFltrEnbl` writer - "]
-pub type EMULTI_FLTR_ENBL_W<'a, const O: u8> =
-    crate::BitWriter<'a, RAF_SPEC, O, EMULTI_FLTR_ENBL_A>;
-impl<'a, const O: u8> EMULTI_FLTR_ENBL_W<'a, O> {
+pub type EMULTI_FLTR_ENBL_W<'a, REG, const O: u8> =
+    crate::BitWriter<'a, REG, O, EMULTI_FLTR_ENBL_A>;
+impl<'a, REG, const O: u8> EMULTI_FLTR_ENBL_W<'a, REG, O>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
     #[doc = "`0`"]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
+    pub fn disable(self) -> &'a mut crate::W<REG> {
         self.variant(EMULTI_FLTR_ENBL_A::DISABLE)
     }
     #[doc = "`1`"]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
+    pub fn enable(self) -> &'a mut crate::W<REG> {
         self.variant(EMULTI_FLTR_ENBL_A::ENABLE)
     }
 }
@@ -560,28 +556,31 @@ impl STATSRST_R {
             true => STATSRST_A::ENABLE,
         }
     }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_disable(&self) -> bool {
         *self == STATSRST_A::DISABLE
     }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
+    #[doc = "`1`"]
     #[inline(always)]
     pub fn is_enable(&self) -> bool {
         *self == STATSRST_A::ENABLE
     }
 }
 #[doc = "Field `statsrst` writer - "]
-pub type STATSRST_W<'a, const O: u8> = crate::BitWriter<'a, RAF_SPEC, O, STATSRST_A>;
-impl<'a, const O: u8> STATSRST_W<'a, O> {
+pub type STATSRST_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O, STATSRST_A>;
+impl<'a, REG, const O: u8> STATSRST_W<'a, REG, O>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
     #[doc = "`0`"]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
+    pub fn disable(self) -> &'a mut crate::W<REG> {
         self.variant(STATSRST_A::DISABLE)
     }
     #[doc = "`1`"]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
+    pub fn enable(self) -> &'a mut crate::W<REG> {
         self.variant(STATSRST_A::ENABLE)
     }
 }
@@ -610,28 +609,31 @@ impl RX_BAD_FRM_EN_R {
             true => RX_BAD_FRM_EN_A::ENABLE,
         }
     }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
+    #[doc = "`0`"]
     #[inline(always)]
     pub fn is_disable(&self) -> bool {
         *self == RX_BAD_FRM_EN_A::DISABLE
     }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
+    #[doc = "`1`"]
     #[inline(always)]
     pub fn is_enable(&self) -> bool {
         *self == RX_BAD_FRM_EN_A::ENABLE
     }
 }
 #[doc = "Field `RxBadFrmEn` writer - "]
-pub type RX_BAD_FRM_EN_W<'a, const O: u8> = crate::BitWriter<'a, RAF_SPEC, O, RX_BAD_FRM_EN_A>;
-impl<'a, const O: u8> RX_BAD_FRM_EN_W<'a, O> {
+pub type RX_BAD_FRM_EN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O, RX_BAD_FRM_EN_A>;
+impl<'a, REG, const O: u8> RX_BAD_FRM_EN_W<'a, REG, O>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
     #[doc = "`0`"]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
+    pub fn disable(self) -> &'a mut crate::W<REG> {
         self.variant(RX_BAD_FRM_EN_A::DISABLE)
     }
     #[doc = "`1`"]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
+    pub fn enable(self) -> &'a mut crate::W<REG> {
         self.variant(RX_BAD_FRM_EN_A::ENABLE)
     }
 }
@@ -691,82 +693,79 @@ impl W {
     #[doc = "Bit 1"]
     #[inline(always)]
     #[must_use]
-    pub fn mcst_rej(&mut self) -> MCST_REJ_W<1> {
+    pub fn mcst_rej(&mut self) -> MCST_REJ_W<RAF_SPEC, 1> {
         MCST_REJ_W::new(self)
     }
     #[doc = "Bit 2"]
     #[inline(always)]
     #[must_use]
-    pub fn bcst_rej(&mut self) -> BCST_REJ_W<2> {
+    pub fn bcst_rej(&mut self) -> BCST_REJ_W<RAF_SPEC, 2> {
         BCST_REJ_W::new(self)
     }
     #[doc = "Bits 3:4"]
     #[inline(always)]
     #[must_use]
-    pub fn tx_vtag_mode(&mut self) -> TX_VTAG_MODE_W<3> {
+    pub fn tx_vtag_mode(&mut self) -> TX_VTAG_MODE_W<RAF_SPEC, 3> {
         TX_VTAG_MODE_W::new(self)
     }
     #[doc = "Bits 5:6"]
     #[inline(always)]
     #[must_use]
-    pub fn rx_vtag_mode(&mut self) -> RX_VTAG_MODE_W<5> {
+    pub fn rx_vtag_mode(&mut self) -> RX_VTAG_MODE_W<RAF_SPEC, 5> {
         RX_VTAG_MODE_W::new(self)
     }
     #[doc = "Bits 7:8"]
     #[inline(always)]
     #[must_use]
-    pub fn tx_vstrp_mode(&mut self) -> TX_VSTRP_MODE_W<7> {
+    pub fn tx_vstrp_mode(&mut self) -> TX_VSTRP_MODE_W<RAF_SPEC, 7> {
         TX_VSTRP_MODE_W::new(self)
     }
     #[doc = "Bits 9:10"]
     #[inline(always)]
     #[must_use]
-    pub fn rx_vstrp_mode(&mut self) -> RX_VSTRP_MODE_W<9> {
+    pub fn rx_vstrp_mode(&mut self) -> RX_VSTRP_MODE_W<RAF_SPEC, 9> {
         RX_VSTRP_MODE_W::new(self)
     }
     #[doc = "Bit 11"]
     #[inline(always)]
     #[must_use]
-    pub fn new_fnc_enbl(&mut self) -> NEW_FNC_ENBL_W<11> {
+    pub fn new_fnc_enbl(&mut self) -> NEW_FNC_ENBL_W<RAF_SPEC, 11> {
         NEW_FNC_ENBL_W::new(self)
     }
     #[doc = "Bit 12"]
     #[inline(always)]
     #[must_use]
-    pub fn emulti_fltr_enbl(&mut self) -> EMULTI_FLTR_ENBL_W<12> {
+    pub fn emulti_fltr_enbl(&mut self) -> EMULTI_FLTR_ENBL_W<RAF_SPEC, 12> {
         EMULTI_FLTR_ENBL_W::new(self)
     }
     #[doc = "Bit 13"]
     #[inline(always)]
     #[must_use]
-    pub fn statsrst(&mut self) -> STATSRST_W<13> {
+    pub fn statsrst(&mut self) -> STATSRST_W<RAF_SPEC, 13> {
         STATSRST_W::new(self)
     }
     #[doc = "Bit 14"]
     #[inline(always)]
     #[must_use]
-    pub fn rx_bad_frm_en(&mut self) -> RX_BAD_FRM_EN_W<14> {
+    pub fn rx_bad_frm_en(&mut self) -> RX_BAD_FRM_EN_W<RAF_SPEC, 14> {
         RX_BAD_FRM_EN_W::new(self)
     }
     #[doc = "Writes raw bits to the register."]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
+        self.bits = bits;
         self
     }
 }
-#[doc = "Reset and Address Filter TEMAC\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [raf](index.html) module"]
+#[doc = "Reset and Address Filter TEMAC\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`raf::R`](R).  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`raf::W`](W). You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
 pub struct RAF_SPEC;
 impl crate::RegisterSpec for RAF_SPEC {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [raf::R](R) reader structure"]
-impl crate::Readable for RAF_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [raf::W](W) writer structure"]
+#[doc = "`read()` method returns [`raf::R`](R) reader structure"]
+impl crate::Readable for RAF_SPEC {}
+#[doc = "`write(|w| ..)` method takes [`raf::W`](W) writer structure"]
 impl crate::Writable for RAF_SPEC {
-    type Writer = W;
     const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
     const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
 }

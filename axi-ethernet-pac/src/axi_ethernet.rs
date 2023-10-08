@@ -102,7 +102,7 @@ pub struct RegisterBlock {
     pub txovru: TXOVRU,
     #[doc = "0x290 - Count of frames received OK, LSM"]
     pub rxfl: RXFL,
-    #[doc = "0x294 - Count of frames transmitted OK, MSM"]
+    #[doc = "0x294 - Count of frames received OK, MSM"]
     pub rxfu: RXFU,
     #[doc = "0x298 - Count of frames received with FCS error and at least 64 bytes, LSM"]
     pub rxfcserl: RXFCSERL,
@@ -259,491 +259,613 @@ pub struct RegisterBlock {
     #[doc = "0x20000 - Multicast table address"]
     pub mcasttable: MCASTTABLE,
 }
-#[doc = "raf (rw) register accessor: an alias for `Reg<RAF_SPEC>`"]
+#[doc = "raf (rw) register accessor: Reset and Address Filter TEMAC\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`raf::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`raf::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`raf`]
+module"]
 pub type RAF = crate::Reg<raf::RAF_SPEC>;
 #[doc = "Reset and Address Filter TEMAC"]
 pub mod raf;
-#[doc = "tpf (rw) register accessor: an alias for `Reg<TPF_SPEC>`"]
+#[doc = "tpf (rw) register accessor: Transmit Pause Frame TEMAC\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`tpf::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`tpf::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`tpf`]
+module"]
 pub type TPF = crate::Reg<tpf::TPF_SPEC>;
 #[doc = "Transmit Pause Frame TEMAC"]
 pub mod tpf;
-#[doc = "ifgp (rw) register accessor: an alias for `Reg<IFGP_SPEC>`"]
+#[doc = "ifgp (rw) register accessor: Transmit Inter Frame Gap Adjustment TEMAC\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`ifgp::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`ifgp::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`ifgp`]
+module"]
 pub type IFGP = crate::Reg<ifgp::IFGP_SPEC>;
 #[doc = "Transmit Inter Frame Gap Adjustment TEMAC"]
 pub mod ifgp;
-#[doc = "is (rw) register accessor: an alias for `Reg<IS_SPEC>`"]
+#[doc = "is (rw) register accessor: Interrupt Status\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`is::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`is::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`is`]
+module"]
 pub type IS = crate::Reg<is::IS_SPEC>;
 #[doc = "Interrupt Status"]
 pub mod is;
-#[doc = "ip (r) register accessor: an alias for `Reg<IP_SPEC>`"]
+#[doc = "ip (r) register accessor: Interrupt Pending\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`ip::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`ip`]
+module"]
 pub type IP = crate::Reg<ip::IP_SPEC>;
 #[doc = "Interrupt Pending"]
 pub mod ip;
-#[doc = "ie (rw) register accessor: an alias for `Reg<IE_SPEC>`"]
+#[doc = "ie (rw) register accessor: Interrupt Enable\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`ie::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`ie::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`ie`]
+module"]
 pub type IE = crate::Reg<ie::IE_SPEC>;
 #[doc = "Interrupt Enable"]
 pub mod ie;
-#[doc = "ttag (rw) register accessor: an alias for `Reg<TTAG_SPEC>`"]
+#[doc = "ttag (rw) register accessor: Transmit VLAN Tag TEMAC\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`ttag::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`ttag::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`ttag`]
+module"]
 pub type TTAG = crate::Reg<ttag::TTAG_SPEC>;
 #[doc = "Transmit VLAN Tag TEMAC"]
 pub mod ttag;
-#[doc = "rtag (rw) register accessor: an alias for `Reg<RTAG_SPEC>`"]
+#[doc = "rtag (rw) register accessor: Receive VLAN Tag TEMAC\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`rtag::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`rtag::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`rtag`]
+module"]
 pub type RTAG = crate::Reg<rtag::RTAG_SPEC>;
 #[doc = "Receive VLAN Tag TEMAC"]
 pub mod rtag;
-#[doc = "uawl (rw) register accessor: an alias for `Reg<UAWL_SPEC>`"]
+#[doc = "uawl (rw) register accessor: Unicast Address Word Lower TEMAC\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`uawl::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`uawl::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`uawl`]
+module"]
 pub type UAWL = crate::Reg<uawl::UAWL_SPEC>;
 #[doc = "Unicast Address Word Lower TEMAC"]
 pub mod uawl;
-#[doc = "uawu (rw) register accessor: an alias for `Reg<UAWU_SPEC>`"]
+#[doc = "uawu (rw) register accessor: Unicast Address Word Upper TEMAC\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`uawu::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`uawu::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`uawu`]
+module"]
 pub type UAWU = crate::Reg<uawu::UAWU_SPEC>;
 #[doc = "Unicast Address Word Upper TEMAC"]
 pub mod uawu;
-#[doc = "tpid0 (rw) register accessor: an alias for `Reg<TPID0_SPEC>`"]
+#[doc = "tpid0 (rw) register accessor: VLAN TPID TEMAC Word 0\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`tpid0::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`tpid0::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`tpid0`]
+module"]
 pub type TPID0 = crate::Reg<tpid0::TPID0_SPEC>;
 #[doc = "VLAN TPID TEMAC Word 0"]
 pub mod tpid0;
-#[doc = "tpid1 (rw) register accessor: an alias for `Reg<TPID1_SPEC>`"]
+#[doc = "tpid1 (rw) register accessor: VLAN TPID TEMAC Word 1\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`tpid1::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`tpid1::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`tpid1`]
+module"]
 pub type TPID1 = crate::Reg<tpid1::TPID1_SPEC>;
 #[doc = "VLAN TPID TEMAC Word 1"]
 pub mod tpid1;
-#[doc = "ppst (r) register accessor: an alias for `Reg<PPST_SPEC>`"]
+#[doc = "ppst (r) register accessor: PCS PMA TEMAC Status\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`ppst::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`ppst`]
+module"]
 pub type PPST = crate::Reg<ppst::PPST_SPEC>;
 #[doc = "PCS PMA TEMAC Status"]
 pub mod ppst;
-#[doc = "rxbl (r) register accessor: an alias for `Reg<RXBL_SPEC>`"]
+#[doc = "rxbl (r) register accessor: Received Bytes, LSW\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`rxbl::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`rxbl`]
+module"]
 pub type RXBL = crate::Reg<rxbl::RXBL_SPEC>;
 #[doc = "Received Bytes, LSW"]
 pub mod rxbl;
-#[doc = "rxbu (r) register accessor: an alias for `Reg<RXBU_SPEC>`"]
+#[doc = "rxbu (r) register accessor: Received Bytes, MSW\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`rxbu::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`rxbu`]
+module"]
 pub type RXBU = crate::Reg<rxbu::RXBU_SPEC>;
 #[doc = "Received Bytes, MSW"]
 pub mod rxbu;
-#[doc = "txbl (r) register accessor: an alias for `Reg<TXBL_SPEC>`"]
+#[doc = "txbl (r) register accessor: Transmitted Bytes, LSW\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`txbl::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`txbl`]
+module"]
 pub type TXBL = crate::Reg<txbl::TXBL_SPEC>;
 #[doc = "Transmitted Bytes, LSW"]
 pub mod txbl;
-#[doc = "txbu (r) register accessor: an alias for `Reg<TXBU_SPEC>`"]
+#[doc = "txbu (r) register accessor: Transmitted Bytes, MSW\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`txbu::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`txbu`]
+module"]
 pub type TXBU = crate::Reg<txbu::TXBU_SPEC>;
 #[doc = "Transmitted Bytes, MSW"]
 pub mod txbu;
-#[doc = "rxundrl (r) register accessor: an alias for `Reg<RXUNDRL_SPEC>`"]
+#[doc = "rxundrl (r) register accessor: Count of undersize frames received, LSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`rxundrl::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`rxundrl`]
+module"]
 pub type RXUNDRL = crate::Reg<rxundrl::RXUNDRL_SPEC>;
 #[doc = "Count of undersize frames received, LSM"]
 pub mod rxundrl;
-#[doc = "rxundru (r) register accessor: an alias for `Reg<RXUNDRU_SPEC>`"]
+#[doc = "rxundru (r) register accessor: Count of undersize frames received, MSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`rxundru::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`rxundru`]
+module"]
 pub type RXUNDRU = crate::Reg<rxundru::RXUNDRU_SPEC>;
 #[doc = "Count of undersize frames received, MSM"]
 pub mod rxundru;
-#[doc = "rxfragl (r) register accessor: an alias for `Reg<RXFRAGL_SPEC>`"]
+#[doc = "rxfragl (r) register accessor: Count of undersize and bad FCS frames received, LSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`rxfragl::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`rxfragl`]
+module"]
 pub type RXFRAGL = crate::Reg<rxfragl::RXFRAGL_SPEC>;
 #[doc = "Count of undersize and bad FCS frames received, LSM"]
 pub mod rxfragl;
-#[doc = "rxfragu (r) register accessor: an alias for `Reg<RXFRAGU_SPEC>`"]
+#[doc = "rxfragu (r) register accessor: Count of undersize and bad FCS frames received, MSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`rxfragu::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`rxfragu`]
+module"]
 pub type RXFRAGU = crate::Reg<rxfragu::RXFRAGU_SPEC>;
 #[doc = "Count of undersize and bad FCS frames received, MSM"]
 pub mod rxfragu;
-#[doc = "rx64bl (r) register accessor: an alias for `Reg<RX64BL_SPEC>`"]
+#[doc = "rx64bl (r) register accessor: Count of 64 bytes frames received, LSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`rx64bl::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`rx64bl`]
+module"]
 pub type RX64BL = crate::Reg<rx64bl::RX64BL_SPEC>;
 #[doc = "Count of 64 bytes frames received, LSM"]
 pub mod rx64bl;
-#[doc = "rx64bu (r) register accessor: an alias for `Reg<RX64BU_SPEC>`"]
+#[doc = "rx64bu (r) register accessor: Count of 64 bytes frames received, MSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`rx64bu::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`rx64bu`]
+module"]
 pub type RX64BU = crate::Reg<rx64bu::RX64BU_SPEC>;
 #[doc = "Count of 64 bytes frames received, MSM"]
 pub mod rx64bu;
-#[doc = "rx65b127l (r) register accessor: an alias for `Reg<RX65B127L_SPEC>`"]
+#[doc = "rx65b127l (r) register accessor: Count of 65-127 bytes frames received, LSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`rx65b127l::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`rx65b127l`]
+module"]
 pub type RX65B127L = crate::Reg<rx65b127l::RX65B127L_SPEC>;
 #[doc = "Count of 65-127 bytes frames received, LSM"]
 pub mod rx65b127l;
-#[doc = "rx65b127u (r) register accessor: an alias for `Reg<RX65B127U_SPEC>`"]
+#[doc = "rx65b127u (r) register accessor: Count of 65-127 bytes frames received, MSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`rx65b127u::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`rx65b127u`]
+module"]
 pub type RX65B127U = crate::Reg<rx65b127u::RX65B127U_SPEC>;
 #[doc = "Count of 65-127 bytes frames received, MSM"]
 pub mod rx65b127u;
-#[doc = "rx128b255l (r) register accessor: an alias for `Reg<RX128B255L_SPEC>`"]
+#[doc = "rx128b255l (r) register accessor: Count of 128-255 bytes frames received, LSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`rx128b255l::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`rx128b255l`]
+module"]
 pub type RX128B255L = crate::Reg<rx128b255l::RX128B255L_SPEC>;
 #[doc = "Count of 128-255 bytes frames received, LSM"]
 pub mod rx128b255l;
-#[doc = "rx128b255u (r) register accessor: an alias for `Reg<RX128B255U_SPEC>`"]
+#[doc = "rx128b255u (r) register accessor: Count of 128-255 bytes frames received, MSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`rx128b255u::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`rx128b255u`]
+module"]
 pub type RX128B255U = crate::Reg<rx128b255u::RX128B255U_SPEC>;
 #[doc = "Count of 128-255 bytes frames received, MSM"]
 pub mod rx128b255u;
-#[doc = "rx256b511l (r) register accessor: an alias for `Reg<RX256B511L_SPEC>`"]
+#[doc = "rx256b511l (r) register accessor: Count of 256-511 bytes frames received, LSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`rx256b511l::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`rx256b511l`]
+module"]
 pub type RX256B511L = crate::Reg<rx256b511l::RX256B511L_SPEC>;
 #[doc = "Count of 256-511 bytes frames received, LSM"]
 pub mod rx256b511l;
-#[doc = "rx256b511u (r) register accessor: an alias for `Reg<RX256B511U_SPEC>`"]
+#[doc = "rx256b511u (r) register accessor: Count of 256-511 bytes frames received, MSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`rx256b511u::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`rx256b511u`]
+module"]
 pub type RX256B511U = crate::Reg<rx256b511u::RX256B511U_SPEC>;
 #[doc = "Count of 256-511 bytes frames received, MSM"]
 pub mod rx256b511u;
-#[doc = "rx512b1023l (r) register accessor: an alias for `Reg<RX512B1023L_SPEC>`"]
+#[doc = "rx512b1023l (r) register accessor: Count of 512-1023 bytes frames received, LSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`rx512b1023l::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`rx512b1023l`]
+module"]
 pub type RX512B1023L = crate::Reg<rx512b1023l::RX512B1023L_SPEC>;
 #[doc = "Count of 512-1023 bytes frames received, LSM"]
 pub mod rx512b1023l;
-#[doc = "rx512b1023u (r) register accessor: an alias for `Reg<RX512B1023U_SPEC>`"]
+#[doc = "rx512b1023u (r) register accessor: Count of 512-1023 bytes frames received, MSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`rx512b1023u::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`rx512b1023u`]
+module"]
 pub type RX512B1023U = crate::Reg<rx512b1023u::RX512B1023U_SPEC>;
 #[doc = "Count of 512-1023 bytes frames received, MSM"]
 pub mod rx512b1023u;
-#[doc = "rx1024bl (r) register accessor: an alias for `Reg<RX1024BL_SPEC>`"]
+#[doc = "rx1024bl (r) register accessor: Count of 1024-MAX bytes frames received, LSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`rx1024bl::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`rx1024bl`]
+module"]
 pub type RX1024BL = crate::Reg<rx1024bl::RX1024BL_SPEC>;
 #[doc = "Count of 1024-MAX bytes frames received, LSM"]
 pub mod rx1024bl;
-#[doc = "rx1024bu (r) register accessor: an alias for `Reg<RX1024BU_SPEC>`"]
+#[doc = "rx1024bu (r) register accessor: Count of 1024-MAX bytes frames received, MSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`rx1024bu::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`rx1024bu`]
+module"]
 pub type RX1024BU = crate::Reg<rx1024bu::RX1024BU_SPEC>;
 #[doc = "Count of 1024-MAX bytes frames received, MSM"]
 pub mod rx1024bu;
-#[doc = "rxovrl (r) register accessor: an alias for `Reg<RXOVRL_SPEC>`"]
+#[doc = "rxovrl (r) register accessor: Count of oversize frames received, LSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`rxovrl::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`rxovrl`]
+module"]
 pub type RXOVRL = crate::Reg<rxovrl::RXOVRL_SPEC>;
 #[doc = "Count of oversize frames received, LSM"]
 pub mod rxovrl;
-#[doc = "rxovru (r) register accessor: an alias for `Reg<RXOVRU_SPEC>`"]
+#[doc = "rxovru (r) register accessor: Count of oversize bytes frames received, MSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`rxovru::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`rxovru`]
+module"]
 pub type RXOVRU = crate::Reg<rxovru::RXOVRU_SPEC>;
 #[doc = "Count of oversize bytes frames received, MSM"]
 pub mod rxovru;
-#[doc = "tx64bl (r) register accessor: an alias for `Reg<TX64BL_SPEC>`"]
+#[doc = "tx64bl (r) register accessor: Count of 64 bytes frames transmitted, LSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`tx64bl::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`tx64bl`]
+module"]
 pub type TX64BL = crate::Reg<tx64bl::TX64BL_SPEC>;
 #[doc = "Count of 64 bytes frames transmitted, LSM"]
 pub mod tx64bl;
-#[doc = "tx64bu (r) register accessor: an alias for `Reg<TX64BU_SPEC>`"]
+#[doc = "tx64bu (r) register accessor: Count of 64 bytes frames transmitted, MSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`tx64bu::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`tx64bu`]
+module"]
 pub type TX64BU = crate::Reg<tx64bu::TX64BU_SPEC>;
 #[doc = "Count of 64 bytes frames transmitted, MSM"]
 pub mod tx64bu;
-#[doc = "tx65b127l (r) register accessor: an alias for `Reg<TX65B127L_SPEC>`"]
+#[doc = "tx65b127l (r) register accessor: Count of 65-127 bytes frames transmitted, LSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`tx65b127l::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`tx65b127l`]
+module"]
 pub type TX65B127L = crate::Reg<tx65b127l::TX65B127L_SPEC>;
 #[doc = "Count of 65-127 bytes frames transmitted, LSM"]
 pub mod tx65b127l;
-#[doc = "tx65b127u (r) register accessor: an alias for `Reg<TX65B127U_SPEC>`"]
+#[doc = "tx65b127u (r) register accessor: Count of 65-127 bytes frames transmitted, MSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`tx65b127u::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`tx65b127u`]
+module"]
 pub type TX65B127U = crate::Reg<tx65b127u::TX65B127U_SPEC>;
 #[doc = "Count of 65-127 bytes frames transmitted, MSM"]
 pub mod tx65b127u;
-#[doc = "tx128b255l (r) register accessor: an alias for `Reg<TX128B255L_SPEC>`"]
+#[doc = "tx128b255l (r) register accessor: Count of 128-255 bytes frames transmitted, LSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`tx128b255l::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`tx128b255l`]
+module"]
 pub type TX128B255L = crate::Reg<tx128b255l::TX128B255L_SPEC>;
 #[doc = "Count of 128-255 bytes frames transmitted, LSM"]
 pub mod tx128b255l;
-#[doc = "tx128b255u (r) register accessor: an alias for `Reg<TX128B255U_SPEC>`"]
+#[doc = "tx128b255u (r) register accessor: Count of 128-255 bytes frames transmitted, MSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`tx128b255u::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`tx128b255u`]
+module"]
 pub type TX128B255U = crate::Reg<tx128b255u::TX128B255U_SPEC>;
 #[doc = "Count of 128-255 bytes frames transmitted, MSM"]
 pub mod tx128b255u;
-#[doc = "tx256b511l (r) register accessor: an alias for `Reg<TX256B511L_SPEC>`"]
+#[doc = "tx256b511l (r) register accessor: Count of 256-511 bytes frames transmitted, LSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`tx256b511l::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`tx256b511l`]
+module"]
 pub type TX256B511L = crate::Reg<tx256b511l::TX256B511L_SPEC>;
 #[doc = "Count of 256-511 bytes frames transmitted, LSM"]
 pub mod tx256b511l;
-#[doc = "tx256b511u (r) register accessor: an alias for `Reg<TX256B511U_SPEC>`"]
+#[doc = "tx256b511u (r) register accessor: Count of 256-511 bytes frames transmitted, MSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`tx256b511u::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`tx256b511u`]
+module"]
 pub type TX256B511U = crate::Reg<tx256b511u::TX256B511U_SPEC>;
 #[doc = "Count of 256-511 bytes frames transmitted, MSM"]
 pub mod tx256b511u;
-#[doc = "tx512b1023l (r) register accessor: an alias for `Reg<TX512B1023L_SPEC>`"]
+#[doc = "tx512b1023l (r) register accessor: Count of 512-1023 bytes frames transmitted, LSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`tx512b1023l::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`tx512b1023l`]
+module"]
 pub type TX512B1023L = crate::Reg<tx512b1023l::TX512B1023L_SPEC>;
 #[doc = "Count of 512-1023 bytes frames transmitted, LSM"]
 pub mod tx512b1023l;
-#[doc = "tx512b1023u (r) register accessor: an alias for `Reg<TX512B1023U_SPEC>`"]
+#[doc = "tx512b1023u (r) register accessor: Count of 512-1023 bytes frames transmitted, MSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`tx512b1023u::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`tx512b1023u`]
+module"]
 pub type TX512B1023U = crate::Reg<tx512b1023u::TX512B1023U_SPEC>;
 #[doc = "Count of 512-1023 bytes frames transmitted, MSM"]
 pub mod tx512b1023u;
-#[doc = "tx1024bl (r) register accessor: an alias for `Reg<TX1024BL_SPEC>`"]
+#[doc = "tx1024bl (r) register accessor: Count of 1024-MAX bytes frames transmitted, LSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`tx1024bl::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`tx1024bl`]
+module"]
 pub type TX1024BL = crate::Reg<tx1024bl::TX1024BL_SPEC>;
 #[doc = "Count of 1024-MAX bytes frames transmitted, LSM"]
 pub mod tx1024bl;
-#[doc = "tx1024bu (r) register accessor: an alias for `Reg<TX1024BU_SPEC>`"]
+#[doc = "tx1024bu (r) register accessor: Count of 1024-MAX bytes frames transmitted, MSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`tx1024bu::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`tx1024bu`]
+module"]
 pub type TX1024BU = crate::Reg<tx1024bu::TX1024BU_SPEC>;
 #[doc = "Count of 1024-MAX bytes frames transmitted, MSM"]
 pub mod tx1024bu;
-#[doc = "txovrl (r) register accessor: an alias for `Reg<TXOVRL_SPEC>`"]
+#[doc = "txovrl (r) register accessor: Count of oversize frames transmitted, LSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`txovrl::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`txovrl`]
+module"]
 pub type TXOVRL = crate::Reg<txovrl::TXOVRL_SPEC>;
 #[doc = "Count of oversize frames transmitted, LSM"]
 pub mod txovrl;
-#[doc = "txovru (r) register accessor: an alias for `Reg<TXOVRU_SPEC>`"]
+#[doc = "txovru (r) register accessor: Count of oversize bytes frames transmitted, MSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`txovru::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`txovru`]
+module"]
 pub type TXOVRU = crate::Reg<txovru::TXOVRU_SPEC>;
 #[doc = "Count of oversize bytes frames transmitted, MSM"]
 pub mod txovru;
-#[doc = "rxfl (r) register accessor: an alias for `Reg<RXFL_SPEC>`"]
+#[doc = "rxfl (r) register accessor: Count of frames received OK, LSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`rxfl::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`rxfl`]
+module"]
 pub type RXFL = crate::Reg<rxfl::RXFL_SPEC>;
 #[doc = "Count of frames received OK, LSM"]
 pub mod rxfl;
-#[doc = "rxfu (r) register accessor: an alias for `Reg<RXFU_SPEC>`"]
+#[doc = "rxfu (r) register accessor: Count of frames received OK, MSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`rxfu::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`rxfu`]
+module"]
 pub type RXFU = crate::Reg<rxfu::RXFU_SPEC>;
-#[doc = "Count of frames transmitted OK, MSM"]
+#[doc = "Count of frames received OK, MSM"]
 pub mod rxfu;
-#[doc = "rxfcserl (r) register accessor: an alias for `Reg<RXFCSERL_SPEC>`"]
+#[doc = "rxfcserl (r) register accessor: Count of frames received with FCS error and at least 64 bytes, LSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`rxfcserl::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`rxfcserl`]
+module"]
 pub type RXFCSERL = crate::Reg<rxfcserl::RXFCSERL_SPEC>;
 #[doc = "Count of frames received with FCS error and at least 64 bytes, LSM"]
 pub mod rxfcserl;
-#[doc = "rxfcseru (r) register accessor: an alias for `Reg<RXFCSERU_SPEC>`"]
+#[doc = "rxfcseru (r) register accessor: Count of frames received with FCS error and at least 64 bytes, MSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`rxfcseru::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`rxfcseru`]
+module"]
 pub type RXFCSERU = crate::Reg<rxfcseru::RXFCSERU_SPEC>;
 #[doc = "Count of frames received with FCS error and at least 64 bytes, MSM"]
 pub mod rxfcseru;
-#[doc = "rxbcstfl (r) register accessor: an alias for `Reg<RXBCSTFL_SPEC>`"]
+#[doc = "rxbcstfl (r) register accessor: Count of broadcast frames received, LSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`rxbcstfl::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`rxbcstfl`]
+module"]
 pub type RXBCSTFL = crate::Reg<rxbcstfl::RXBCSTFL_SPEC>;
 #[doc = "Count of broadcast frames received, LSM"]
 pub mod rxbcstfl;
-#[doc = "rxbcstfu (r) register accessor: an alias for `Reg<RXBCSTFU_SPEC>`"]
+#[doc = "rxbcstfu (r) register accessor: Count of broadcast frames received, MSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`rxbcstfu::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`rxbcstfu`]
+module"]
 pub type RXBCSTFU = crate::Reg<rxbcstfu::RXBCSTFU_SPEC>;
 #[doc = "Count of broadcast frames received, MSM"]
 pub mod rxbcstfu;
-#[doc = "rxmcstfl (r) register accessor: an alias for `Reg<RXMCSTFL_SPEC>`"]
+#[doc = "rxmcstfl (r) register accessor: Count of multicast frames received, LSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`rxmcstfl::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`rxmcstfl`]
+module"]
 pub type RXMCSTFL = crate::Reg<rxmcstfl::RXMCSTFL_SPEC>;
 #[doc = "Count of multicast frames received, LSM"]
 pub mod rxmcstfl;
-#[doc = "rxmcstfu (r) register accessor: an alias for `Reg<RXMCSTFU_SPEC>`"]
+#[doc = "rxmcstfu (r) register accessor: Count of multicast frames received, MSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`rxmcstfu::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`rxmcstfu`]
+module"]
 pub type RXMCSTFU = crate::Reg<rxmcstfu::RXMCSTFU_SPEC>;
 #[doc = "Count of multicast frames received, MSM"]
 pub mod rxmcstfu;
-#[doc = "rxctrfl (r) register accessor: an alias for `Reg<RXCTRFL_SPEC>`"]
+#[doc = "rxctrfl (r) register accessor: Count of control frames received, LSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`rxctrfl::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`rxctrfl`]
+module"]
 pub type RXCTRFL = crate::Reg<rxctrfl::RXCTRFL_SPEC>;
 #[doc = "Count of control frames received, LSM"]
 pub mod rxctrfl;
-#[doc = "rxctrfu (r) register accessor: an alias for `Reg<RXCTRFU_SPEC>`"]
+#[doc = "rxctrfu (r) register accessor: Count of control frames received, MSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`rxctrfu::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`rxctrfu`]
+module"]
 pub type RXCTRFU = crate::Reg<rxctrfu::RXCTRFU_SPEC>;
 #[doc = "Count of control frames received, MSM"]
 pub mod rxctrfu;
-#[doc = "rxlterl (r) register accessor: an alias for `Reg<RXLTERL_SPEC>`"]
+#[doc = "rxlterl (r) register accessor: Count of frames received with length error, LSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`rxlterl::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`rxlterl`]
+module"]
 pub type RXLTERL = crate::Reg<rxlterl::RXLTERL_SPEC>;
 #[doc = "Count of frames received with length error, LSM"]
 pub mod rxlterl;
-#[doc = "rxlteru (r) register accessor: an alias for `Reg<RXLTERU_SPEC>`"]
+#[doc = "rxlteru (r) register accessor: Count of frames received with length error, MSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`rxlteru::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`rxlteru`]
+module"]
 pub type RXLTERU = crate::Reg<rxlteru::RXLTERU_SPEC>;
 #[doc = "Count of frames received with length error, MSM"]
 pub mod rxlteru;
-#[doc = "rxvlanfl (r) register accessor: an alias for `Reg<RXVLANFL_SPEC>`"]
+#[doc = "rxvlanfl (r) register accessor: Count of VLAN tagged frames received, LSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`rxvlanfl::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`rxvlanfl`]
+module"]
 pub type RXVLANFL = crate::Reg<rxvlanfl::RXVLANFL_SPEC>;
 #[doc = "Count of VLAN tagged frames received, LSM"]
 pub mod rxvlanfl;
-#[doc = "rxvlanfu (r) register accessor: an alias for `Reg<RXVLANFU_SPEC>`"]
+#[doc = "rxvlanfu (r) register accessor: Count of VLAN tagged frames received, MSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`rxvlanfu::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`rxvlanfu`]
+module"]
 pub type RXVLANFU = crate::Reg<rxvlanfu::RXVLANFU_SPEC>;
 #[doc = "Count of VLAN tagged frames received, MSM"]
 pub mod rxvlanfu;
-#[doc = "rxpfl (r) register accessor: an alias for `Reg<RXPFL_SPEC>`"]
+#[doc = "rxpfl (r) register accessor: Count of pause frames received, LSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`rxpfl::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`rxpfl`]
+module"]
 pub type RXPFL = crate::Reg<rxpfl::RXPFL_SPEC>;
 #[doc = "Count of pause frames received, LSM"]
 pub mod rxpfl;
-#[doc = "rxpfu (r) register accessor: an alias for `Reg<RXPFU_SPEC>`"]
+#[doc = "rxpfu (r) register accessor: Count of pause frames received, MSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`rxpfu::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`rxpfu`]
+module"]
 pub type RXPFU = crate::Reg<rxpfu::RXPFU_SPEC>;
 #[doc = "Count of pause frames received, MSM"]
 pub mod rxpfu;
-#[doc = "rxuopfl (r) register accessor: an alias for `Reg<RXUOPFL_SPEC>`"]
+#[doc = "rxuopfl (r) register accessor: Count of control frames received with unsupported opcode, LSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`rxuopfl::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`rxuopfl`]
+module"]
 pub type RXUOPFL = crate::Reg<rxuopfl::RXUOPFL_SPEC>;
 #[doc = "Count of control frames received with unsupported opcode, LSM"]
 pub mod rxuopfl;
-#[doc = "rxuopfu (r) register accessor: an alias for `Reg<RXUOPFU_SPEC>`"]
+#[doc = "rxuopfu (r) register accessor: Count of control frames received with unsupported opcode, MSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`rxuopfu::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`rxuopfu`]
+module"]
 pub type RXUOPFU = crate::Reg<rxuopfu::RXUOPFU_SPEC>;
 #[doc = "Count of control frames received with unsupported opcode, MSM"]
 pub mod rxuopfu;
-#[doc = "txfl (r) register accessor: an alias for `Reg<TXFL_SPEC>`"]
+#[doc = "txfl (r) register accessor: Count of frames transmitted OK, LSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`txfl::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`txfl`]
+module"]
 pub type TXFL = crate::Reg<txfl::TXFL_SPEC>;
 #[doc = "Count of frames transmitted OK, LSM"]
 pub mod txfl;
-#[doc = "txfu (r) register accessor: an alias for `Reg<TXFU_SPEC>`"]
+#[doc = "txfu (r) register accessor: Count of frames transmitted OK, MSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`txfu::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`txfu`]
+module"]
 pub type TXFU = crate::Reg<txfu::TXFU_SPEC>;
 #[doc = "Count of frames transmitted OK, MSM"]
 pub mod txfu;
-#[doc = "txbcstfl (r) register accessor: an alias for `Reg<TXBCSTFL_SPEC>`"]
+#[doc = "txbcstfl (r) register accessor: Count of broadcast frames transmitted, LSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`txbcstfl::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`txbcstfl`]
+module"]
 pub type TXBCSTFL = crate::Reg<txbcstfl::TXBCSTFL_SPEC>;
 #[doc = "Count of broadcast frames transmitted, LSM"]
 pub mod txbcstfl;
-#[doc = "txbcstfu (r) register accessor: an alias for `Reg<TXBCSTFU_SPEC>`"]
+#[doc = "txbcstfu (r) register accessor: Count of broadcast frames transmitted, MSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`txbcstfu::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`txbcstfu`]
+module"]
 pub type TXBCSTFU = crate::Reg<txbcstfu::TXBCSTFU_SPEC>;
 #[doc = "Count of broadcast frames transmitted, MSM"]
 pub mod txbcstfu;
-#[doc = "txmcstfl (r) register accessor: an alias for `Reg<TXMCSTFL_SPEC>`"]
+#[doc = "txmcstfl (r) register accessor: Count of multicast frames transmitted, LSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`txmcstfl::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`txmcstfl`]
+module"]
 pub type TXMCSTFL = crate::Reg<txmcstfl::TXMCSTFL_SPEC>;
 #[doc = "Count of multicast frames transmitted, LSM"]
 pub mod txmcstfl;
-#[doc = "txmcstfu (r) register accessor: an alias for `Reg<TXMCSTFU_SPEC>`"]
+#[doc = "txmcstfu (r) register accessor: Count of multicast frames transmitted, MSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`txmcstfu::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`txmcstfu`]
+module"]
 pub type TXMCSTFU = crate::Reg<txmcstfu::TXMCSTFU_SPEC>;
 #[doc = "Count of multicast frames transmitted, MSM"]
 pub mod txmcstfu;
-#[doc = "txundererl (r) register accessor: an alias for `Reg<TXUNDERERL_SPEC>`"]
+#[doc = "txundererl (r) register accessor: Count of frames transmitted underrun error, LSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`txundererl::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`txundererl`]
+module"]
 pub type TXUNDERERL = crate::Reg<txundererl::TXUNDERERL_SPEC>;
 #[doc = "Count of frames transmitted underrun error, LSM"]
 pub mod txundererl;
-#[doc = "txundereru (r) register accessor: an alias for `Reg<TXUNDERERU_SPEC>`"]
+#[doc = "txundereru (r) register accessor: Count of frames transmitted underrun error, MSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`txundereru::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`txundereru`]
+module"]
 pub type TXUNDERERU = crate::Reg<txundereru::TXUNDERERU_SPEC>;
 #[doc = "Count of frames transmitted underrun error, MSM"]
 pub mod txundereru;
-#[doc = "txctrfl (r) register accessor: an alias for `Reg<TXCTRFL_SPEC>`"]
+#[doc = "txctrfl (r) register accessor: Count of control frames transmitted, LSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`txctrfl::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`txctrfl`]
+module"]
 pub type TXCTRFL = crate::Reg<txctrfl::TXCTRFL_SPEC>;
 #[doc = "Count of control frames transmitted, LSM"]
 pub mod txctrfl;
-#[doc = "txctrfu (r) register accessor: an alias for `Reg<TXCTRFU_SPEC>`"]
+#[doc = "txctrfu (r) register accessor: Count of control frames transmitted, MSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`txctrfu::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`txctrfu`]
+module"]
 pub type TXCTRFU = crate::Reg<txctrfu::TXCTRFU_SPEC>;
 #[doc = "Count of control frames transmitted, MSM"]
 pub mod txctrfu;
-#[doc = "txvlanfl (r) register accessor: an alias for `Reg<TXVLANFL_SPEC>`"]
+#[doc = "txvlanfl (r) register accessor: Count of VLAN tagged frames transmitted, LSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`txvlanfl::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`txvlanfl`]
+module"]
 pub type TXVLANFL = crate::Reg<txvlanfl::TXVLANFL_SPEC>;
 #[doc = "Count of VLAN tagged frames transmitted, LSM"]
 pub mod txvlanfl;
-#[doc = "txvlanfu (r) register accessor: an alias for `Reg<TXVLANFU_SPEC>`"]
+#[doc = "txvlanfu (r) register accessor: Count of VLAN tagged frames transmitted, MSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`txvlanfu::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`txvlanfu`]
+module"]
 pub type TXVLANFU = crate::Reg<txvlanfu::TXVLANFU_SPEC>;
 #[doc = "Count of VLAN tagged frames transmitted, MSM"]
 pub mod txvlanfu;
-#[doc = "txpfl (r) register accessor: an alias for `Reg<TXPFL_SPEC>`"]
+#[doc = "txpfl (r) register accessor: Count of pause frames transmitted, LSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`txpfl::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`txpfl`]
+module"]
 pub type TXPFL = crate::Reg<txpfl::TXPFL_SPEC>;
 #[doc = "Count of pause frames transmitted, LSM"]
 pub mod txpfl;
-#[doc = "txpfu (r) register accessor: an alias for `Reg<TXPFU_SPEC>`"]
+#[doc = "txpfu (r) register accessor: Count of pause frames transmitted, MSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`txpfu::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`txpfu`]
+module"]
 pub type TXPFU = crate::Reg<txpfu::TXPFU_SPEC>;
 #[doc = "Count of pause frames transmitted, MSM"]
 pub mod txpfu;
-#[doc = "txscl (r) register accessor: an alias for `Reg<TXSCL_SPEC>`"]
+#[doc = "txscl (r) register accessor: Single Collision frames transmitted OK, LSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`txscl::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`txscl`]
+module"]
 pub type TXSCL = crate::Reg<txscl::TXSCL_SPEC>;
 #[doc = "Single Collision frames transmitted OK, LSM"]
 pub mod txscl;
-#[doc = "txscu (r) register accessor: an alias for `Reg<TXSCU_SPEC>`"]
+#[doc = "txscu (r) register accessor: Single Collision frames transmitted OK, MSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`txscu::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`txscu`]
+module"]
 pub type TXSCU = crate::Reg<txscu::TXSCU_SPEC>;
 #[doc = "Single Collision frames transmitted OK, MSM"]
 pub mod txscu;
-#[doc = "txmcl (r) register accessor: an alias for `Reg<TXMCL_SPEC>`"]
+#[doc = "txmcl (r) register accessor: Multiple Collision Frames Transmitted OK, LSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`txmcl::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`txmcl`]
+module"]
 pub type TXMCL = crate::Reg<txmcl::TXMCL_SPEC>;
 #[doc = "Multiple Collision Frames Transmitted OK, LSM"]
 pub mod txmcl;
-#[doc = "txmcu (r) register accessor: an alias for `Reg<TXMCU_SPEC>`"]
+#[doc = "txmcu (r) register accessor: Multiple Collision frames Transmitted OK, MSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`txmcu::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`txmcu`]
+module"]
 pub type TXMCU = crate::Reg<txmcu::TXMCU_SPEC>;
 #[doc = "Multiple Collision frames Transmitted OK, MSM"]
 pub mod txmcu;
-#[doc = "txdefl (r) register accessor: an alias for `Reg<TXDEFL_SPEC>`"]
+#[doc = "txdefl (r) register accessor: Deferred Tx Frames, LSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`txdefl::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`txdefl`]
+module"]
 pub type TXDEFL = crate::Reg<txdefl::TXDEFL_SPEC>;
 #[doc = "Deferred Tx Frames, LSM"]
 pub mod txdefl;
-#[doc = "txdefu (r) register accessor: an alias for `Reg<TXDEFU_SPEC>`"]
+#[doc = "txdefu (r) register accessor: Deferred Tx Frames, MSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`txdefu::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`txdefu`]
+module"]
 pub type TXDEFU = crate::Reg<txdefu::TXDEFU_SPEC>;
 #[doc = "Deferred Tx Frames, MSM"]
 pub mod txdefu;
-#[doc = "txltcl (r) register accessor: an alias for `Reg<TXLTCL_SPEC>`"]
+#[doc = "txltcl (r) register accessor: Frames transmitted with late Collisions, LSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`txltcl::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`txltcl`]
+module"]
 pub type TXLTCL = crate::Reg<txltcl::TXLTCL_SPEC>;
 #[doc = "Frames transmitted with late Collisions, LSM"]
 pub mod txltcl;
-#[doc = "txltcu (r) register accessor: an alias for `Reg<TXLTCU_SPEC>`"]
+#[doc = "txltcu (r) register accessor: Frames transmitted with late Collisions, MSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`txltcu::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`txltcu`]
+module"]
 pub type TXLTCU = crate::Reg<txltcu::TXLTCU_SPEC>;
 #[doc = "Frames transmitted with late Collisions, MSM"]
 pub mod txltcu;
-#[doc = "txacel (r) register accessor: an alias for `Reg<TXACEL_SPEC>`"]
+#[doc = "txacel (r) register accessor: Frames aborted with excessive Collisions, LSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`txacel::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`txacel`]
+module"]
 pub type TXACEL = crate::Reg<txacel::TXACEL_SPEC>;
 #[doc = "Frames aborted with excessive Collisions, LSM"]
 pub mod txacel;
-#[doc = "txaceu (r) register accessor: an alias for `Reg<TXACEU_SPEC>`"]
+#[doc = "txaceu (r) register accessor: Frames aborted with excessive Collisions, MSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`txaceu::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`txaceu`]
+module"]
 pub type TXACEU = crate::Reg<txaceu::TXACEU_SPEC>;
 #[doc = "Frames aborted with excessive Collisions, MSM"]
 pub mod txaceu;
-#[doc = "txedefl (r) register accessor: an alias for `Reg<TXEDEFL_SPEC>`"]
+#[doc = "txedefl (r) register accessor: Transmit Frames with excessive Defferal, LSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`txedefl::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`txedefl`]
+module"]
 pub type TXEDEFL = crate::Reg<txedefl::TXEDEFL_SPEC>;
 #[doc = "Transmit Frames with excessive Defferal, LSM"]
 pub mod txedefl;
-#[doc = "txedefu (r) register accessor: an alias for `Reg<TXEDEFU_SPEC>`"]
+#[doc = "txedefu (r) register accessor: Transmit Frames with excessive Defferal, MSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`txedefu::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`txedefu`]
+module"]
 pub type TXEDEFU = crate::Reg<txedefu::TXEDEFU_SPEC>;
 #[doc = "Transmit Frames with excessive Defferal, MSM"]
 pub mod txedefu;
-#[doc = "rxaerl (r) register accessor: an alias for `Reg<RXAERL_SPEC>`"]
+#[doc = "rxaerl (r) register accessor: Frames received with alignment errors, LSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`rxaerl::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`rxaerl`]
+module"]
 pub type RXAERL = crate::Reg<rxaerl::RXAERL_SPEC>;
 #[doc = "Frames received with alignment errors, LSM"]
 pub mod rxaerl;
-#[doc = "rxaeru (r) register accessor: an alias for `Reg<RXAERU_SPEC>`"]
+#[doc = "rxaeru (r) register accessor: Frames received with alignment errors, MSM\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`rxaeru::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`rxaeru`]
+module"]
 pub type RXAERU = crate::Reg<rxaeru::RXAERU_SPEC>;
 #[doc = "Frames received with alignment errors, MSM"]
 pub mod rxaeru;
-#[doc = "trcw0 (rw) register accessor: an alias for `Reg<TRCW0_SPEC>`"]
+#[doc = "trcw0 (rw) register accessor: TEMAC Receive Configuration Word 0\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`trcw0::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`trcw0::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`trcw0`]
+module"]
 pub type TRCW0 = crate::Reg<trcw0::TRCW0_SPEC>;
 #[doc = "TEMAC Receive Configuration Word 0"]
 pub mod trcw0;
-#[doc = "trcw1 (rw) register accessor: an alias for `Reg<TRCW1_SPEC>`"]
+#[doc = "trcw1 (rw) register accessor: TEMAC Receive Configuration Word 1\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`trcw1::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`trcw1::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`trcw1`]
+module"]
 pub type TRCW1 = crate::Reg<trcw1::TRCW1_SPEC>;
 #[doc = "TEMAC Receive Configuration Word 1"]
 pub mod trcw1;
-#[doc = "ttc (rw) register accessor: an alias for `Reg<TTC_SPEC>`"]
+#[doc = "ttc (rw) register accessor: TEMAC Transmitter Configuration\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`ttc::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`ttc::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`ttc`]
+module"]
 pub type TTC = crate::Reg<ttc::TTC_SPEC>;
 #[doc = "TEMAC Transmitter Configuration"]
 pub mod ttc;
-#[doc = "tfcc (rw) register accessor: an alias for `Reg<TFCC_SPEC>`"]
+#[doc = "tfcc (rw) register accessor: TEMAC Flow Control Configuration\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`tfcc::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`tfcc::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`tfcc`]
+module"]
 pub type TFCC = crate::Reg<tfcc::TFCC_SPEC>;
 #[doc = "TEMAC Flow Control Configuration"]
 pub mod tfcc;
-#[doc = "emmc (rw) register accessor: an alias for `Reg<EMMC_SPEC>`"]
+#[doc = "emmc (rw) register accessor: EMAC mode configuration\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`emmc::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`emmc::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`emmc`]
+module"]
 pub type EMMC = crate::Reg<emmc::EMMC_SPEC>;
 #[doc = "EMAC mode configuration"]
 pub mod emmc;
-#[doc = "rxfc (rw) register accessor: an alias for `Reg<RXFC_SPEC>`"]
+#[doc = "rxfc (rw) register accessor: RX Max Frame Configuration\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`rxfc::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`rxfc::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`rxfc`]
+module"]
 pub type RXFC = crate::Reg<rxfc::RXFC_SPEC>;
 #[doc = "RX Max Frame Configuration"]
 pub mod rxfc;
-#[doc = "txfc (rw) register accessor: an alias for `Reg<TXFC_SPEC>`"]
+#[doc = "txfc (rw) register accessor: TX Max Frame Configuration\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`txfc::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`txfc::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`txfc`]
+module"]
 pub type TXFC = crate::Reg<txfc::TXFC_SPEC>;
 #[doc = "TX Max Frame Configuration"]
 pub mod txfc;
-#[doc = "ttac (rw) register accessor: an alias for `Reg<TTAC_SPEC>`"]
+#[doc = "ttac (rw) register accessor: TX Timestamp Adjust Control\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`ttac::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`ttac::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`ttac`]
+module"]
 pub type TTAC = crate::Reg<ttac::TTAC_SPEC>;
 #[doc = "TX Timestamp Adjust Control"]
 pub mod ttac;
-#[doc = "phyc (r) register accessor: an alias for `Reg<PHYC_SPEC>`"]
+#[doc = "phyc (r) register accessor: RGMII/SGMII configuration\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`phyc::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`phyc`]
+module"]
 pub type PHYC = crate::Reg<phyc::PHYC_SPEC>;
 #[doc = "RGMII/SGMII configuration"]
 pub mod phyc;
-#[doc = "id (r) register accessor: an alias for `Reg<ID_SPEC>`"]
+#[doc = "id (r) register accessor: Identification\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`id::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`id`]
+module"]
 pub type ID = crate::Reg<id::ID_SPEC>;
 #[doc = "Identification"]
 pub mod id;
-#[doc = "ar (r) register accessor: an alias for `Reg<AR_SPEC>`"]
+#[doc = "ar (r) register accessor: Ability Register\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`ar::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`ar`]
+module"]
 pub type AR = crate::Reg<ar::AR_SPEC>;
 #[doc = "Ability Register"]
 pub mod ar;
-#[doc = "mdiomc (rw) register accessor: an alias for `Reg<MDIOMC_SPEC>`"]
+#[doc = "mdiomc (rw) register accessor: MDIO Setup\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`mdiomc::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`mdiomc::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mdiomc`]
+module"]
 pub type MDIOMC = crate::Reg<mdiomc::MDIOMC_SPEC>;
 #[doc = "MDIO Setup"]
 pub mod mdiomc;
-#[doc = "mdiomcr (rw) register accessor: an alias for `Reg<MDIOMCR_SPEC>`"]
+#[doc = "mdiomcr (rw) register accessor: MDIO Control\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`mdiomcr::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`mdiomcr::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mdiomcr`]
+module"]
 pub type MDIOMCR = crate::Reg<mdiomcr::MDIOMCR_SPEC>;
 #[doc = "MDIO Control"]
 pub mod mdiomcr;
-#[doc = "mdiomwd (rw) register accessor: an alias for `Reg<MDIOMWD_SPEC>`"]
+#[doc = "mdiomwd (rw) register accessor: MDIO Write Data\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`mdiomwd::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`mdiomwd::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mdiomwd`]
+module"]
 pub type MDIOMWD = crate::Reg<mdiomwd::MDIOMWD_SPEC>;
 #[doc = "MDIO Write Data"]
 pub mod mdiomwd;
-#[doc = "mdiomrd (rw) register accessor: an alias for `Reg<MDIOMRD_SPEC>`"]
+#[doc = "mdiomrd (rw) register accessor: MDIO Read Data\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`mdiomrd::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`mdiomrd::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mdiomrd`]
+module"]
 pub type MDIOMRD = crate::Reg<mdiomrd::MDIOMRD_SPEC>;
 #[doc = "MDIO Read Data"]
 pub mod mdiomrd;
-#[doc = "mdiomis (rw) register accessor: an alias for `Reg<MDIOMIS_SPEC>`"]
+#[doc = "mdiomis (rw) register accessor: MII Management Interrupt Status\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`mdiomis::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`mdiomis::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mdiomis`]
+module"]
 pub type MDIOMIS = crate::Reg<mdiomis::MDIOMIS_SPEC>;
 #[doc = "MII Management Interrupt Status"]
 pub mod mdiomis;
-#[doc = "mdiomip (r) register accessor: an alias for `Reg<MDIOMIP_SPEC>`"]
+#[doc = "mdiomip (r) register accessor: MII Management Interrupt Pending\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`mdiomip::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mdiomip`]
+module"]
 pub type MDIOMIP = crate::Reg<mdiomip::MDIOMIP_SPEC>;
 #[doc = "MII Management Interrupt Pending"]
 pub mod mdiomip;
-#[doc = "mdiomie (rw) register accessor: an alias for `Reg<MDIOMIE_SPEC>`"]
+#[doc = "mdiomie (rw) register accessor: MII Management Interrupt Enable\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`mdiomie::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`mdiomie::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mdiomie`]
+module"]
 pub type MDIOMIE = crate::Reg<mdiomie::MDIOMIE_SPEC>;
 #[doc = "MII Management Interrupt Enable"]
 pub mod mdiomie;
-#[doc = "mdiomic (rw) register accessor: an alias for `Reg<MDIOMIC_SPEC>`"]
+#[doc = "mdiomic (rw) register accessor: MII Management Interrupt Clear\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`mdiomic::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`mdiomic::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mdiomic`]
+module"]
 pub type MDIOMIC = crate::Reg<mdiomic::MDIOMIC_SPEC>;
 #[doc = "MII Management Interrupt Clear"]
 pub mod mdiomic;
-#[doc = "uaw0 (rw) register accessor: an alias for `Reg<UAW0_SPEC>`"]
+#[doc = "uaw0 (rw) register accessor: Unicast Address Word 0 (UAW0)\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`uaw0::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`uaw0::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`uaw0`]
+module"]
 pub type UAW0 = crate::Reg<uaw0::UAW0_SPEC>;
 #[doc = "Unicast Address Word 0 (UAW0)"]
 pub mod uaw0;
-#[doc = "uaw1 (rw) register accessor: an alias for `Reg<UAW1_SPEC>`"]
+#[doc = "uaw1 (rw) register accessor: Unicast Address Word 1 (UAW0)\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`uaw1::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`uaw1::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`uaw1`]
+module"]
 pub type UAW1 = crate::Reg<uaw1::UAW1_SPEC>;
 #[doc = "Unicast Address Word 1 (UAW0)"]
 pub mod uaw1;
-#[doc = "fmi (rw) register accessor: an alias for `Reg<FMI_SPEC>`"]
+#[doc = "fmi (rw) register accessor: Filter Mask Index\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`fmi::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`fmi::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`fmi`]
+module"]
 pub type FMI = crate::Reg<fmi::FMI_SPEC>;
 #[doc = "Filter Mask Index"]
 pub mod fmi;
-#[doc = "af0 (rw) register accessor: an alias for `Reg<AF0_SPEC>`"]
+#[doc = "af0 (rw) register accessor: Address Filter 0\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`af0::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`af0::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`af0`]
+module"]
 pub type AF0 = crate::Reg<af0::AF0_SPEC>;
 #[doc = "Address Filter 0"]
 pub mod af0;
-#[doc = "af1 (rw) register accessor: an alias for `Reg<AF1_SPEC>`"]
+#[doc = "af1 (rw) register accessor: Address Filter 1\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`af1::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`af1::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`af1`]
+module"]
 pub type AF1 = crate::Reg<af1::AF1_SPEC>;
 #[doc = "Address Filter 1"]
 pub mod af1;
-#[doc = "txvlandata (rw) register accessor: an alias for `Reg<TXVLANDATA_SPEC>`"]
+#[doc = "txvlandata (rw) register accessor: TX VLAN data table address\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`txvlandata::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`txvlandata::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`txvlandata`]
+module"]
 pub type TXVLANDATA = crate::Reg<txvlandata::TXVLANDATA_SPEC>;
 #[doc = "TX VLAN data table address"]
 pub mod txvlandata;
-#[doc = "rxvlandata (rw) register accessor: an alias for `Reg<RXVLANDATA_SPEC>`"]
+#[doc = "rxvlandata (rw) register accessor: RX VLAN data table address\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`rxvlandata::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`rxvlandata::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`rxvlandata`]
+module"]
 pub type RXVLANDATA = crate::Reg<rxvlandata::RXVLANDATA_SPEC>;
 #[doc = "RX VLAN data table address"]
 pub mod rxvlandata;
-#[doc = "mcasttable (rw) register accessor: an alias for `Reg<MCASTTABLE_SPEC>`"]
+#[doc = "mcasttable (rw) register accessor: Multicast table address\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`mcasttable::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`mcasttable::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mcasttable`]
+module"]
 pub type MCASTTABLE = crate::Reg<mcasttable::MCASTTABLE_SPEC>;
 #[doc = "Multicast table address"]
 pub mod mcasttable;
