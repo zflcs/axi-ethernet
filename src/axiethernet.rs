@@ -362,7 +362,6 @@ impl AxiEthernet {
     pub fn can_receive(&mut self) -> bool {
         let res = self.rx_count < self.rx_frame_count();
         if res {
-            log::debug!("rx_count {}", self.rx_count);
             self.rx_count += 1;
         }
         res
