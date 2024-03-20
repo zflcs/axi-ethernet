@@ -1,7 +1,6 @@
 #![no_std]
 #![allow(unused)]
 
-
 mod hw;
 
 mod axiethernet;

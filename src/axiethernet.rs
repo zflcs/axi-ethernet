@@ -1,21 +1,20 @@
-use log::*;
 use crate::hw::*;
-use axi_ethernet_pac::axi_ethernet;
 use crate::phy_ksz9031rnx::*;
-
+use axi_ethernet_pac::axi_ethernet;
+use log::*;
 
 #[derive(Debug, PartialEq)]
 pub enum AxiDevType {
     FIFO,
     DMA,
-    MCDMA
+    MCDMA,
 }
 
 #[derive(Debug, Clone, PartialEq)]
 pub enum TemacType {
     MBPS10_100,
     MBPS10_100_1000,
-    HARD,   //  Hard Temac Core for Virtex-6
+    HARD, //  Hard Temac Core for Virtex-6
 }
 
 /// This typedef contains configuration information for a Axi Ethernet device.'
@@ -23,14 +22,14 @@ pub struct AxiEthernetConfig {
     // /// DeviceId is the unique ID  of the device
     // pub device_id: usize,
     /// Temac Type can have 3 possible values. They are
-	/// 0 for SoftTemac at 10/100 Mbps, 1 for SoftTemac
-	/// at 10/100/1000 Mbps and 2 for Vitex6 Hard Temac
+    /// 0 for SoftTemac at 10/100 Mbps, 1 for SoftTemac
+    /// at 10/100/1000 Mbps and 2 for Vitex6 Hard Temac
     pub temac_type: TemacType,
     /// TxCsum indicates that the device has checksum
-	/// offload on the Tx channel or not.
+    /// offload on the Tx channel or not.
     pub tx_csum: usize,
     /// RxCsum indicates that the device has checksum
-	/// offload on the Rx channel or not.
+    /// offload on the Rx channel or not.
     pub rx_csum: usize,
     /// PhyType indicates which type of PHY interface is used (MII, GMII, RGMII, etc.
     pub phy_type: PhyType,
@@ -63,11 +62,11 @@ pub struct AxiEthernetConfig {
     /// Axi Ethernet interrupt ID
     pub temac_intr: usize,
     /// AxiDevType is the type of device attached to the
-	/// Axi Ethernet's AXI4-Stream interface.
+    /// Axi Ethernet's AXI4-Stream interface.
     pub axi_dev_type: AxiDevType,
     /// AxiDevBaseAddress is the base address of
-	/// the device attached to the Axi Ethernet's
-	/// AXI4-Stream interface.
+    /// the device attached to the Axi Ethernet's
+    /// AXI4-Stream interface.
     pub axi_dev_base_address: usize,
     /// AxiFifoIntr interrupt ID (unused if DMA)
     pub axi_fifo_intr: usize,
@@ -80,7 +79,7 @@ pub struct AxiEthernetConfig {
     /// Axi MCDMA Rx interrupt ID (unused if AXI DMA or FIFO)
     pub axi_mcdma_rx_intr: [usize; 16],
     /// AXI MCDMA TX interrupt ID (unused if AXIX DMA or FIFO)
-    pub axi_mcdma_tx_intr: [usize; 16]
+    pub axi_mcdma_tx_intr: [usize; 16],
 }
 
 impl AxiEthernetConfig {
@@ -116,24 +115,23 @@ impl AxiEthernetConfig {
     }
 }
 
-
 /// struct XAxiEthernet is the type for Axi Ethernet driver instance data.
 /// The calling code is required to use a unique instance of this structure
 /// for every Axi Ethernet device used in the system. A reference to a structure
 /// of this type is then passed to the driver API functions.
 pub struct AxiEthernet {
-    /// Hardware configuration 
-	pub config: AxiEthernetConfig, 
+    /// Hardware configuration
+    pub config: AxiEthernetConfig,
     /// Device mmio base_address
     pub base_address: usize,
     /// Device is currently started
-	pub is_started: bool,
+    pub is_started: bool,
     /// Device is initialized and ready
-	pub is_ready: bool,
+    pub is_ready: bool,
     /// Current options word
-	pub options: usize,	
+    pub options: usize,
     /// Internal driver flags
-	pub flags: usize,
+    pub flags: usize,
     /// phy_addr
     pub phy_addr: u32,
     pub link_status: LinkStatus,
@@ -144,13 +142,13 @@ pub struct AxiEthernet {
 /// basic field access
 impl AxiEthernet {
     pub fn new(base_address: usize, dma_base_address: usize) -> Self {
-        Self { 
+        Self {
             config: AxiEthernetConfig::default(dma_base_address),
-            base_address, 
-            is_started: false, 
-            is_ready: true, 
-            options: XAE_DEFAULT_OPTIONS, 
-            flags: 0, 
+            base_address,
+            is_started: false,
+            is_ready: true,
+            options: XAE_DEFAULT_OPTIONS,
+            flags: 0,
             phy_addr: 0,
             link_status: LinkStatus::EthLinkDown,
             rx_count: 0,
@@ -275,7 +273,9 @@ impl AxiEthernet {
     }
 
     pub fn clear_intr(&self, mask: usize) {
-        self.hardware().is.write(|w| unsafe { w.bits((mask & 0x3f) as u32) });
+        self.hardware()
+            .is
+            .write(|w| unsafe { w.bits((mask & 0x3f) as u32) });
     }
 
     pub fn clear_tx_cmplt(&self) {
@@ -365,8 +365,7 @@ impl AxiEthernet {
             self.rx_count += 1;
         }
         res
-    } 
-
+    }
 }
 
 /// control function
@@ -392,8 +391,8 @@ impl AxiEthernet {
         fmi |= entry as u32;
         self.hardware().fmi.write(|w| unsafe { w.bits(fmi) });
         // trace!("Setting MAT entry: {}", entry);
-        self.hardware().af0.write(|w| unsafe { w.bits(af0)});
-        self.hardware().af1.write(|w| unsafe { w.bits(af1)});
+        self.hardware().af0.write(|w| unsafe { w.bits(af0) });
+        self.hardware().af1.write(|w| unsafe { w.bits(af1) });
         return 0;
     }
 
@@ -428,8 +427,8 @@ impl AxiEthernet {
         fmi |= entry as u32;
         self.hardware().fmi.write(|w| unsafe { w.bits(fmi) });
         // Clear the entry by writing 0:0:0:0:0:0 to it
-        self.hardware().af0.write(|w| unsafe { w.bits(0)});
-        self.hardware().af1.write(|w| unsafe { w.bits(0)});
+        self.hardware().af0.write(|w| unsafe { w.bits(0) });
+        self.hardware().af1.write(|w| unsafe { w.bits(0) });
         // trace!("XAxiEthernet_MulticastClear: returning SUCCESS");
         return 0;
     }
@@ -479,7 +478,9 @@ impl AxiEthernet {
             // trace!("XAxiEthernet_SendPausePacket:returning DEVICE_IS_STOPPED");
             return -1;
         }
-        self.hardware().tpf.write(|w| unsafe { w.tpfv().bits(pause_value) });
+        self.hardware()
+            .tpf
+            .write(|w| unsafe { w.tpfv().bits(pause_value) });
         // trace!("XAxiEthernet_SendPausePacket: returning SUCCESS");
         return 0;
     }
@@ -507,7 +508,12 @@ impl AxiEthernet {
         return 0;
     }
 
-    pub fn get_rgmii_status(&self, speed: &mut usize, is_full_duplex: &mut bool, is_link: &mut bool) -> isize {
+    pub fn get_rgmii_status(
+        &self,
+        speed: &mut usize,
+        is_full_duplex: &mut bool,
+        is_link: &mut bool,
+    ) -> isize {
         assert!(self.is_ready);
         // trace!("XAxiEthernet_GetRgmiiStatus");
         let phy_type = self.get_phy_interface();
@@ -567,9 +573,13 @@ impl AxiEthernet {
             target_value = (tpid_reg & 0xFFFF) | (tpid as u32);
         }
         if entry < 2 {
-            self.hardware().tpid0.write(|w| unsafe { w.bits(target_value) });
+            self.hardware()
+                .tpid0
+                .write(|w| unsafe { w.bits(target_value) });
         } else {
-            self.hardware().tpid1.write(|w| unsafe { w.bits(target_value) });
+            self.hardware()
+                .tpid1
+                .write(|w| unsafe { w.bits(target_value) });
         }
         // trace!("XAxiEthernet_SetTpid: returning SUCCESS");
         return 0;
@@ -604,9 +614,13 @@ impl AxiEthernet {
             target_value = tpid_reg & 0xFFFF;
         }
         if entry < 2 {
-            self.hardware().tpid0.write(|w| unsafe { w.bits(target_value) });
+            self.hardware()
+                .tpid0
+                .write(|w| unsafe { w.bits(target_value) });
         } else {
-            self.hardware().tpid1.write(|w| unsafe { w.bits(target_value) });
+            self.hardware()
+                .tpid1
+                .write(|w| unsafe { w.bits(target_value) });
         }
         // trace!("XAxiEthernet_ClearTpid: returning SUCCESS");
         return 0;
@@ -647,8 +661,16 @@ impl AxiEthernet {
         // trace!("XAxiEthernet_SetVTagMode");
         // Program HW
         match dir {
-            Director::TX => { self.hardware().raf.write(|w| unsafe { w.tx_vtag_mode().bits(mode as _) }); },
-            Director::RX => { self.hardware().raf.write(|w| unsafe { w.rx_vtag_mode().bits(mode as _) }); },
+            Director::TX => {
+                self.hardware()
+                    .raf
+                    .write(|w| unsafe { w.tx_vtag_mode().bits(mode as _) });
+            }
+            Director::RX => {
+                self.hardware()
+                    .raf
+                    .write(|w| unsafe { w.rx_vtag_mode().bits(mode as _) });
+            }
         }
         // trace!("XAxiEthernet_SetVTagMode: returning SUCCESS");
         return 0;
@@ -658,8 +680,8 @@ impl AxiEthernet {
         assert!(self.is_ready);
         // trace!("XAxiEthernet_GetVTagMode");
         match dir {
-            Director::TX => { *mode = self.hardware().raf.read().tx_vtag_mode().bits().into() },
-            Director::RX => { *mode = self.hardware().raf.read().rx_vtag_mode().bits().into() },
+            Director::TX => *mode = self.hardware().raf.read().tx_vtag_mode().bits().into(),
+            Director::RX => *mode = self.hardware().raf.read().rx_vtag_mode().bits().into(),
         }
         // trace!("XAxiEthernet_GetVTagMode: done");
     }
@@ -683,8 +705,16 @@ impl AxiEthernet {
         // trace!("XAxiEthernet_SetStripMode");
         // Program HW
         match dir {
-            Director::TX => { self.hardware().raf.write(|w| unsafe { w.tx_vstrp_mode().bits(mode as _) }); },
-            Director::RX => { self.hardware().raf.write(|w| unsafe { w.rx_vstrp_mode().bits(mode as _) }); },
+            Director::TX => {
+                self.hardware()
+                    .raf
+                    .write(|w| unsafe { w.tx_vstrp_mode().bits(mode as _) });
+            }
+            Director::RX => {
+                self.hardware()
+                    .raf
+                    .write(|w| unsafe { w.rx_vstrp_mode().bits(mode as _) });
+            }
         }
         // trace!("XAxiEthernet_SetVTagMode: returning SUCCESS");
         return 0;
@@ -694,8 +724,8 @@ impl AxiEthernet {
         assert!(self.is_ready);
         // trace!("XAxiEthernet_GetVStripMode");
         match dir {
-            Director::TX => { *mode = self.hardware().raf.read().tx_vstrp_mode().bits().into() },
-            Director::RX => { *mode = self.hardware().raf.read().rx_vstrp_mode().bits().into() },
+            Director::TX => *mode = self.hardware().raf.read().tx_vstrp_mode().bits().into(),
+            Director::RX => *mode = self.hardware().raf.read().rx_vstrp_mode().bits().into(),
         }
         // trace!("XAxiEthernet_GetVStripMode: done");
     }
@@ -721,8 +751,16 @@ impl AxiEthernet {
         // trace!("XAxiEthernet_SetVTagValue");
         // Program HW
         match dir {
-            Director::TX => { self.hardware().ttag.write(|w| unsafe { w.bits(vtag_value) }); },
-            Director::RX => { self.hardware().rtag.write(|w| unsafe { w.bits(vtag_value) }); },
+            Director::TX => {
+                self.hardware()
+                    .ttag
+                    .write(|w| unsafe { w.bits(vtag_value) });
+            }
+            Director::RX => {
+                self.hardware()
+                    .rtag
+                    .write(|w| unsafe { w.bits(vtag_value) });
+            }
         }
         // trace!("XAxiEthernet_SetVTagValue:returning SUCCESS");
         return 0;
@@ -732,13 +770,20 @@ impl AxiEthernet {
         assert!(self.is_ready);
         // trace!("XAxiEthernet_GetVTagValue");
         match dir {
-            Director::TX => { *vtag_value = self.hardware().ttag.read().bits() },
-            Director::RX => { *vtag_value = self.hardware().rtag.read().bits() },
+            Director::TX => *vtag_value = self.hardware().ttag.read().bits(),
+            Director::RX => *vtag_value = self.hardware().rtag.read().bits(),
         }
         // trace!("XAxiEthernet_GetVTagValue: done");
     }
 
-    pub fn set_vid_table(&self, entry: usize, vid: usize, strip: usize, tag: usize, dir: Director) -> isize {
+    pub fn set_vid_table(
+        &self,
+        entry: usize,
+        vid: usize,
+        strip: usize,
+        tag: usize,
+        dir: Director,
+    ) -> isize {
         assert!(self.is_ready);
         assert!(entry < XAE_MAX_VLAN_TABL_ENTRY);
         assert!(vid < XAE_MAX_VLAN_TABL_ENTRY);
@@ -755,22 +800,59 @@ impl AxiEthernet {
             return -1;
         }
         // trace!("XAxiEthernet_SetVidTable");
-        let value = (vid << XAE_VLAN_TABL_VID_START_OFFSET) | (strip << XAE_VLAN_TABL_STRP_STRT_OFFSET) | tag; 
+        let value = (vid << XAE_VLAN_TABL_VID_START_OFFSET)
+            | (strip << XAE_VLAN_TABL_STRP_STRT_OFFSET)
+            | tag;
         match dir {
-            Director::TX => { unsafe { *(self.hardware().txvlandata.as_ptr().add(entry << XAE_VLAN_TABL_VID_START_OFFSET)) = value as u32 }; },
-            Director::RX => { unsafe { *(self.hardware().rxvlandata.as_ptr().add(entry << XAE_VLAN_TABL_VID_START_OFFSET)) = value as u32 }; },
+            Director::TX => {
+                unsafe {
+                    *(self
+                        .hardware()
+                        .txvlandata
+                        .as_ptr()
+                        .add(entry << XAE_VLAN_TABL_VID_START_OFFSET)) = value as u32
+                };
+            }
+            Director::RX => {
+                unsafe {
+                    *(self
+                        .hardware()
+                        .rxvlandata
+                        .as_ptr()
+                        .add(entry << XAE_VLAN_TABL_VID_START_OFFSET)) = value as u32
+                };
+            }
         }
         // trace!("XAxiEthernet_SetVidTable: returning SUCCESS");
         return 0;
     }
 
-    pub fn get_vid_table(&self, entry: usize, vid: &mut usize, strip: &mut usize, tag: &mut usize, dir: Director) {
+    pub fn get_vid_table(
+        &self,
+        entry: usize,
+        vid: &mut usize,
+        strip: &mut usize,
+        tag: &mut usize,
+        dir: Director,
+    ) {
         assert!(self.is_ready);
         assert!(entry < XAE_MAX_VLAN_TABL_ENTRY);
         // trace!("XAxiEthernet_GetVidTable");
         let reg = match dir {
-            Director::TX => { unsafe { *(self.hardware().txvlandata.as_ptr().add(entry << XAE_VLAN_TABL_VID_START_OFFSET)) } },
-            Director::RX => { unsafe { *(self.hardware().rxvlandata.as_ptr().add(entry << XAE_VLAN_TABL_VID_START_OFFSET)) } },
+            Director::TX => unsafe {
+                *(self
+                    .hardware()
+                    .txvlandata
+                    .as_ptr()
+                    .add(entry << XAE_VLAN_TABL_VID_START_OFFSET))
+            },
+            Director::RX => unsafe {
+                *(self
+                    .hardware()
+                    .rxvlandata
+                    .as_ptr()
+                    .add(entry << XAE_VLAN_TABL_VID_START_OFFSET))
+            },
         };
         *vid = (reg >> XAE_VLAN_TABL_VID_START_OFFSET) as usize;
         *strip = (reg >> XAE_VLAN_TABL_STRP_STRT_OFFSET) as usize & XAE_VLAN_TABL_STRP_ENTRY_MASK;
@@ -791,7 +873,11 @@ impl AxiEthernet {
             // trace!("XAxiEthernet_AddExtMulticastGroup: returning DEVICE_NO_FEATURE");
             return -1;
         }
-        if (address[0] != 0x01) || (address[1] != 0x00) || (address[2] != 0x5e) || ((address[3] & 0x80) != 0x0) {
+        if (address[0] != 0x01)
+            || (address[1] != 0x00)
+            || (address[2] != 0x5e)
+            || ((address[3] & 0x80) != 0x0)
+        {
             // trace!("XAxiEthernet_AddExtMulticastGroup: returning DEVICE_INVALID_PARAM");
             return -1;
         }
@@ -817,7 +903,11 @@ impl AxiEthernet {
             // trace!("XAxiEthernet_ClearExtMulticastGroup: returning DEVICE_NO_FEATURE");
             return -1;
         }
-        if (address[0] != 0x01) || (address[1] != 0x00) || (address[2] != 0x5e) || ((address[3] & 0x80) != 0x0) {
+        if (address[0] != 0x01)
+            || (address[1] != 0x00)
+            || (address[2] != 0x5e)
+            || ((address[3] & 0x80) != 0x0)
+        {
             // trace!("XAxiEthernet_ClearExtMulticastGroup: returning DEVICE_INVALID_PARAM");
             return -1;
         }
@@ -833,7 +923,11 @@ impl AxiEthernet {
     pub fn get_ext_mukticast_group(&self, address: &[u8; 6]) -> bool {
         assert!(self.is_ready);
         // trace!("XAxiEthernet_GetExtMulticastGroup");
-        if (address[0] != 0x01) || (address[1] != 0x00) || (address[2] != 0x5e) || ((address[3] & 0x80) != 0x0) {
+        if (address[0] != 0x01)
+            || (address[1] != 0x00)
+            || (address[2] != 0x5e)
+            || ((address[3] & 0x80) != 0x0)
+        {
             // trace!("XAxiEthernet_GetExtMulticastGroup: returning DEVICE_INVALID_PARAM");
             return false;
         }
@@ -923,37 +1017,36 @@ impl AxiEthernet {
     pub fn reset(&mut self) {
         assert!(self.is_ready);
         // Add delay of 1 sec to give enough time to the core to come
-	    // out of reset. Till the time core comes out of reset none of the
-	    // AxiEthernet registers are accessible including the IS register.
+        // out of reset. Till the time core comes out of reset none of the
+        // AxiEthernet registers are accessible including the IS register.
         let mut time_out_loops = XAE_LOOPS_TO_COME_OUT_OF_RST as isize;
         while time_out_loops > 0 {
             time_out_loops -= 1;
         }
         // Check the status of the MgtRdy bit in the interrupt status
-	    // registers. This must be done to allow the MGT clock to become stable
-	    // for the Sgmii and 1000BaseX PHY interfaces. No other register reads
-	    // will be valid until this bit is valid.
-	    // The bit is always a 1 for all other PHY interfaces.
+        // registers. This must be done to allow the MGT clock to become stable
+        // for the Sgmii and 1000BaseX PHY interfaces. No other register reads
+        // will be valid until this bit is valid.
+        // The bit is always a 1 for all other PHY interfaces.
         // time_out_loops = XAE_LOOPS_TO_COME_OUT_OF_RST as isize;
-        // loop {
-        //     if self.hardware().is.read().mgt_rdy().bit() {
-        //         break;
-        //     } else {
-        //         time_out_loops -= 1;
-        //         if time_out_loops < 0 {
-        //             break;
-        //         }
-        //     }
-        // }
-        // if time_out_loops == -1 {
-        //     // trace!("XAxiEthernet_Reset: return NO_MGTPDY, TIME_OUT");
-        //     return;
-        // }
-        // trace!("XAxiEthernet_Reset");
+        loop {
+            if self.hardware().is.read().mgt_rdy().bit() {
+                break;
+            } else {
+                time_out_loops -= 1;
+                if time_out_loops < 0 {
+                    break;
+                }
+            }
+        }
+        if time_out_loops == -1 {
+            // trace!("XAxiEthernet_Reset: return NO_MGTPDY, TIME_OUT");
+            return;
+        }
+        trace!("XAxiEthernet_Reset");
         self.stop();
         self.options = XAE_DEFAULT_OPTIONS;
         self.init_hw();
-
     }
 
     pub fn init_hw(&mut self) {
@@ -967,10 +1060,12 @@ impl AxiEthernet {
             self.hardware().is.write(|w| w.rx_rject().bit(true));
         }
         // Sync default options with HW but leave receiver and transmitter
-	    // disabled. They get enabled with XAxiEthernet_Start() if
-	    // XAE_TRANSMITTER_ENABLE_OPTION and XAE_RECEIVER_ENABLE_OPTION
-	    // are set
-        self.set_options(self.options & !(XAE_TRANSMITTER_ENABLE_OPTION | XAE_RECEIVER_ENABLE_OPTION));
+        // disabled. They get enabled with XAxiEthernet_Start() if
+        // XAE_TRANSMITTER_ENABLE_OPTION and XAE_RECEIVER_ENABLE_OPTION
+        // are set
+        self.set_options(
+            self.options & !(XAE_TRANSMITTER_ENABLE_OPTION | XAE_RECEIVER_ENABLE_OPTION),
+        );
         self.clear_options(!self.options);
         // Set default MDIO divisor
         self.set_phy_mdio_divisor(XAE_MDIO_DIV_DFT as u8);
@@ -992,22 +1087,30 @@ impl AxiEthernet {
         // Check to see if it is in extended/new mode.
         if !self.is_ext_func_cap() {
             // Set the MAC bits [31:0] in UAW0. Having Aptr be unsigned type prevents the following
-		    // operations from sign extending.
-            self.hardware().uaw0.write(|w| unsafe { w.bits(mac_address) });
+            // operations from sign extending.
+            self.hardware()
+                .uaw0
+                .write(|w| unsafe { w.bits(mac_address) });
             let mut addr47t32 = address[4] as u16;
             addr47t32 |= (address[5] as u16) << 8;
             // Set MAC bits [47:32] in UAW1
-            self.hardware().uaw1.write(|w| unsafe { w.address47t32().bits(addr47t32) });
+            self.hardware()
+                .uaw1
+                .write(|w| unsafe { w.address47t32().bits(addr47t32) });
             // trace!("XAxiEthernet_SetMacAddress: SUCCESS");
             return 0;
         } else {
             // Set the MAC bits [31:0] in UAWL register. Having Aptr be unsigned type prevents the following
-		    // operations from sign extending.
-            self.hardware().uawl.write(|w| unsafe { w.bits(mac_address) });
+            // operations from sign extending.
+            self.hardware()
+                .uawl
+                .write(|w| unsafe { w.bits(mac_address) });
             mac_address = address[4] as u32;
             mac_address |= (address[5] as u32) << 8;
             // Set MAC bits [47:32] in UAWU register.
-            self.hardware().uawu.write(|w| unsafe { w.bits(mac_address) });
+            self.hardware()
+                .uawu
+                .write(|w| unsafe { w.bits(mac_address) });
             // trace!("XAxiEthernet_SetMacAddress: SUCCESS");
             return 0;
         }
@@ -1125,19 +1228,22 @@ impl AxiEthernet {
         self.options |= options;
         let dep_options = self.update_dep_options();
         // New/extended function bit should be on if any new/extended features
-	    // are on and hardware is built with them.
-        if (dep_options & (XAE_EXT_MULTICAST_OPTION   |
-            XAE_EXT_TXVLAN_TRAN_OPTION |
-            XAE_EXT_RXVLAN_TRAN_OPTION |
-            XAE_EXT_TXVLAN_TAG_OPTION  |
-            XAE_EXT_RXVLAN_TAG_OPTION  |
-            XAE_EXT_TXVLAN_STRP_OPTION |
-            XAE_EXT_RXVLAN_STRP_OPTION)) != 0 {
+        // are on and hardware is built with them.
+        if (dep_options
+            & (XAE_EXT_MULTICAST_OPTION
+                | XAE_EXT_TXVLAN_TRAN_OPTION
+                | XAE_EXT_RXVLAN_TRAN_OPTION
+                | XAE_EXT_TXVLAN_TAG_OPTION
+                | XAE_EXT_RXVLAN_TAG_OPTION
+                | XAE_EXT_TXVLAN_STRP_OPTION
+                | XAE_EXT_RXVLAN_STRP_OPTION))
+            != 0
+        {
             self.hardware().raf.write(|w| w.new_fnc_enbl().bit(true));
         }
         // Many of these options will change the RCW1 or TC registers.
-	    // To reduce the amount of IO to the device, group these options here
-	    // and change them all at once.
+        // To reduce the amount of IO to the device, group these options here
+        // and change them all at once.
         let mut trcw1 = self.hardware().trcw1.read().bits();
         let mut ttc = self.hardware().ttc.read().bits();
         let mut new_trcw1 = trcw1;
@@ -1183,9 +1289,11 @@ impl AxiEthernet {
         }
         if trcw1 != new_trcw1 {
             // // trace!("setOptions: writing rcw1: {:#x}", new_trcw1);
-            self.hardware().trcw1.write(|w| unsafe { w.bits(new_trcw1) });
+            self.hardware()
+                .trcw1
+                .write(|w| unsafe { w.bits(new_trcw1) });
         }
-        // Rest of options twiddle bits of other registers. 
+        // Rest of options twiddle bits of other registers.
         // Handle them one at a time
 
         // Turn on flow control
@@ -1193,54 +1301,64 @@ impl AxiEthernet {
             // // trace!("setOptions: enabling flow control");
             self.hardware().tfcc.write(|w| w.rxfce().bit(true));
         }
-        // // trace!("setOptions: rcw1 is now (fcc):{:#x}", 
+        // // trace!("setOptions: rcw1 is now (fcc):{:#x}",
         //     self.hardware().trcw1.read().bits());
         // Turn on promiscuous frame filtering (all frames are received )
         if (dep_options & XAE_PROMISC_OPTION) != 0 {
             // // trace!("setOptions: enabling promiscuous mode");
             self.hardware().fmi.write(|w| w.pmode().bit(true));
         }
-        // // trace!("setOptions: rcw1 is now (fcc):{:#x}", 
+        // // trace!("setOptions: rcw1 is now (fcc):{:#x}",
         //     self.hardware().trcw1.read().bits());
         // Allow broadcast address filtering
         if (dep_options & XAE_BROADCAST_OPTION) != 0 {
             self.hardware().raf.write(|w| w.bcst_rej().bit(false));
         }
-        // // trace!("setOptions: rcw1 is now (fcc):{:#x}", 
+        // // trace!("setOptions: rcw1 is now (fcc):{:#x}",
         //     self.hardware().trcw1.read().bits());
         // Allow multicast address filtering
         if (dep_options & (XAE_MULTICAST_OPTION | XAE_EXT_MULTICAST_OPTION)) != 0 {
             self.hardware().raf.write(|w| w.mcst_rej().bit(false));
         }
-        // // trace!("setOptions: rcw1 is now (fcc):{:#x}", 
+        // // trace!("setOptions: rcw1 is now (fcc):{:#x}",
         //     self.hardware().trcw1.read().bits());
         // The remaining options not handled here are managed elsewhere in the
-	    // driver. No register modifications are needed at this time.
-	    // Reflecting the option in InstancePtr->Options is good enough for
-	    // now.
+        // driver. No register modifications are needed at this time.
+        // Reflecting the option in InstancePtr->Options is good enough for
+        // now.
 
         // Enable extended multicast option
         if (dep_options & XAE_EXT_MULTICAST_OPTION) != 0 {
-            self.hardware().raf.write(|w| w.emulti_fltr_enbl().bit(true));
+            self.hardware()
+                .raf
+                .write(|w| w.emulti_fltr_enbl().bit(true));
         }
         // New/extended [TX|RX] VLAN translation option does not have specific
-	    // bits to on/off.
-        
+        // bits to on/off.
+
         // Enable extended transmit VLAN tag option
         if (dep_options & XAE_EXT_TXVLAN_TAG_OPTION) != 0 {
-            self.hardware().raf.write(|w| w.tx_vtag_mode().bits(XAE_DEFAULT_TXVTAG_MODE as u8));
+            self.hardware()
+                .raf
+                .write(|w| w.tx_vtag_mode().bits(XAE_DEFAULT_TXVTAG_MODE as u8));
         }
         // Enable extended receive VLAN tag option
         if (dep_options & XAE_EXT_RXVLAN_TAG_OPTION) != 0 {
-            self.hardware().raf.write(|w| w.rx_vtag_mode().bits(XAE_DEFAULT_RXVTAG_MODE as u8));
+            self.hardware()
+                .raf
+                .write(|w| w.rx_vtag_mode().bits(XAE_DEFAULT_RXVTAG_MODE as u8));
         }
         // Enable extended transmit VLAN strip option
         if (dep_options & XAE_EXT_TXVLAN_STRP_OPTION) != 0 {
-            self.hardware().raf.write(|w| unsafe { w.tx_vstrp_mode().bits(XAE_DEFAULT_TXVSTRP_MODE as u8) });
+            self.hardware()
+                .raf
+                .write(|w| unsafe { w.tx_vstrp_mode().bits(XAE_DEFAULT_TXVSTRP_MODE as u8) });
         }
         // Enable extended receive VLAN strip option
         if (dep_options & XAE_EXT_TXVLAN_STRP_OPTION) != 0 {
-            self.hardware().raf.write(|w| unsafe { w.rx_vstrp_mode().bits(XAE_DEFAULT_RXVSTRP_MODE as u8) });
+            self.hardware()
+                .raf
+                .write(|w| unsafe { w.rx_vstrp_mode().bits(XAE_DEFAULT_RXVSTRP_MODE as u8) });
         }
         // trace!("setOptions: returning SUCCESS");
         return 0;
@@ -1257,20 +1375,23 @@ impl AxiEthernet {
         self.options &= !options;
         let dep_options = !(self.update_dep_options());
         // New/extended function bit should be off if none of new/extended
-	    // features is on after hardware is validated and gone through
-	    // _UpdateDepOptions().
-        if (!(!dep_options &  (XAE_EXT_MULTICAST_OPTION   |
-            XAE_EXT_TXVLAN_TRAN_OPTION |
-            XAE_EXT_RXVLAN_TRAN_OPTION |
-            XAE_EXT_TXVLAN_TAG_OPTION  |
-            XAE_EXT_RXVLAN_TAG_OPTION  |
-            XAE_EXT_TXVLAN_STRP_OPTION |
-            XAE_EXT_RXVLAN_STRP_OPTION))) != 0 {
+        // features is on after hardware is validated and gone through
+        // _UpdateDepOptions().
+        if (!(!dep_options
+            & (XAE_EXT_MULTICAST_OPTION
+                | XAE_EXT_TXVLAN_TRAN_OPTION
+                | XAE_EXT_RXVLAN_TRAN_OPTION
+                | XAE_EXT_TXVLAN_TAG_OPTION
+                | XAE_EXT_RXVLAN_TAG_OPTION
+                | XAE_EXT_TXVLAN_STRP_OPTION
+                | XAE_EXT_RXVLAN_STRP_OPTION)))
+            != 0
+        {
             self.hardware().raf.write(|w| w.new_fnc_enbl().bit(false));
         }
         // Many of these options will change the RCW1 or TC registers.
-	    // Group these options here and change them all at once. What we are
-	    // trying to accomplish is to reduce the amount of IO to the device
+        // Group these options here and change them all at once. What we are
+        // trying to accomplish is to reduce the amount of IO to the device
 
         // Get the current register contents
         let mut trcw1 = self.hardware().trcw1.read().bits();
@@ -1321,16 +1442,18 @@ impl AxiEthernet {
         }
         if trcw1 != new_trcw1 {
             // // trace!("XAxiEthernet_ClearOptions: setting RCW1: {:#x}", new_trcw1);
-            self.hardware().trcw1.write(|w| unsafe { w.bits(new_trcw1) });
+            self.hardware()
+                .trcw1
+                .write(|w| unsafe { w.bits(new_trcw1) });
         }
         // Rest of options twiddle bits of other registers. Handle them one at a time
-        
+
         // Turn off flow control
         if (dep_options & XAE_FLOW_CONTROL_OPTION) != 0 {
             // // trace!("XAxiEthernet_ClearOptions: disabling flow control");
             self.hardware().tfcc.write(|w| w.rxfce().bit(false));
         }
-        // Turn off promiscuous frame filtering 
+        // Turn off promiscuous frame filtering
         if (dep_options & XAE_PROMISC_OPTION) != 0 {
             // // trace!("XAxiEthernet_ClearOptions: disabling promiscuous mode");
             self.hardware().fmi.write(|w| w.pmode().bit(false));
@@ -1340,35 +1463,47 @@ impl AxiEthernet {
             // trace!("XAxiEthernet_ClearOptions: disabling broadcast mode");
             self.hardware().raf.write(|w| w.bcst_rej().bit(true));
         }
-        // Disable multicast address filtering 
-        if (dep_options & XAE_MULTICAST_OPTION) != 0 && (dep_options & XAE_EXT_MULTICAST_OPTION) != 0 {
+        // Disable multicast address filtering
+        if (dep_options & XAE_MULTICAST_OPTION) != 0
+            && (dep_options & XAE_EXT_MULTICAST_OPTION) != 0
+        {
             // // trace!("XAxiEthernet_ClearOptions: disabling multicast mode");
             self.hardware().raf.write(|w| w.mcst_rej().bit(true));
         }
         // Disable extended multicast option
         if (dep_options & XAE_EXT_MULTICAST_OPTION) != 0 {
             // // trace!("XAxiEthernet_ClearOptions:disabling extended multicast mode");
-            self.hardware().raf.write(|w| w.emulti_fltr_enbl().bit(false));
+            self.hardware()
+                .raf
+                .write(|w| w.emulti_fltr_enbl().bit(false));
         }
         // Disable extended transmit VLAN tag option
         if (dep_options & XAE_EXT_TXVLAN_TAG_OPTION) != 0 {
             // // trace!("XAxiEthernet_ClearOptions:disabling extended TX VLAN tag mode");
-            self.hardware().raf.write(|w| w.tx_vtag_mode().bits(VtagMode::NONE as u8));
+            self.hardware()
+                .raf
+                .write(|w| w.tx_vtag_mode().bits(VtagMode::NONE as u8));
         }
         // Disable extended receive VLAN tag option
         if (dep_options & XAE_EXT_RXVLAN_TAG_OPTION) != 0 {
             // // trace!("XAxiEthernet_ClearOptions:disabling extended RX VLAN tag mode");
-            self.hardware().raf.write(|w| w.rx_vtag_mode().bits(VtagMode::NONE as u8));
+            self.hardware()
+                .raf
+                .write(|w| w.rx_vtag_mode().bits(VtagMode::NONE as u8));
         }
         // Disable extended transmit VLAN strip option
         if (dep_options & XAE_EXT_TXVLAN_STRP_OPTION) != 0 {
             // // trace!("XAxiEthernet_ClearOptions:disabling extended TX VLAN strip mode");
-            self.hardware().raf.write(|w| unsafe { w.tx_vstrp_mode().bits(VtagMode::NONE as u8) });
+            self.hardware()
+                .raf
+                .write(|w| unsafe { w.tx_vstrp_mode().bits(VtagMode::NONE as u8) });
         }
         // Disable extended receive VLAN strip option
         if (dep_options & XAE_EXT_TXVLAN_STRP_OPTION) != 0 {
             // // trace!("XAxiEthernet_ClearOptions:disabling extended RX VLAN strip mode");
-            self.hardware().raf.write(|w| unsafe { w.rx_vstrp_mode().bits(VtagMode::NONE as u8) });
+            self.hardware()
+                .raf
+                .write(|w| unsafe { w.rx_vstrp_mode().bits(VtagMode::NONE as u8) });
         }
         // trace!("ClearOptions: returning SUCCESS");
         return 0;
@@ -1405,11 +1540,11 @@ impl AxiEthernet {
         let phy_type = self.get_phy_interface();
         // trace!("phy_type: {:?}", phy_type);
         // The following code checks for all allowable speed conditions before
-	    // writing to the register. Please refer to the hardware specs for
-	    // more information on it.
-	    // For PHY type 1000Base-x, 10 and 100 Mbps are not supported.
-	    // For soft/hard Axi Ethernet core, 1000 Mbps is supported in all PHY
-	    // types except MII.
+        // writing to the register. Please refer to the hardware specs for
+        // more information on it.
+        // For PHY type 1000Base-x, 10 and 100 Mbps are not supported.
+        // For soft/hard Axi Ethernet core, 1000 Mbps is supported in all PHY
+        // types except MII.
         let mut can_set_speed = true;
         if (speed == XAE_SPEED_10_MBPS as u16) || (speed == XAE_SPEED_100_MBPS as u16) {
             if phy_type == PhyType::BASEX1000 {
@@ -1422,7 +1557,7 @@ impl AxiEthernet {
         }
         if can_set_speed {
             // Get the current contents of the EMAC config register and
-		    // zero out speed bits
+            // zero out speed bits
             let speed_reg = self.hardware().emmc.read().msc();
             if speed_reg.is_1000m() {
                 // trace!("XAxiEthernet_SetOperatingSpeed: current speed: 1000");
@@ -1434,11 +1569,11 @@ impl AxiEthernet {
                 // trace!("XAxiEthernet_SetOperatingSpeed: current speed: 0");
             }
             match speed as usize {
-                XAE_SPEED_10_MBPS => {},
-                XAE_SPEED_100_MBPS => { self.hardware().emmc.write(|w| w.msc()._100m()) },
-                XAE_SPEED_1000_MBPS => { self.hardware().emmc.write(|w| w.msc()._1000m()) },
-                XAE_SPEED_2500_MBPS => { self.hardware().emmc.write(|w| w.msc()._1000m()) },
-                _ => { 
+                XAE_SPEED_10_MBPS => {}
+                XAE_SPEED_100_MBPS => self.hardware().emmc.write(|w| w.msc()._100m()),
+                XAE_SPEED_1000_MBPS => self.hardware().emmc.write(|w| w.msc()._1000m()),
+                XAE_SPEED_2500_MBPS => self.hardware().emmc.write(|w| w.msc()._1000m()),
+                _ => {
                     // trace!("XAxiEthernet_SetOperatingSpeed: invalid speed");
                     return -1;
                 }
@@ -1448,16 +1583,16 @@ impl AxiEthernet {
         } else {
             // trace!("Speed not compatible with the Axi Ethernet Phy type");
             return -1;
-        }  
+        }
     }
 
     pub fn set_bad_frm_rcv_option(&self) {
         self.hardware().raf.write(|w| w.rx_bad_frm_en().bit(true));
-    } 
+    }
 
     pub fn clear_bad_frm_rcv_option(&self) {
         self.hardware().raf.write(|w| w.rx_bad_frm_en().bit(false));
-    } 
+    }
 
     pub fn disable_ctrl_frm_len_check(&self) {
         self.hardware().trcw1.write(|w| w.cl_dis().bit(true));
@@ -1473,10 +1608,12 @@ impl AxiEthernet {
         self.hardware().trcw1.write(|w| w.cl_dis().bit(true));
         // trace!("XAxiEthernet_PhySetMdioDivisor");
 
-        self.hardware().mdiomc.write(|w| unsafe { w.bits((divisor as u32) | XAE_MDIO_MC_MDIOEN_MASK as u32) });
+        self.hardware()
+            .mdiomc
+            .write(|w| unsafe { w.bits((divisor as u32) | XAE_MDIO_MC_MDIOEN_MASK as u32) });
     }
 
-    pub fn phy_read(&self, phy_address: u32, register_num: u32, phy_data:&mut u16) {
+    pub fn phy_read(&self, phy_address: u32, register_num: u32, phy_data: &mut u16) {
         assert!(self.is_ready);
         assert!(phy_address <= XAE_PHY_ADDR_LIMIT as u32);
         assert!(register_num <= XAE_PHY_REG_NUM_LIMIT as u32);
@@ -1497,12 +1634,15 @@ impl AxiEthernet {
             // trace!("XAxiEthernet_PhyRead: return MDIO is not ready, TIME_OUT");
             return;
         }
-        self.hardware().mdiomcr.write(|w| 
-            unsafe { 
-                w.tx_phyad().bits(phy_address as u8)
-                    .tx_regad().bits(register_num as u8)
-                    .init().bit(true)
-                    .tx_op().ra()
+        self.hardware().mdiomcr.write(|w| unsafe {
+            w.tx_phyad()
+                .bits(phy_address as u8)
+                .tx_regad()
+                .bits(register_num as u8)
+                .init()
+                .bit(true)
+                .tx_op()
+                .ra()
         });
         // Wait till MDIO transaction is completed.
         time_out_loops = XAE_LOOPS_TO_COME_OUT_OF_RST as isize;
@@ -1545,12 +1685,18 @@ impl AxiEthernet {
             // trace!("XAxiEthernet_PhyWrite: return MDIO is not ready, TIME_OUT");
             return;
         }
-        self.hardware().mdiomwd.write(|w| unsafe { w.bits(phy_data as u32) });
-        self.hardware().mdiomcr.write(|w|  unsafe { 
-            w.tx_phyad().bits(phy_address as u8)
-                .tx_regad().bits(register_num as u8)
-                .init().bit(true)
-                .tx_op().wa()
+        self.hardware()
+            .mdiomwd
+            .write(|w| unsafe { w.bits(phy_data as u32) });
+        self.hardware().mdiomcr.write(|w| unsafe {
+            w.tx_phyad()
+                .bits(phy_address as u8)
+                .tx_regad()
+                .bits(register_num as u8)
+                .init()
+                .bit(true)
+                .tx_op()
+                .wa()
         });
         // Wait till MDIO transaction is completed.
         time_out_loops = XAE_LOOPS_TO_COME_OUT_OF_RST as isize;
@@ -1573,24 +1719,27 @@ impl AxiEthernet {
 
 // phy detect and get_speed
 impl AxiEthernet {
-    // this function will detect phy device 
+    // this function will detect phy device
     pub fn detect_phy(&mut self) {
         let mut phy_reg = 0u16;
-        let mut phy_id = 0u16; 
+        let mut phy_id = 0u16;
         for phy_addr in 0..32 {
             self.phy_read(phy_addr, 1, &mut phy_reg);
-            if (phy_reg != 0xFFFF) && ((phy_reg & PHY_DETECT_MASK as u16) == PHY_DETECT_MASK as u16) {
+            if (phy_reg != 0xFFFF) && ((phy_reg & PHY_DETECT_MASK as u16) == PHY_DETECT_MASK as u16)
+            {
                 // Found a valid PHY address
                 // trace!("XAxiEthernet detect_phy: PHY detected at address {}.", phy_addr);
                 self.phy_read(phy_addr, PHY_IDENTIFIER_1_REG as u32, &mut phy_reg);
-                if (phy_reg != PHY_MARVELL_IDENTIFIER as u16) && (phy_reg != PHY_TI_IDENTIFIER as u16) {
+                if (phy_reg != PHY_MARVELL_IDENTIFIER as u16)
+                    && (phy_reg != PHY_TI_IDENTIFIER as u16)
+                {
                     // trace!("WARNING: Not a Marvell or TI Ethernet PHY. Please verify the initialization sequence");
                 }
                 self.phy_addr = phy_addr;
                 return;
             }
             self.phy_read(phy_addr, PHY_IDENTIFIER_1_REG as u32, &mut phy_id);
-            if phy_id == PHY_XILINX_PCS_PMA_ID1 as u16{
+            if phy_id == PHY_XILINX_PCS_PMA_ID1 as u16 {
                 self.phy_read(phy_addr, PHY_IDENTIFIER_2_REG as u32, &mut phy_id);
                 if phy_id == PHY_XILINX_PCS_PMA_ID2 as u16 {
                     // trace!("XAxiEthernet detect_phy: PHY detected at address {}.", phy_addr);
@@ -1611,23 +1760,39 @@ impl AxiEthernet {
         control &= !0x10;
         self.phy_write(self.phy_addr, IEEE_CONTROL_REG_MAC as u32, control);
         self.phy_write(self.phy_addr, IEEE_PAGE_ADDRESS_REGISTER as _, 0);
-        self.phy_read(self.phy_addr, IEEE_AUTONEGO_ADVERTISE_REG as _, &mut control);
+        self.phy_read(
+            self.phy_addr,
+            IEEE_AUTONEGO_ADVERTISE_REG as _,
+            &mut control,
+        );
         control |= IEEE_ASYMMETRIC_PAUSE_MASK as u16;
         control |= IEEE_PAUSE_MASK as u16;
         control |= ADVERTISE_100 as u16;
         control |= ADVERTISE_10 as u16;
         self.phy_write(self.phy_addr, IEEE_AUTONEGO_ADVERTISE_REG as _, control);
-        self.phy_read(self.phy_addr, IEEE_1000_ADVERTISE_REG_OFFSET as _, &mut control);
+        self.phy_read(
+            self.phy_addr,
+            IEEE_1000_ADVERTISE_REG_OFFSET as _,
+            &mut control,
+        );
         control |= ADVERTISE_1000 as u16;
         self.phy_write(self.phy_addr, IEEE_1000_ADVERTISE_REG_OFFSET as _, control);
         self.phy_write(self.phy_addr, IEEE_PAGE_ADDRESS_REGISTER as _, control);
-        self.phy_read(self.phy_addr, IEEE_COPPER_SPECIFIC_CONTROL_REG as _, &mut control);
-        control |= 7 << 12;	/* max number of gigabit attempts */
-        control |= 1 << 11;	/* enable downshift */
-        self.phy_write(self.phy_addr, IEEE_COPPER_SPECIFIC_CONTROL_REG as _, control);
+        self.phy_read(
+            self.phy_addr,
+            IEEE_COPPER_SPECIFIC_CONTROL_REG as _,
+            &mut control,
+        );
+        control |= 7 << 12; /* max number of gigabit attempts */
+        control |= 1 << 11; /* enable downshift */
+        self.phy_write(
+            self.phy_addr,
+            IEEE_COPPER_SPECIFIC_CONTROL_REG as _,
+            control,
+        );
         self.phy_read(self.phy_addr, IEEE_CONTROL_REG_OFFSET as _, &mut control);
         control |= IEEE_CTRL_AUTONEGOTIATE_ENABLE as u16;
-	    control |= IEEE_STAT_AUTONEGOTIATE_RESTART as u16;
+        control |= IEEE_STAT_AUTONEGOTIATE_RESTART as u16;
         self.phy_write(self.phy_addr, IEEE_CONTROL_REG_OFFSET as _, control);
         self.phy_read(self.phy_addr, IEEE_CONTROL_REG_OFFSET as _, &mut control);
         control |= IEEE_CTRL_RESET_MASK as u16;
@@ -1640,16 +1805,19 @@ impl AxiEthernet {
         }
         // trace!("Waiting for PHY to complete autonegotiation.");
         self.phy_read(self.phy_addr, IEEE_STATUS_REG_OFFSET as _, &mut status);
-        while  (status & IEEE_STAT_AUTONEGOTIATE_COMPLETE as u16) == 0 {
+        while (status & IEEE_STAT_AUTONEGOTIATE_COMPLETE as u16) == 0 {
             self.phy_read(self.phy_addr, IEEE_STATUS_REG_OFFSET as _, &mut status);
         }
         // trace!("autonegotiation complete");
         self.phy_read(self.phy_addr, 0x1f, &mut partner_capabilities);
-        if (partner_capabilities & 0x40) == 0x40 {/* 1000Mbps */
+        if (partner_capabilities & 0x40) == 0x40 {
+            /* 1000Mbps */
             return 1000;
-        } else if (partner_capabilities & 0x20) == 0x20 {/* 100Mbps */
+        } else if (partner_capabilities & 0x20) == 0x20 {
+            /* 100Mbps */
             return 100;
-        } else if (partner_capabilities & 0x10) == 0x10 {/* 10Mbps */
+        } else if (partner_capabilities & 0x10) == 0x10 {
+            /* 10Mbps */
             return 10;
         } else {
             return 0;
@@ -1674,26 +1842,26 @@ impl AxiEthernet {
                 phy_reg0 |= PHY_R0_DFT_SPD_10 as u16;
                 phy_reg20 |= PHY_R20_DFT_SPD_10 as u16;
                 phy_reg21 |= PHY_REG21_10 as u16;
-            },
+            }
             XAE_SPEED_100_MBPS => {
                 phy_reg0 |= PHY_R0_DFT_SPD_100 as u16;
                 phy_reg20 |= PHY_R20_DFT_SPD_100 as u16;
                 phy_reg21 |= PHY_REG21_100 as u16;
-            },
+            }
             XAE_SPEED_1000_MBPS => {
                 phy_reg0 |= PHY_R0_DFT_SPD_1000 as u16;
                 phy_reg20 |= PHY_R20_DFT_SPD_1000 as u16;
                 phy_reg21 |= PHY_REG21_1000 as u16;
-            },
+            }
             XAE_SPEED_2500_MBPS => {
                 phy_reg0 |= PHY_R0_DFT_SPD_2500 as u16;
                 phy_reg20 |= PHY_R20_DFT_SPD_1000 as u16;
                 phy_reg21 |= PHY_REG21_1000 as u16;
-            },
+            }
             _ => {
                 error!("Intg_LinkSpeed not 10, 100, or 1000 mbps");
                 return -1;
-            },
+            }
         };
         // RGMII mode Phy specific registers initialization
         if phy_type == PhyType::RGMII2_0 || phy_type == PhyType::RGMII1_3 {
@@ -1714,22 +1882,42 @@ impl AxiEthernet {
         // Configure interface modes
         if phy_model == MARVEL_PHY_88E1111_MODEL as u16 {
             if phy_type == PhyType::RGMII2_0 || phy_type == PhyType::RGMII1_3 {
-                self.phy_write(self.phy_addr, PHY_R27_EXTND_STS_REG as u32, PHY_R27_MAC_CONFIG_RGMII as u16);
+                self.phy_write(
+                    self.phy_addr,
+                    PHY_R27_EXTND_STS_REG as u32,
+                    PHY_R27_MAC_CONFIG_RGMII as u16,
+                );
             } else if phy_type == PhyType::SGMII {
-                self.phy_write(self.phy_addr, PHY_R27_EXTND_STS_REG as u32, PHY_R27_MAC_CONFIG_SGMII as u16);
+                self.phy_write(
+                    self.phy_addr,
+                    PHY_R27_EXTND_STS_REG as u32,
+                    PHY_R27_MAC_CONFIG_SGMII as u16,
+                );
             } else if phy_type == PhyType::GMII || phy_type == PhyType::MII {
-                self.phy_write(self.phy_addr, PHY_R27_EXTND_STS_REG as u32, PHY_R27_MAC_CONFIG_GMII as u16);
+                self.phy_write(
+                    self.phy_addr,
+                    PHY_R27_EXTND_STS_REG as u32,
+                    PHY_R27_MAC_CONFIG_GMII as u16,
+                );
             }
         }
         // Set the speed and put the PHY in reset, then put the PHY in loopback
-        self.phy_write(self.phy_addr, PHY_R0_CTRL_REG as u32, phy_reg0 | (PHY_R0_RESET as u16));
+        self.phy_write(
+            self.phy_addr,
+            PHY_R0_CTRL_REG as u32,
+            phy_reg0 | (PHY_R0_RESET as u16),
+        );
         let mut time = AXIETHERNET_PHY_DELAY_SEC * 1000;
         while time > 0 {
             time -= 1;
         }
         self.phy_read(self.phy_addr, PHY_R0_CTRL_REG as u32, &mut phy_reg0);
         // enable loopback
-        self.phy_write(self.phy_addr, PHY_R0_CTRL_REG as u32, phy_reg0 | (PHY_R0_LOOPBACK as u16));
+        self.phy_write(
+            self.phy_addr,
+            PHY_R0_CTRL_REG as u32,
+            phy_reg0 | (PHY_R0_LOOPBACK as u16),
+        );
         if phy_model == TI_PHY_MODEL as u16 && phy_type == PhyType::SGMII {
             self.phy_read(self.phy_addr, PHY_R0_CTRL_REG as u32, &mut phy_reg0);
             phy_reg0 &= !(PHY_R0_ANEG_ENABLE as u16);
@@ -1748,12 +1936,28 @@ impl AxiEthernet {
         // Enable SGMII Clock
         self.phy_write(self.phy_addr, TI_PHY_CR as u32, TI_PHY_CR_DEVAD_EN as u16);
         self.phy_write(self.phy_addr, TI_PHY_ADDDR as u32, TI_PHY_SGMIITYPE as u16);
-        self.phy_write(self.phy_addr, TI_PHY_CR as u32, (TI_PHY_CR_DEVAD_EN | TI_PHY_CR_DEVAD_DATAEN) as u16);
-        self.phy_write(self.phy_addr, TI_PHY_ADDDR as u32, TI_PHY_SGMIICLK_EN as u16);
+        self.phy_write(
+            self.phy_addr,
+            TI_PHY_CR as u32,
+            (TI_PHY_CR_DEVAD_EN | TI_PHY_CR_DEVAD_DATAEN) as u16,
+        );
+        self.phy_write(
+            self.phy_addr,
+            TI_PHY_ADDDR as u32,
+            TI_PHY_SGMIICLK_EN as u16,
+        );
         // Enable SGMII
-        self.phy_write(self.phy_addr, TI_PHY_PHYCTRL as u32, TI_PHY_CR_SGMII_EN as u16);
+        self.phy_write(
+            self.phy_addr,
+            TI_PHY_PHYCTRL as u32,
+            TI_PHY_CR_SGMII_EN as u16,
+        );
         self.phy_read(self.phy_addr, TI_PHY_CFGR2 as u32, &mut phy_reg14);
-        self.phy_write(self.phy_addr, TI_PHY_CFGR2 as u32, phy_reg14 & (!(TI_PHY_CFGR2_SGMII_AUTONEG_EN as u16)));
+        self.phy_write(
+            self.phy_addr,
+            TI_PHY_CFGR2 as u32,
+            phy_reg14 & (!(TI_PHY_CFGR2_SGMII_AUTONEG_EN as u16)),
+        );
         self.phy_read(self.phy_addr, TI_PHY_CFGR2 as u32, &mut phy_reg14);
         return 0;
     }
