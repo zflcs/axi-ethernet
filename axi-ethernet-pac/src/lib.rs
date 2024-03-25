@@ -95,7 +95,6 @@ impl core::fmt::Debug for AXI_ETHERNET {
 }
 #[doc = "AXI Ethernet MAC"]
 pub mod axi_ethernet;
-#[no_mangle]
 #[doc = r" All the peripherals."]
 #[allow(non_snake_case)]
 pub struct Peripherals {
