@@ -136,7 +136,9 @@ pub struct AxiEthernet {
     pub phy_addr: u32,
     pub link_status: LinkStatus,
     rx_count: usize,
+    rx_bytes_cnt: usize,
     tx_count: usize,
+    tx_bytes_cnt: usize,
 }
 
 /// basic field access
@@ -153,6 +155,8 @@ impl AxiEthernet {
             link_status: LinkStatus::EthLinkDown,
             rx_count: 0,
             tx_count: 0,
+            rx_bytes_cnt: 0,
+            tx_bytes_cnt: 0
         }
     }
 
@@ -231,67 +235,67 @@ impl AxiEthernet {
     pub fn enable_intr(&self, mask: usize) {
         let mut intrs = self.hardware().ie.read().bits();
         intrs = intrs | (mask & 0x3f) as u32;
-        self.hardware().ie.write(|w| unsafe { w.bits(intrs) });
+        self.hardware().ie.modify(|_, w| unsafe { w.bits(intrs) });
     }
 
     pub fn enable_tx_cmplt(&self) {
-        self.hardware().ie.write(|w| w.tx_cmplt().set_bit());
+        self.hardware().ie.modify(|_, w| w.tx_cmplt().set_bit());
     }
 
     pub fn enable_rx_memovr(&self) {
-        self.hardware().ie.write(|w| w.rx_fifoovr().set_bit());
+        self.hardware().ie.modify(|_, w| w.rx_fifoovr().set_bit());
     }
 
     pub fn enable_rx_rject(&self) {
-        self.hardware().ie.write(|w| w.rx_rject().set_bit());
+        self.hardware().ie.modify(|_, w| w.rx_rject().set_bit());
     }
 
     pub fn enable_rx_cmplt(&self) {
-        self.hardware().ie.write(|w| w.rx_cmplt().set_bit());
+        self.hardware().ie.modify(|_, w| w.rx_cmplt().set_bit());
     }
 
     pub fn disable_tx_cmplt(&self) {
-        self.hardware().ie.write(|w| w.tx_cmplt().clear_bit());
+        self.hardware().ie.modify(|_, w| w.tx_cmplt().clear_bit());
     }
 
     pub fn disable_rx_memovr(&self) {
-        self.hardware().ie.write(|w| w.rx_fifoovr().clear_bit());
+        self.hardware().ie.modify(|_, w| w.rx_fifoovr().clear_bit());
     }
 
     pub fn disable_rx_rject(&self) {
-        self.hardware().ie.write(|w| w.rx_rject().clear_bit());
+        self.hardware().ie.modify(|_, w| w.rx_rject().clear_bit());
     }
 
     pub fn disable_rx_cmplt(&self) {
-        self.hardware().ie.write(|w| w.rx_cmplt().clear_bit());
+        self.hardware().ie.modify(|_, w| w.rx_cmplt().clear_bit());
     }
 
     pub fn disable_intr(&self, mask: usize) {
         let mut intrs = self.hardware().ie.read().bits();
         intrs = intrs & !(mask & 0x3f) as u32;
-        self.hardware().ie.write(|w| unsafe { w.bits(intrs) });
+        self.hardware().ie.modify(|_, w| unsafe { w.bits(intrs) });
     }
 
     pub fn clear_intr(&self, mask: usize) {
         self.hardware()
             .is
-            .write(|w| unsafe { w.bits((mask & 0x3f) as u32) });
+            .modify(|_, w| unsafe { w.bits((mask & 0x3f) as u32) });
     }
 
     pub fn clear_tx_cmplt(&self) {
-        self.hardware().is.write(|w| w.tx_cmplt().set_bit());
+        self.hardware().is.modify(|_, w| w.tx_cmplt().set_bit());
     }
 
     pub fn clear_rx_memovr(&self) {
-        self.hardware().is.write(|w| w.rx_fifoovr().set_bit());
+        self.hardware().is.modify(|_, w| w.rx_fifoovr().set_bit());
     }
 
     pub fn clear_rx_rject(&self) {
-        self.hardware().is.write(|w| w.rx_rject().set_bit());
+        self.hardware().is.modify(|_, w| w.rx_rject().set_bit());
     }
 
     pub fn clear_rx_cmplt(&self) {
-        self.hardware().is.write(|w| w.rx_cmplt().set_bit());
+        self.hardware().is.modify(|_, w| w.rx_cmplt().set_bit());
     }
 
     pub fn is_ext_func_cap(&self) -> bool {
@@ -352,6 +356,12 @@ impl AxiEthernet {
         msm << 32 | lsm
     }
 
+    pub fn rx_bytes_count(&self) -> usize {
+        let lsm = self.hardware().rxbl.read().bits() as usize;
+        let msm = self.hardware().rxbu.read().bits() as usize;
+        msm << 32 | lsm
+    }
+
     pub fn tx_frame_count(&self) -> usize {
         let lsm = self.hardware().txfl.read().bits() as usize;
         let msm = self.hardware().txfu.read().bits() as usize;
@@ -365,6 +375,18 @@ impl AxiEthernet {
             self.rx_count += 1;
         }
         res
+    }
+
+    // check the buffer has frame or not, if the buffer has frame, software can receive from eth
+    pub fn can_receive_bytes(&mut self) -> Option<usize> {
+        let rx_bytes_count = self.rx_bytes_count();
+        if self.rx_bytes_cnt < rx_bytes_count {
+            let res = rx_bytes_count - self.rx_bytes_cnt;
+            self.rx_bytes_cnt = rx_bytes_count;
+            Some(res)
+        } else {
+            None
+        }
     }
 }
 
