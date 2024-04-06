@@ -135,7 +135,7 @@ pub struct AxiEthernet {
     /// phy_addr
     pub phy_addr: u32,
     pub link_status: LinkStatus,
-    rx_count: usize,
+    pub rx_count: usize,
     rx_bytes_cnt: usize,
     tx_count: usize,
     tx_bytes_cnt: usize,
